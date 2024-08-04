@@ -1,16 +1,18 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { IoClose, IoMenu, IoMail, IoLogoFacebook } from "react-icons/io5";
-import { FaRegBell, FaPhoneAlt } from "react-icons/fa";
+import { FaRegBell } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";
 import styles from '../../styles.module.css'
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Catálogo', href: '#', current: false },
+    { name: 'Dashboard', href: '/', current: true },
+    { name: 'Catálogo', href: '/pages/catalogo', current: false },
     { name: 'Nosotros', href: '#', current: false },
-    // { name: 'Contacto', href: '#', current: false },
+    { name: '404', href: '/not-found', current: false },
 ]
 
 function classNames(...classes) {
@@ -24,16 +26,20 @@ export default function Navbar() {
                 <div className='text-white items-center gap-1 sm:flex m-auto'>
                     <div className='items-center gap-1 flex m-auto'>
                         <IoMail />
-                        <p className='text-white pr-2'>email@email.com</p>
+                        <a href='mailto:shop@kivara' className='text-white pr-2'>shop@kivara.com</a>
                     </div>
                     <div className='items-center gap-1 flex m-auto'>
-                        <FaPhoneAlt />
-                        <p className='text-white'>341-4557700</p>
+                        <IoLogoWhatsapp />
+                        <a href='https://wa.me/3416851106' target='_blank' className='text-white'>341-4557700</a>
                     </div>
                 </div>
                 <div className='text-white items-center gap-2 text-xl flex m-auto'>
-                    <RiInstagramFill />
-                    <IoLogoFacebook />
+                    <Link href={"https://www.instagram.com/"} target='_blank'>
+                        <RiInstagramFill className='cursor-pointer'/>
+                    </Link>
+                    <Link href={"https://www.facebook.com/"} target='_blank'>
+                        <IoLogoFacebook className='cursor-pointer'/>
+                    </Link>
                 </div>
             </div>
             <div className='mx-auto mx-10'>
@@ -53,30 +59,35 @@ export default function Navbar() {
                     </div>
                     <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="flex flex-shrink-0 items-center">
-                            <Image
-                                alt="Your Company"
-                                src="/logo.svg"
-                                className="h-16 w-auto text-white"
-                                width={16}
-                                height={16}
-                                >
-                            </Image>
+                            <Link href={"/"}>
+                                <Image
+                                    alt="Your Company"
+                                    src="/logo.svg"
+                                    className="h-16 w-auto text-white"
+                                    width={16}
+                                    height={16}
+                                    >
+                                </Image>
+                            </Link>
                         </div>
                         <div className="hidden sm:ml-6 sm:block self-center">
                             <div className="flex space-x-4">
+
+                                {/*//TODO hacer la clase ACTIVE */}
                                 {navigation.map((item) => (
-                                    <a
-                                        key={item.name}
-                                        href={item.href}
-                                        aria-current={item.current ? 'page' : undefined}
-                                        className={classNames(
-                                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                            'rounded-md px-3 py-2 text-sm font-medium',
-                                        )}
-                                    >
-                                        {item.name}
-                                    </a>
+                                    <Link href={item.href}>
+                                        <p
+                                            // aria-current={item.current ? 'page' : undefined}
+                                            className={classNames(
+                                                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                'rounded-md px-3 py-2 text-sm font-medium',
+                                            )}
+                                        >
+                                            {item.name}
+                                        </p>
+                                    </Link>
                                 ))}
+
                             </div>
                         </div>
                     </div>
@@ -134,18 +145,18 @@ export default function Navbar() {
             <DisclosurePanel className="sm:hidden">
                 <div className="space-y-1 px-2 pb-3 pt-2">
                     {navigation.map((item) => (
-                        <DisclosureButton
-                            key={item.name}
-                            as="a"
-                            href={item.href}
-                            aria-current={item.current ? 'page' : undefined}
-                            className={classNames(
-                                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                'block rounded-md px-3 py-2 text-base font-medium',
-                            )}
-                        >
-                            {item.name}
-                        </DisclosureButton>
+                        <Link href={item.href}>
+                            <DisclosureButton
+                                key={item.name}
+                                aria-current={item.current ? 'page' : undefined}
+                                className={classNames(
+                                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                    'block rounded-md px-3 py-2 text-base font-medium',
+                                )}
+                            >
+                                {item.name}
+                            </DisclosureButton>
+                        </Link>
                     ))}
                 </div>
             </DisclosurePanel>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Feature from "./components/ui/feature";
 import Main from "./pages/main/page"
 
+
 export default function Home() {
   return (
     <>
