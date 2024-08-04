@@ -1,3 +1,4 @@
+'use client'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { IoClose, IoMenu, IoMail, IoLogoFacebook } from "react-icons/io5";
 import { FaRegBell } from "react-icons/fa";
@@ -6,20 +7,24 @@ import { RiInstagramFill } from "react-icons/ri";
 import styles from '../../styles.module.css'
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 
 const navigation = [
-    { name: 'Dashboard', href: '/', current: true },
-    { name: 'Catálogo', href: '/pages/catalogo', current: false },
-    { name: 'Nosotros', href: '#', current: false },
-    { name: '404', href: '/not-found', current: false },
+    { name: 'Inicio', href: '/' },
+    { name: 'Catálogo', href: '/pages/catalogo' },
+    { name: 'Nosotros', href: '/pages/nosotros' },
+    { name: '404', href: '/not-found' },
 ]
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Navbar() {
+const Navbar = () => {
+
+    const pathname = usePathname();
+
     return (
         <Disclosure as="nav" className={styles.navbarBg}>
             <div className="flex flex-1 h-16 items-center px-20 px-50 justify-center gap-5 sm:items-stretch sm:justify-between">
@@ -73,13 +78,11 @@ export default function Navbar() {
                         <div className="hidden sm:ml-6 sm:block self-center">
                             <div className="flex space-x-4">
 
-                                {/*//TODO hacer la clase ACTIVE */}
                                 {navigation.map((item) => (
-                                    <Link href={item.href}>
+                                    <Link href={item.href} key={item.name}>
                                         <p
-                                            // aria-current={item.current ? 'page' : undefined}
                                             className={classNames(
-                                                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                pathname === item.href? 'bg-gray-700 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                                 'rounded-md px-3 py-2 text-sm font-medium',
                                             )}
                                         >
@@ -145,12 +148,10 @@ export default function Navbar() {
             <DisclosurePanel className="sm:hidden">
                 <div className="space-y-1 px-2 pb-3 pt-2">
                     {navigation.map((item) => (
-                        <Link href={item.href}>
+                        <Link href={item.href} key={item.name}>
                             <DisclosureButton
-                                key={item.name}
-                                aria-current={item.current ? 'page' : undefined}
                                 className={classNames(
-                                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                    pathname === item.href ? 'bg-gray-700 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                     'block rounded-md px-3 py-2 text-base font-medium',
                                 )}
                             >
@@ -163,3 +164,6 @@ export default function Navbar() {
         </Disclosure>
     )
 }
+
+
+export default Navbar

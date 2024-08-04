@@ -1,8 +1,13 @@
+'use client'
 import Link from 'next/link';
-import React from 'react'
+import { useRouter } from 'next/navigation';
 import { IoHome, IoCaretBackCircle } from "react-icons/io5";
+import React from 'react'
 
-const NotFound = () => {
+export default function NotFound() {
+
+    const router = useRouter();
+
     return (
         <div className="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
             <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">Página no encontrada</h5>
@@ -16,15 +21,13 @@ const NotFound = () => {
                         <div className="-mt-1 font-sans text-sm font-semibold">Ir al home</div>
                     </div>
                 </Link>
-                <Link href={"#"} className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                <button onClick={()=>{ router.back() }} className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                     <IoCaretBackCircle className="me-3 w-7 h-7" />
                     <div className="text-left rtl:text-right">
                         <div className="-mt-1 font-sans text-sm font-semibold">Volver atrás</div>
                     </div>
-                </Link>
+                </button>
             </div>
         </div>
     )
 }
-
-export default NotFound

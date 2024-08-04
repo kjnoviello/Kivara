@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-export default function ScrollToTop() {
+const ScrollToTop = () => {
     const pathname = usePathname();
 
     useEffect(() => {
@@ -11,3 +11,5 @@ export default function ScrollToTop() {
 
     return null;
 }
+
+export default ScrollToTop

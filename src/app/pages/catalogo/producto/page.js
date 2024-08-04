@@ -2,12 +2,10 @@ import React from 'react'
 import ProductDetail from '@/app/components/catalogo/ProductDetail'
 
 
-const Detail = () => {
+export default function Detail() {
   return (
     <div>
-      <ProductDetail></ProductDetail>
+      <ProductDetail />
     </div>
   )
 }
-
-export default Detail

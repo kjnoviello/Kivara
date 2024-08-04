@@ -32,7 +32,6 @@ body {
   }
 } */
 
-
-.fill{
-  color: green;
+html {
+  scroll-behavior: smooth;
 }
