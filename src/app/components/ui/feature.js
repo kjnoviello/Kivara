@@ -49,7 +49,6 @@ const Feature = () => {
                             >
                         </Image>
                     ))}
-                 
                 </div>
             </div>
         </div>

@@ -4,15 +4,14 @@ import Image from 'next/image'
 import React from 'react'
 import Link from "next/link";
 
-const ProductCard = () => {
-    return (
+const ProductCard = ({products}) => {
 
-        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                
+    return (
+        <>
                 {/*//TODO Implementar un carousel */}
                 <Image
                     alt="imagen"
-                    src="/catalogo/celular01.jpg"
+                    src={products.imagen}
                     className= "h-[250px] w-auto align-center m-auto"
                     width={200}
                     height={200}
@@ -20,9 +19,9 @@ const ProductCard = () => {
                 </Image>
 
             <div className="p-5">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Celular Samsung Galaxy A15</h5>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">LTE 4GB 128GB Blue Black</p>
-                <h5 className="my-8 text-3xl font-bold text-gray-900 dark:text-white text-center">$120.000</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{products.nombre}</h5>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{products.caracteristicas}</p>
+                <h5 className="my-8 text-3xl font-bold text-gray-900 dark:text-white text-center">${products.precio}</h5>
                 <div className="gap-5 flex justify-between">
 
                     {/*//TODO REEMPLAZAR POR COMPONENTE BOTON */}
@@ -41,7 +40,7 @@ const ProductCard = () => {
 
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

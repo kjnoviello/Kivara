@@ -1,4 +1,4 @@
-import ProductCard from '@/app/components/catalogo/ProductCard'
+import ProductList from '@/app/components/catalogo/ProductList';
 import React from 'react'
 
 export const metadata = {
@@ -9,13 +9,14 @@ export const metadata = {
 export default function Catalogo() {
     return (
         <section className='flex gap-5 flex-wrap p-5 mx-5 items-center justify-center'>
+            <ProductList />
+            {/* <ProductCard />
             <ProductCard />
             <ProductCard />
             <ProductCard />
             <ProductCard />
             <ProductCard />
-            <ProductCard />
-            <ProductCard />   
+            <ProductCard />    */}
         </section>
     )
 }
