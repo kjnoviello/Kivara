@@ -8,15 +8,15 @@ const ProductCard = ({products}) => {
 
     return (
         <>
-                {/*//TODO Implementar un carousel */}
-                <Image
-                    alt="imagen"
-                    src={products.imagen}
-                    className= "h-[250px] w-auto align-center m-auto"
-                    width={200}
-                    height={200}
-                    >
-                </Image>
+            {/*//TODO Implementar un carousel */}
+            <Image
+                alt="imagen"
+                src={products.imagen}
+                className= "h-[250px] w-auto align-center m-auto"
+                width={200}
+                height={200}
+                >
+            </Image>
 
             <div className="p-5">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{products.nombre}</h5>
@@ -25,7 +25,7 @@ const ProductCard = ({products}) => {
                 <div className="gap-5 flex justify-between">
 
                     {/*//TODO REEMPLAZAR POR COMPONENTE BOTON */}
-                    <Link href={"/pages/catalogo/producto"} className="w-[130px] m-auto inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 rounded-lg">
+                    <Link href={`/pages/catalogo/producto/${products.id}`} className="w-[130px] m-auto inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 rounded-lg">
                         <p className="m-auto flex items-center">
                             Ver detalles
                             <IoArrowForward className="rtl:rotate-180 w-4 h-4 ms-2"/>

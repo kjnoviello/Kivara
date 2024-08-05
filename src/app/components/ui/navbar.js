@@ -14,6 +14,7 @@ const navigation = [
     { name: 'Inicio', href: '/' },
     { name: 'Catálogo', href: '/pages/catalogo' },
     { name: 'Nosotros', href: '/pages/nosotros' },
+    { name: 'Admin', href: '/pages/admin' },
     { name: '404', href: '/not-found' },
 ]
 
