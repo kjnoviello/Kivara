@@ -7,7 +7,7 @@ import mockApi from "@/app/utils/mockApi.json";
 
 export default function Detail() {
 
-  const { id } = useParams();
+  const {id} = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {

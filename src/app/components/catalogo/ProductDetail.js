@@ -10,6 +10,8 @@ const ProductDetail = ({product}) => {
 
     return (
         <div className="flex flex-col p-8 items-center bg-white border border-gray-200 rounded-lg shadow md:px-16 md:flex-row md:w-auto dark:border-gray-700 dark:bg-gray-800 h-auto">
+            
+            {/*//TODO Implementar un carousel */}
             <Image
                 className="object-cover w-46 rounded-t-lg h-auto md:h-[600px] md:w-[50%] md:rounded-none md:rounded-s-lg"
                 src={product.imagen}

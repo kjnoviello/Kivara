@@ -4,3 +4,7 @@
 .navbarBg{
     background: linear-gradient(#1F2937, #000000);
 }
+
+.showDropdown {
+    display: hidden;
+}

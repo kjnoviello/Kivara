@@ -8,7 +8,6 @@ const ProductCard = ({products}) => {
 
     return (
         <>
-            {/*//TODO Implementar un carousel */}
             <Image
                 alt="imagen"
                 src={products.imagen}
