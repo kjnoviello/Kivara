@@ -33,7 +33,7 @@ const Header = () => {
     return (
         <header className={classNames(showHeader, "bg-white")}
         >
-            <nav className="mx-auto flex flex-col max-w-7xl items-center justify-between p-6 lg:px-8 sm:flex-row" aria-label="Global">
+            <nav className="mx-auto flex flex-col max-w-7xl items-start justify-between p-6 lg:px-8 sm:flex-row sm:items-center" aria-label="Global">
                 <div className=" gap-x-3 sm:gap-x-12 justify-start">
                     <div className="relative">
                         <button type="button" className="cursor-pointer flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" onClick={() => toggleDropdown()} aria-expanded="false">
