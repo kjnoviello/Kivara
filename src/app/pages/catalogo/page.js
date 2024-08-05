@@ -10,8 +10,9 @@ export const metadata = {
 
 
 export default function Catalogo() {
+    
     const products = mockApi
-    console.log(products);
+
     return (
         <>
             <section className='flex gap-5 flex-wrap p-5 mx-5 items-center justify-center'>

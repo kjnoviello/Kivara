@@ -1,10 +1,10 @@
 import React from 'react'
 import ProductCard from './ProductCard'
-import mockApi from '../../utils/mockApi.json'
+// import mockApi from '../../utils/mockApi.json'
 
-const ProductList = () => {
+const ProductList = ({products}) => {
 
-    const products = mockApi;
+    // const products = mockApi;
 
     console.log(products);
     return (
