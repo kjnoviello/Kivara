@@ -1,13 +1,13 @@
 'use client'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { IoClose, IoMenu, IoMail, IoLogoFacebook, IoArrowDown } from "react-icons/io5";
-import { FaRegBell, FaShoppingBag, FaShoppingCart } from "react-icons/fa";
+import { IoClose, IoMenu, IoMail, IoLogoFacebook, IoArrowDown, IoCartOutline } from "react-icons/io5";
+import { FaRegBell } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";
+import { usePathname } from 'next/navigation';
 import styles from '../../styles.module.css'
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import Header from '../header/Header';
 
 
@@ -105,7 +105,7 @@ const Navbar = () => {
                                 <Link href={"/pages/carrito"}>
                                     <span className="absolute -inset-1.5" />
                                     <span className="sr-only">Ver notificaciones</span>
-                                    <FaShoppingCart aria-hidden="true" className="h-6 w-6" />
+                                    <IoCartOutline  aria-hidden="true" className="h-6 w-6" />
                                 </Link>
                                 
                             </button>
