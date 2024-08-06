@@ -7,7 +7,7 @@ import Link from "next/link";
 const ProductCard = ({products}) => {
 
     return (
-        <>
+        <section>
             <Image
                 alt="imagen"
                 src={products.imagen}
@@ -39,7 +39,7 @@ const ProductCard = ({products}) => {
 
                 </div>
             </div>
-        </>
+        </section>
     )
 }
 

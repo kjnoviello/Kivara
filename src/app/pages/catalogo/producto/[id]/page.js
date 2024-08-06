@@ -16,12 +16,12 @@ export default function Detail() {
   }, [id]);
 
   return (
-    <div>
+    <main>
       {!product ? (
         <div>Loading...</div>
       ) : (
         <ProductDetail product={product} />
       )}
-    </div>
+    </main>
   )
 }

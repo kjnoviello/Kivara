@@ -7,6 +7,8 @@ export const metadata = {
 
 export default function Admin ()  {
   return (
-    <div>Admin</div>
+    <main>
+      Admin
+    </main>
   )
 }

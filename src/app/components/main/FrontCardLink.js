@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const FrontCardLink = () => {
     return (
-        <div className="w-full sm:max-w-sm p-8 bg-white mx-auto border-r-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+        <section className="w-full sm:max-w-sm p-8 bg-white mx-auto border-r-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
             <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Desea hacer un regalo?</h5>
             <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">Nuestros asesores están encantados de poder ayudarle</p>
             
@@ -21,9 +21,10 @@ const FrontCardLink = () => {
                 width={300}
                 height={300}
                 className='w-full rounded-lg'
+                alt="hombre hablando por telefono"
             >
             </Image>
-        </div>
+        </section>
     )
 }
 

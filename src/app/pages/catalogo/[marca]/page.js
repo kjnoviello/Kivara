@@ -14,8 +14,8 @@ export default function Marca() {
     console.log(products);
 
     return (
-        <section className='flex gap-5 flex-wrap p-5 mx-5 items-center justify-center'>
+        <main className='flex gap-5 flex-wrap p-5 mx-5 items-center justify-center'>
             <ProductList products={products}/>
-        </section>
+        </main>
     )
 }

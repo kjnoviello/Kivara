@@ -20,7 +20,7 @@ const images = [
 
 const Feature = () => {
     return (
-        <div className="bg-white py-20" id="tech">
+        <section className="bg-white py-20" id="tech">
             <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-10 sm:px-2 sm:py-2 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
                 <div>
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">Comprometidos con la mayor calidad</h2>
@@ -51,7 +51,7 @@ const Feature = () => {
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

@@ -9,7 +9,7 @@ const ProductDetail = ({product}) => {
     const router = useRouter();
 
     return (
-        <div className="flex flex-col p-8 items-center bg-white border border-gray-200 rounded-lg shadow md:px-16 md:flex-row md:w-auto dark:border-gray-700 dark:bg-gray-800 h-auto">
+        <section className="flex flex-col p-8 items-center bg-white border border-gray-200 rounded-lg shadow md:px-16 md:flex-row md:w-auto dark:border-gray-700 dark:bg-gray-800 h-auto">
             
             {/*//TODO Implementar un carousel */}
             <Image
@@ -70,7 +70,7 @@ const ProductDetail = ({product}) => {
                     </button>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
