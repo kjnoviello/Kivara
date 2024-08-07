@@ -12,14 +12,16 @@ export const metadata = {
 
 
 export default function Catalogo() {
-    
+
     const products = mockApi
 
     return (
-        <>
-            <main className='flex gap-5 flex-wrap p-5 mx-5 items-center justify-center'>
-                <ProductList products={products}/>
-            </main>
-        </>
+        <main className='flex gap-5 flex-wrap p-5 mx-5 items-center justify-center'>
+            {!products ? (
+                <div>Loading...</div>
+            ) : (
+                <ProductList products={products} />
+            )}
+        </main>
     )
 }

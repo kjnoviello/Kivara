@@ -1,6 +1,10 @@
 import React from 'react'
 import mockApi from '../../utils/mockApi.json'
 import Link from 'next/link'
+import { IoArrowBack } from 'react-icons/io5'
+import { LiaTrashRestoreSolid } from "react-icons/lia";
+import { GiConfirmed } from "react-icons/gi";
+import { FaCheck } from "react-icons/fa";
 
 
 const Carrito = () => {
@@ -27,20 +31,20 @@ const Carrito = () => {
             
             <hr />
 
-            <div className='flex flex-col sm:flex-row justify-between p-8'>
+            <aside className='flex flex-col sm:flex-row justify-between p-8'>
                 <div className="flex flex-row sm:flex-col justify-between my-8 gap-5">
 
                     {/*//TODO REEMPLAZAR POR COMPONENTE BOTON */}
                     <Link href={"#"} className="w-[130px] m-auto h-12 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 rounded-lg">
                         <p className="m-auto flex items-center">
+                            <IoArrowBack className="rtl:rotate-180 w-5 h-5 me-2" />
                             Volver
-                            {/* <IoArrowForward className="rtl:rotate-180 w-4 h-4 ms-2" /> */}
                         </p>
                     </Link>
                     <Link href={"#"} className="w-[130px] m-auto h-12 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 rounded-lg">
                         <p className="m-auto flex items-center">
-                            Vaciar carrito
-                            {/* <IoArrowForward className="rtl:rotate-180 w-4 h-4 ms-2" /> */}
+                            Vaciar
+                            <LiaTrashRestoreSolid className="rtl:rotate-180 w-5 h-5 ms-2" />
                         </p>
                     </Link>
                 </div>
@@ -73,13 +77,13 @@ const Carrito = () => {
                         <button href="#" className="w-full  h-12 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <p className="m-auto flex items-center">
                                 Confirmar
-                                {/* <FaShoppingCart className="rtl:rotate-180 w-3.5 h-3.5 ms-2" /> */}
+                                <FaCheck className="rtl:rotate-180 w-5 h-5 ms-2" />
                             </p>
                         </button>
                     </div>
                 </div>
 
-            </div>
+            </aside>
         </section>
     )
 }

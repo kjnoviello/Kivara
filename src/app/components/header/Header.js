@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { IoArrowDown, IoSearchSharp  } from "react-icons/io5";
+import { AiOutlineEnter } from "react-icons/ai";
 import mockApi from '../../utils/mockApi.json'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -12,16 +13,15 @@ const Header = () => {
     }
 
     const pathname = usePathname();
-    console.log(pathname);
-
 
     // Función para obtener marcas únicas
     const listadoMarcas = (products) => {
         const marcas = products.map(product => product.marca);
         return [...new Set(marcas)];
     };
-    const uniqueBrands = listadoMarcas(mockApi);
+    const marcasUnicas = listadoMarcas(mockApi);
 
+  
 
     // Funcion para mostrar/ocultar menu de marcas
     const [dropdown, setdropdown] = useState(false)
@@ -34,7 +34,7 @@ const Header = () => {
         <header className={classNames(showHeader, "bg-white")}
         >
             <nav className="mx-auto flex flex-col max-w-7xl items-start justify-between p-6 lg:px-8 sm:flex-row sm:items-center" aria-label="Global">
-                <div className=" gap-x-3 sm:gap-x-12 justify-start">
+                <div className=" gap-x-3 sm:gap-x-12 justify-start flex">
                     <div className="relative">
                         <button type="button" className="cursor-pointer flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" onClick={() => toggleDropdown()} aria-expanded="false">
                             Marcas
@@ -44,14 +44,11 @@ const Header = () => {
                         {/* Menu */}
                         <div className={`${dropdown ? "" : "hidden"}` + " absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5"}>
                             <div className="p-4">
-                                {uniqueBrands.map((marca) => (
+                                {marcasUnicas.map((marca, index) => (
                                     <>
-                                        <div key={marca} className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                                        <div key={index} className="group relative flex items-center gap-x-6 rounded-lg px-4 py-1 text-sm leading-6 hover:bg-gray-50">
                                             <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                                <svg className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" />
-                                                </svg>
+                                                <AiOutlineEnter className="h-6 w-6 text-gray-600 group-hover:text-indigo-600 scale-x-[-1]"/>
                                             </div>
                                             <div className="flex-auto">
                                                 <Link href={`/pages/catalogo/${marca}`} className="block font-semibold text-gray-900">
@@ -65,15 +62,12 @@ const Header = () => {
                                 ))}
                                 <div className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
                                     <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                        <svg className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" />
-                                        </svg>
+                                        <AiOutlineEnter className="h-6 w-6 text-gray-600 group-hover:text-indigo-600 scale-x-[-1]"/>
                                     </div>
                                     <div className="flex-auto">
                                         <Link href={"/pages/catalogo"} className="block font-semibold text-gray-900">
                                             <button onClick={() => toggleDropdown()}>
-                                                Todas
+                                                Todas las marcas
                                             </button>
                                         </Link>
                                     </div>
@@ -81,16 +75,16 @@ const Header = () => {
                             </div>
                         </div>
                     </div>
-
-                    {/* <a href="#" className="text-sm font-semibold leading-6 text-gray-900">Samsung</a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">Motorola</a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">Otra</a> */}
+                    
+                    <Link href="/pages/catalogo/novedad" >
+                        <button className="text-sm font-semibold leading-6 text-gray-900">Novedades</button>
+                    </Link>
                 </div>
                 <br></br>
 
                 {/* Barra de busqueda */}
                 <form className="w-full mx-auto pl-0 sm:pl-12">
-                    <label for="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
+                    <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
                     <div className="relative">
                         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <IoSearchSharp className="w-5 h-5 text-gray-500 dark:text-gray-400"/>

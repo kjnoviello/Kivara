@@ -11,7 +11,7 @@ const ProductList = ({products}) => {
         <>
             {products.map((product)=>(
                 <>
-                    <section className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <section className="w-[350px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <ProductCard key={product.id} products={product}/>
                     </section>
                 </>

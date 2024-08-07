@@ -13,7 +13,7 @@ const FrontCardLink = () => {
             <Link href={"https://wa.me/3416851106"} >
                 <p className="cursor-pointer inline-flex pb-2 font-medium items-center text-blue-600 hover:underline">
                     Comuniquese por whatsapp
-                    <IoLogoWhatsapp className="w-4 h-4 ms-2 "/>
+                    <IoLogoWhatsapp className="w-5 h-5 ms-2 "/>
                 </p>
             </Link>
             <Image

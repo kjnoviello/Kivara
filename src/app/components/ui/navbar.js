@@ -74,6 +74,7 @@ const Navbar = () => {
                                         className="h-16 w-auto text-white ml-12 md:ml-0"
                                         width={16}
                                         height={16}
+                                        priority="false"
                                     >
                                     </Image>
                                 </Link>

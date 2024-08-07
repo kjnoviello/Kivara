@@ -1,4 +1,5 @@
 import { IoArrowForward } from "react-icons/io5";
+import { FaInfoCircle } from "react-icons/fa";
 
 import Link from 'next/link'
 import React from 'react'
@@ -14,10 +15,11 @@ const FrontSection = () => {
 
                     <Link href={"/#tech"} className="inline-flex justify-center sm:mx-4  items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                         Quiero saber más
-                        <IoArrowForward className="font-bold w-4 h-4 ms-2 rtl:rotate-180"/>
+                        <IoArrowForward className="font-bold w-5 h-5 ms-2 rtl:rotate-180"/>
                     </Link>
-                    <Link href="/pages/nosotros">
-                        <Button text="Quienes somos?" />
+                    <Link href={"/pages/nosotros"} className="inline-flex justify-center sm:mx-4 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg hover:text-gray-900 border border-white hover:bg-gray-100 focus:ring-gray-400">
+                        Sobre nosotros
+                        <FaInfoCircle className="font-bold w-5 h-5 ms-2 rtl:rotate-180"/>
                     </Link>
                 </div>
             </div>
