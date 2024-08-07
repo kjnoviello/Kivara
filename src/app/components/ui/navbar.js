@@ -43,10 +43,10 @@ const Navbar = () => {
                     </div>
                     <div className='text-white items-center gap-2 text-xl flex m-auto'>
                         <Link href={"https://www.instagram.com/"} target='_blank'>
-                            <RiInstagramFill className='cursor-pointer' />
+                            <RiInstagramFill className='cursor-pointer animate-bounce hover:animate-[0]' />
                         </Link>
                         <Link href={"https://www.facebook.com/"} target='_blank'>
-                            <IoLogoFacebook className='cursor-pointer' />
+                            <IoLogoFacebook className='cursor-pointer animate-bounce hover:animate-[0]' />
                         </Link>
                     </div>
                 </div>

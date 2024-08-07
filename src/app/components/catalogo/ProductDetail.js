@@ -22,6 +22,14 @@ const ProductDetail = ({ product }) => {
                 priority="true"
             />
             <div className="flex flex-col md:pr-8 justify-between p-4 leading-normal">
+                <div>
+                    {product.novedad ?
+                        <p className="animate-bounce bg-green-100 w-[90px] dark:bg-green-900 dark:text-green-300 text-green-800 text-2xl font-medium me-2 px-2.5 py-0.5">
+                            <span class=" ">Nuevo</span>
+                        </p>
+                        :
+                        ""}
+                </div>
                 <h5 className="mb-2 justify-end flex text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
                     <i><u>{product.marca}</u></i>
                 </h5>

@@ -1,13 +1,19 @@
+'use client'
 import React from 'react'
 import mockApi from '../../utils/mockApi.json'
 import Link from 'next/link'
 import { IoArrowBack } from 'react-icons/io5'
 import { LiaTrashRestoreSolid } from "react-icons/lia";
-import { GiConfirmed } from "react-icons/gi";
 import { FaCheck } from "react-icons/fa";
+import { useRouter } from 'next/navigation'
 
 
 const Carrito = () => {
+
+    const router = useRouter();
+
+    // Obtener el total de unidades
+    const totalUnit =mockApi.length
 
     return (
         <section>
@@ -35,13 +41,13 @@ const Carrito = () => {
                 <div className="flex flex-row sm:flex-col justify-between my-8 gap-5">
 
                     {/*//TODO REEMPLAZAR POR COMPONENTE BOTON */}
-                    <Link href={"#"} className="w-[130px] m-auto h-12 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 rounded-lg">
+                    <button onClick={()=>{router.back()}} href={"#"} className="w-[130px] m-auto h-12 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 rounded-lg">
                         <p className="m-auto flex items-center">
                             <IoArrowBack className="rtl:rotate-180 w-5 h-5 me-2" />
                             Volver
                         </p>
-                    </Link>
-                    <Link href={"#"} className="w-[130px] m-auto h-12 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 rounded-lg">
+                    </button>
+                    <Link href={"#"} className="w-[130px] m-auto h-12 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-gray-800 bg-white hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 rounded-lg border border-gray-800 border-4">
                         <p className="m-auto flex items-center">
                             Vaciar
                             <LiaTrashRestoreSolid className="rtl:rotate-180 w-5 h-5 ms-2" />
@@ -57,7 +63,7 @@ const Carrito = () => {
                             <p className="pl-8 py-1 text-sm sm:text-lg font-semibold leading-6 text-gray-900 flex justify-end">Gastos de envío:</p>
                         </div>
                         <div className='w-[180px] flex flex-col justify-start text-left'>
-                            <p className="px-8 py-1 text-sm sm:text-lg font-semibold leading-6 text-gray-900 flex justify-start">5u.</p>
+                            <p className="px-8 py-1 text-sm sm:text-lg font-semibold leading-6 text-gray-900 flex justify-start">{totalUnit}u.</p>
                             <p className="px-8 py-1 text-sm sm:text-lg font-semibold leading-6 text-gray-900 flex justify-start">$122.000,00</p>
                             <p className="px-8 py-1 text-sm sm:text-lg font-semibold leading-6 text-gray-900 flex justify-start"><strike>$1500,00</strike></p>
                         </div>
@@ -75,7 +81,7 @@ const Carrito = () => {
                     </div>
                     <div className='mx-8 my-4 flex justify-end'>
                         <button href="#" className="w-full  h-12 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <p className="m-auto flex items-center">
+                            <p className="m-auto flex items-center animate-bounce">
                                 Confirmar
                                 <FaCheck className="rtl:rotate-180 w-5 h-5 ms-2" />
                             </p>

@@ -4,8 +4,6 @@ import ProductCard from './ProductCard'
 
 const ProductList = ({products}) => {
 
-    // const products = mockApi;
-
     console.log(products);
     return (
         <>

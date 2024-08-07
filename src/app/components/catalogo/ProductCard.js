@@ -9,10 +9,11 @@ const ProductCard = ({ products }) => {
     return (
         <section className=" h-[517px] content-end">
             {products.novedad ?
-                <span class="bg-green-100 text-green-800 text-2xl font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Nuevo</span>
+                <p className="animate-bounce bg-green-100 w-[90px] dark:bg-green-900 dark:text-green-300 text-green-800 text-2xl font-medium me-2 px-2.5 py-0.5">
+                    <span class=" ">Nuevo</span>
+                </p>
                 :
                 ""}
-            {/* <span class="bg-green-100 text-green-800 text-xl font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Nuevo</span> */}
             <Image
                 alt="imagen"
                 src={products.imagen}
