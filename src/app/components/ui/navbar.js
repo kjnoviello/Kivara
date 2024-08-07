@@ -14,6 +14,7 @@ import Header from '../header/Header';
 const navigation = [
     { name: 'Inicio', href: '/' },
     { name: 'Catálogo', href: '/pages/catalogo' },
+    { name: 'Carrito', href: '/pages/carrito' },
     { name: 'Nosotros', href: '/pages/nosotros' },
     { name: 'Admin', href: '/pages/admin' },
     { name: '404', href: '/not-found' },
