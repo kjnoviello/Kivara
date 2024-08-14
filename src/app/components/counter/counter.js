@@ -27,7 +27,6 @@ const Counter = () => {
                     <FaPlus className="w-4 h-4 text-gray-900 dark:text-white"/>
                 </button>
             </div>
-            {/* <p id="helper-text-explanation" className="mt-2 text-sm text-gray-500 dark:text-gray-400">Please select a 5 digit number from 0 to 9.</p> */}
         </form>
     )
 }

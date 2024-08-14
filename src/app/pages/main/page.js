@@ -1,6 +1,8 @@
 import FrontCard from '@/app/components/main/FrontCard'
 import FrontCardLink from '@/app/components/main/FrontCardLink'
+import FrontContact from '@/app/components/main/FrontContact'
 import FrontSection from '@/app/components/main/FrontSection'
+import FrontStats from '@/app/components/main/FrontStats'
 import Feature from '@/app/components/ui/feature'
 import Link from 'next/link'
 import React from 'react'
@@ -19,7 +21,7 @@ export default function Main() {
   return (
     <main>
       <FrontSection />
-      <div className='flex flex-col sm:flex-row pt-20'>
+      <div className='flex flex-col sm:flex-row pt-20 sm:mx-20'>
         <FrontCard />
         <hr />
         <hr />   
@@ -28,11 +30,13 @@ export default function Main() {
       </div>
       <div className='w-full mt-5 flex justify-center'>
         <Link href={"/pages/catalogo"} className="animate-bounce hover:animate-[0] inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-                        Visite nuestro catalgo
+          Visite nuestro catalgo
         <GrCatalog className="font-bold w-5 h-5 ms-2 rtl:rotate-180"/>
         </Link>
       </div>
       <Feature />
+      <FrontStats />
+      <FrontContact />
     </main>
   )
 }
