@@ -10,9 +10,11 @@
             "so": "Android",
             "memoria": "128GB",
             "procesador": "Octa-Core 2.2GHz,2GHz",
-            "bateria": "5000 mAh"
+            "bateria": "5000 mAh",
+            "color": "Blue Black"
         },
         "novedad": true,
+        "valoraciones": 4.5,
         "id": "1",
         "stock": 20,
         "estado": true
@@ -28,9 +30,11 @@
             "so": "Android 14",
             "memoria": "128GB",
             "procesador": "MediaTek Helio G85",
-            "bateria": "6000 mAh"
+            "bateria": "6000 mAh",
+            "color": "Glacier Blue"
         },
         "novedad": false,
+        "valoraciones": 4.3,
         "id": "2",
         "stock": 20,
         "estado": true
@@ -46,9 +50,11 @@
             "so": "Android 13",
             "memoria": "128GB",
             "procesador": "Qualcomm 2 GHz, 1,8 GHz",
-            "bateria": "5.000 mAh"
+            "bateria": "5.000 mAh",
+            "color": "Light Green"
         },
         "novedad": false,
+        "valoraciones": 4.1,
         "id": "3",
         "stock": 20,
         "estado": true
@@ -64,9 +70,11 @@
             "so": "Android 15",
             "memoria": "256GB",
             "procesador": "Qualcomm 2 GHz, 1,8 GHz",
-            "bateria": "5.000 mAh"
+            "bateria": "5.000 mAh",
+            "color": "Silver"
         },
         "novedad": false,
+        "valoraciones": 4.2,
         "id": "4",
         "stock": 20,
         "estado": true
@@ -82,9 +90,11 @@
             "so": "Android 13",
             "memoria": "128GB",
             "procesador": "Octa-Core / Mediatek Dimensity 7020 2.2 GHz",
-            "bateria": "5.000 mAh"
+            "bateria": "5.000 mAh",
+            "color": "Ambrosia"
         },
         "novedad": false,
+        "valoraciones": 4.4,
         "id": "5",
         "stock": 20,
         "estado": true
@@ -100,10 +110,392 @@
             "so": "Android 14",
             "memoria": "3GB + 64GB",
             "procesador": "MediaTek Helio G36",
-            "bateria": "5.000 mAh"
+            "bateria": "5.000 mAh",
+            "color": "Midnight Black"
         },
         "novedad": true,
+        "valoraciones": 4.6,
         "id": "6",
+        "stock": 20,
+        "estado": true
+    },
+    {
+        "nombre": "Xiaomi Redmi 13C",
+        "marca": "Xiaomi",
+        "precio": 299990,
+        "descripcion": "Con una batería con capacidad de 5000 mAh, el smartphone ofrece una gran autonomía, cuenta con una cámara principal que tiene una resolución de 50 MP, lo que te permite capturar imágenes nítidas y detalladas. Viene equipado con un procesador Octa-Core de 2,0 GHz, el cuál proporciona un rendimiento fluido y rápido, permitiendo ejecutar aplicaciones y juegos sin problemas. El celular Xiaomi Redmi 13C ofrece una pantalla inmersiva de 6,74 pulgadas, la cuál utiliza tecnología IPS, lo que brinda colores vivos y buenos ángulos de visión.",
+        "caracteristicas": "3gb/64gb Midnight Black",
+        "imagen": "/products/celular07.jpg",
+        "data": {
+            "so": "Android 13",
+            "memoria": "4GB + 128GB",
+            "procesador": "Octa Core",
+            "bateria": "5.000 mAh",
+            "color": "Midnight Black"
+        },
+        "novedad": false,
+        "valoraciones": 4.3,
+        "id": "7",
+        "stock": 20,
+        "estado": true
+    },
+    {
+        "nombre": "iPhone 14 Plus",
+        "marca": "iPhone",
+        "precio": 2309990,
+        "descripcion": "El iPhone 14 viene con el sistema de dos cámaras más impresionante en un iPhone, para que tomes fotos espectaculares con mucha o poca luz. Y te da más tranquilidad gracias a una funcionalidad de seguridad que salva vidas.",
+        "caracteristicas": "128GB Midnight",
+        "imagen": "/products/celular08.jpg",
+        "data": {
+            "so": "iOS 17",
+            "memoria": "128GB",
+            "procesador": "Neural Engine de 16 núcleos",
+            "bateria": "6.000 mAh",
+            "color": "Midnight"
+        },
+        "novedad": true,
+        "valoraciones": 4.8,
+        "id": "8",
+        "stock": 20,
+        "estado": true
+    },
+    {
+        "nombre": "Huawei P50 Pro",
+        "marca": "Huawei",
+        "precio": 1699990,
+        "descripcion": "El Huawei P50 Pro combina un diseño elegante con tecnología de punta. Su cámara Leica te permite capturar fotos con una calidad impresionante en cualquier condición de luz. Además, su pantalla OLED curva de 6.6 pulgadas ofrece colores vibrantes y detalles nítidos.",
+        "caracteristicas": "256GB Golden Black",
+        "imagen": "/products/celular09.jpg",
+        "data": {
+            "so": "HarmonyOS 2.0",
+            "memoria": "256GB",
+            "procesador": "Kirin 9000",
+            "bateria": "4.360 mAh",
+            "color": "Golden Black"
+        },
+        "novedad": true,
+        "valoraciones": 4.7,
+        "id": "9",
+        "stock": 15,
+        "estado": true
+    },
+    {
+        "nombre": "TCL 20 SE",
+        "marca": "TCL",
+        "precio": 229990,
+        "descripcion": "El TCL 20 SE es un teléfono asequible con un gran rendimiento. Su pantalla de 6.82 pulgadas te ofrece una experiencia visual envolvente, y su sistema de cámaras cuádruple te permite capturar fotos y videos con calidad impresionante.",
+        "caracteristicas": "128GB Nuit Black",
+        "imagen": "/products/celular10.jpg",
+        "data": {
+            "so": "Android 11",
+            "memoria": "128GB",
+            "procesador": "Snapdragon 460",
+            "bateria": "5.000 mAh",
+            "color": "Nuit Black"
+        },
+        "novedad": false,
+        "valoraciones": 4.2,
+        "id": "10",
+        "stock": 25,
+        "estado": true
+    },
+    {
+        "nombre": "Nokia G21",
+        "marca": "Nokia",
+        "precio": 179990,
+        "descripcion": "El Nokia G21 es un teléfono duradero con un diseño resistente y una batería que dura hasta tres días. Cuenta con una cámara triple de 50MP que captura detalles impresionantes, incluso en condiciones de poca luz.",
+        "caracteristicas": "64GB Dusk",
+        "imagen": "/products/celular11.jpg",
+        "data": {
+            "so": "Android 12",
+            "memoria": "64GB",
+            "procesador": "Unisoc T606",
+            "bateria": "5.050 mAh",
+            "color": "Dusk"
+        },
+        "novedad": false,
+        "valoraciones": 4.0,
+        "id": "11",
+        "stock": 30,
+        "estado": true
+    },
+    {
+        "nombre": "LG Velvet 5G",
+        "marca": "LG",
+        "precio": 899990,
+        "descripcion": "El LG Velvet 5G combina un diseño delgado y elegante con la potencia de la conectividad 5G. Su pantalla OLED de 6.8 pulgadas y su cámara triple ofrecen una experiencia multimedia impresionante.",
+        "caracteristicas": "128GB Aurora Silver",
+        "imagen": "/products/celular12.jpg",
+        "data": {
+            "so": "Android 10",
+            "memoria": "128GB",
+            "procesador": "Snapdragon 765G",
+            "bateria": "4.300 mAh",
+            "color": "Aurora Silver"
+        },
+        "novedad": false,
+        "valoraciones": 4.5,
+        "id": "12",
+        "stock": 18,
+        "estado": true
+    },
+    {
+        "nombre": "Huawei Nova 9",
+        "marca": "Huawei",
+        "precio": 1299990,
+        "descripcion": "El Huawei Nova 9 es un teléfono elegante con una pantalla OLED de 6.57 pulgadas y una cámara cuádruple de 50MP que te permite capturar fotos y videos de alta calidad. Su diseño liviano y delgado es ideal para usar con una sola mano.",
+        "caracteristicas": "128GB Starry Blue",
+        "imagen": "/products/celular13.jpg",
+        "data": {
+            "so": "HarmonyOS 2.0",
+            "memoria": "128GB",
+            "procesador": "Snapdragon 778G",
+            "bateria": "4.300 mAh",
+            "color": "Starry Blue"
+        },
+        "novedad": true,
+        "valoraciones": 4.6,
+        "id": "13",
+        "stock": 22,
+        "estado": true
+    },
+    {
+        "nombre": "Samsung Galaxy S21 FE",
+        "marca": "Samsung",
+        "precio": 2299990,
+        "descripcion": "El Samsung Galaxy S21 FE es un smartphone potente y versátil, con una pantalla AMOLED de 6.4 pulgadas y una tasa de refresco de 120Hz que ofrece una experiencia visual fluida. Su cámara triple de 12MP captura fotos impresionantes en cualquier condición de luz.",
+        "caracteristicas": "256GB Olive",
+        "imagen": "/products/celular14.jpg",
+        "data": {
+            "so": "Android 12",
+            "memoria": "256GB",
+            "procesador": "Snapdragon 888",
+            "bateria": "4.500 mAh",
+            "color": "Olive"
+        },
+        "novedad": true,
+        "valoraciones": 4.7,
+        "id": "14",
+        "stock": 20,
+        "estado": true
+    },
+    {
+        "nombre": "Nokia XR20",
+        "marca": "Nokia",
+        "precio": 999990,
+        "descripcion": "El Nokia XR20 es un teléfono resistente diseñado para soportar condiciones extremas. Con una batería de larga duración y una pantalla resistente a los arañazos, es ideal para quienes necesitan un dispositivo duradero.",
+        "caracteristicas": "128GB Ultra Blue",
+        "imagen": "/products/celular15.jpg",
+        "data": {
+            "so": "Android 11",
+            "memoria": "128GB",
+            "procesador": "Snapdragon 480 5G",
+            "bateria": "4.630 mAh",
+            "color": "Ultra Blue"
+        },
+        "novedad": false,
+        "valoraciones": 4.4,
+        "id": "15",
+        "stock": 15,
+        "estado": true
+    },
+    {
+        "nombre": "LG Wing 5G",
+        "marca": "LG",
+        "precio": 1499990,
+        "descripcion": "El LG Wing 5G es un teléfono innovador con una pantalla giratoria única que te permite realizar múltiples tareas con facilidad. Su pantalla secundaria ofrece una nueva forma de interactuar con tus aplicaciones.",
+        "caracteristicas": "256GB Aurora Gray",
+        "imagen": "/products/celular16.jpg",
+        "data": {
+            "so": "Android 10",
+            "memoria": "256GB",
+            "procesador": "Snapdragon 765G",
+            "bateria": "4.000 mAh",
+            "color": "Aurora Gray"
+        },
+        "novedad": true,
+        "valoraciones": 4.5,
+        "id": "16",
+        "stock": 10,
+        "estado": true
+    },
+    {
+        "nombre": "TCL 10L",
+        "marca": "TCL",
+        "precio": 129990,
+        "descripcion": "El TCL 10L es un smartphone asequible que ofrece un excelente rendimiento para su precio. Con una pantalla Full HD+ de 6.53 pulgadas y un sistema de cámaras cuádruple, es perfecto para quienes buscan un teléfono de alta calidad a un precio accesible.",
+        "caracteristicas": "64GB Mariana Blue",
+        "imagen": "/products/celular17.jpg",
+        "data": {
+            "so": "Android 10",
+            "memoria": "64GB",
+            "procesador": "Snapdragon 665",
+            "bateria": "4.000 mAh",
+            "color": "Mariana Blue"
+        },
+        "novedad": false,
+        "valoraciones": 4.1,
+        "id": "17",
+        "stock": 25,
+        "estado": true
+    },
+    {
+        "nombre": "iPhone 13 Mini",
+        "marca": "iPhone",
+        "precio": 1999990,
+        "descripcion": "El iPhone 13 Mini es un teléfono compacto con todas las características avanzadas de la serie iPhone 13. Con su pantalla Super Retina XDR y su potente procesador A15 Bionic, ofrece un rendimiento excepcional en un tamaño reducido.",
+        "caracteristicas": "128GB Starlight",
+        "imagen": "/products/celular18.jpg",
+        "data": {
+            "so": "iOS 15",
+            "memoria": "128GB",
+            "procesador": "A15 Bionic",
+            "bateria": "2.438 mAh",
+            "color": "Starlight"
+        },
+        "novedad": true,
+        "valoraciones": 4.6,
+        "id": "18",
+        "stock": 30,
+        "estado": true
+    },
+    {
+        "nombre": "Samsung Galaxy Z Flip3",
+        "marca": "Samsung",
+        "precio": 2799990,
+        "descripcion": "El Samsung Galaxy Z Flip3 es un smartphone plegable que combina un diseño compacto con una potente funcionalidad. Su pantalla AMOLED de 6.7 pulgadas se pliega en un dispositivo pequeño y fácil de llevar.",
+        "caracteristicas": "128GB Phantom Black",
+        "imagen": "/products/celular19.jpg",
+        "data": {
+            "so": "Android 11",
+            "memoria": "128GB",
+            "procesador": "Snapdragon 888",
+            "bateria": "3.300 mAh",
+            "color": "Phantom Black"
+        },
+        "novedad": true,
+        "valoraciones": 4.8,
+        "id": "19",
+        "stock": 12,
+        "estado": true
+    },
+    {
+        "nombre": "Huawei Y9a",
+        "marca": "Huawei",
+        "precio": 899990,
+        "descripcion": "El Huawei Y9a es un smartphone que ofrece un gran rendimiento con su procesador MediaTek Helio G80 y su pantalla FullView de 6.63 pulgadas. Su cámara cuádruple de 64MP captura imágenes impresionantes en cualquier condición.",
+        "caracteristicas": "128GB Space Silver",
+        "imagen": "/products/celular20.jpg",
+        "data": {
+            "so": "Android 10",
+            "memoria": "128GB",
+            "procesador": "MediaTek Helio G80",
+            "bateria": "4.300 mAh",
+            "color": "Space Silver"
+        },
+        "novedad": false,
+        "valoraciones": 4.3,
+        "id": "20",
+        "stock": 15,
+        "estado": true
+    },
+    {
+        "nombre": "Motorola Edge 20",
+        "marca": "Motorola",
+        "precio": 1999990,
+        "descripcion": "El Motorola Edge 20 es un smartphone que combina un diseño elegante con un rendimiento potente. Su pantalla OLED de 6.7 pulgadas ofrece colores vibrantes, y su cámara principal de 108MP captura fotos con una calidad impresionante.",
+        "caracteristicas": "256GB Frosted Gray",
+        "imagen": "/products/celular21.jpg",
+        "data": {
+            "so": "Android 11",
+            "memoria": "256GB",
+            "procesador": "Snapdragon 778G",
+            "bateria": "4.000 mAh",
+            "color": "Frosted Gray"
+        },
+        "novedad": true,
+        "valoraciones": 4.7,
+        "id": "21",
+        "stock": 20,
+        "estado": true
+    },
+    {
+        "nombre": "Xiaomi Mi 11 Lite",
+        "marca": "Xiaomi",
+        "precio": 1299990,
+        "descripcion": "El Xiaomi Mi 11 Lite es un teléfono elegante y ligero con un rendimiento impresionante. Su pantalla AMOLED de 6.55 pulgadas ofrece colores vibrantes, y su procesador Snapdragon 732G garantiza un rendimiento fluido.",
+        "caracteristicas": "128GB Truffle Black",
+        "imagen": "/products/celular22.jpg",
+        "data": {
+            "so": "Android 11",
+            "memoria": "128GB",
+            "procesador": "Snapdragon 732G",
+            "bateria": "4.250 mAh",
+            "color": "Truffle Black"
+        },
+        "novedad": true,
+        "valoraciones": 4.6,
+        "id": "22",
+        "stock": 25,
+        "estado": true
+    },
+    {
+        "nombre": "LG G8X ThinQ",
+        "marca": "LG",
+        "precio": 1099990,
+        "descripcion": "El LG G8X ThinQ es un smartphone innovador con una pantalla dual desmontable que te permite realizar múltiples tareas con facilidad. Su cámara dual de 12MP ofrece fotos de alta calidad, y su batería de 4.000 mAh garantiza una larga duración.",
+        "caracteristicas": "128GB Aurora Black",
+        "imagen": "/products/celular23.jpg",
+        "data": {
+            "so": "Android 10",
+            "memoria": "128GB",
+            "procesador": "Snapdragon 855",
+            "bateria": "4.000 mAh",
+            "color": "Aurora Black"
+        },
+        "novedad": false,
+        "valoraciones": 4.5,
+        "id": "23",
+        "stock": 18,
+        "estado": true
+    },
+    {
+        "nombre": "Samsung Galaxy A52",
+        "marca": "Samsung",
+        "precio": 1499990,
+        "descripcion": "El Samsung Galaxy A52 es un smartphone versátil con una pantalla AMOLED de 6.5 pulgadas y una cámara cuádruple de 64MP que te permite capturar fotos impresionantes. Su batería de 4.500 mAh te garantiza una larga duración.",
+        "caracteristicas": "128GB Awesome Black",
+        "imagen": "/products/celular24.jpg",
+        "data": {
+            "so": "Android 11",
+            "memoria": "128GB",
+            "procesador": "Snapdragon 720G",
+            "bateria": "4.500 mAh",
+            "color": "Awesome Black"
+        },
+        "novedad": true,
+        "valoraciones": 4.7,
+        "id": "24",
+        "stock": 25,
+        "estado": true
+    },
+    {
+        "nombre": "TCL 20 Pro 5G",
+        "marca": "TCL",
+        "precio": 1699990,
+        "descripcion": "El TCL 20 Pro 5G es un smartphone que combina un diseño elegante con una potente funcionalidad. Su pantalla AMOLED de 6.67 pulgadas y su procesador Snapdragon 750G ofrecen una experiencia multimedia impresionante.",
+        "caracteristicas": "256GB Moondust Gray",
+        "imagen": "/products/celular25.jpg",
+        "data": {
+            "so": "Android 11",
+            "memoria": "256GB",
+            "procesador": "Snapdragon 750G",
+            "bateria": "4.500 mAh",
+            "color": "Moondust Gray"
+        },
+        "novedad": true,
+        "valoraciones": 4.6,
+        "id": "25",
         "stock": 20,
         "estado": true
     }
