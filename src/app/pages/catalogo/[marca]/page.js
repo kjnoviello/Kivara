@@ -7,7 +7,6 @@ import { useParams } from 'next/navigation';
 export default function Marca() {
 
     const {marca} = useParams()
-    console.log(marca);
 
     const data = mockApi;
     const products = data.filter((item) => (item.marca.toLocaleLowerCase() === marca.toLocaleLowerCase()))

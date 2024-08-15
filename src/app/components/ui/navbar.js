@@ -1,6 +1,6 @@
 'use client'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { IoClose, IoMenu, IoMail, IoLogoFacebook, IoArrowDown, IoCartOutline } from "react-icons/io5";
+import { IoClose, IoMenu, IoMail, IoLogoFacebook, IoCartOutline } from "react-icons/io5";
 import { FaRegBell } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";

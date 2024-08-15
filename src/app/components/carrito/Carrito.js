@@ -1,16 +1,12 @@
-'use client'
 import React from 'react'
 import mockApi from '../../utils/mockApi.json'
-import Link from 'next/link'
-import { IoArrowBack } from 'react-icons/io5'
-import { LiaTrashRestoreSolid } from "react-icons/lia";
 import { FaCheck } from "react-icons/fa";
-import { useRouter } from 'next/navigation'
+import ButtonBack from '../shared/buttonBack'
+import ButtonEmpty from '../shared/buttonEmpty';
 
 
 const Carrito = () => {
 
-    const router = useRouter();
 
     // Obtener el total de unidades
     const totalUnit =mockApi.length
@@ -41,18 +37,8 @@ const Carrito = () => {
                 <div className="flex flex-row sm:flex-col justify-between my-8 gap-5">
 
                     {/*//TODO REEMPLAZAR POR COMPONENTE BOTON */}
-                    <button onClick={()=>{router.back()}} href={"#"} className="w-[130px] m-auto h-12 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 rounded-lg">
-                        <p className="m-auto flex items-center">
-                            <IoArrowBack className="rtl:rotate-180 w-5 h-5 me-2" />
-                            Volver
-                        </p>
-                    </button>
-                    <Link href={"#"} className="w-[130px] m-auto h-12 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-gray-800 bg-white hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 rounded-lg border border-gray-800 border-4">
-                        <p className="m-auto flex items-center">
-                            Vaciar
-                            <LiaTrashRestoreSolid className="rtl:rotate-180 w-5 h-5 ms-2" />
-                        </p>
-                    </Link>
+                    <ButtonBack />
+                    <ButtonEmpty />
                 </div>
                 
                 <div>
