@@ -12,12 +12,12 @@ import Header from '../header/Header';
 
 
 const navigation = [
-    { name: 'Inicio', href: '/' },
-    { name: 'Catálogo', href: '/pages/catalogo' },
-    { name: 'Carrito', href: '/pages/carrito' },
-    { name: 'Nosotros', href: '/pages/nosotros' },
-    { name: 'Admin', href: '/pages/admin' },
-    { name: '404', href: '/not-found' },
+    { name: 'Inicio', href: '/', id:1 },
+    { name: 'Catálogo', href: '/pages/catalogo', id:2 },
+    { name: 'Carrito', href: '/pages/carrito', id:3 },
+    { name: 'Nosotros', href: '/pages/nosotros', id:4 },
+    { name: 'Admin', href: '/pages/admin', id:5 },
+    { name: '404', href: '/not-found', id:6 },
 ]
 
 function classNames(...classes) {
@@ -84,7 +84,7 @@ const Navbar = () => {
                                 <div className="flex space-x-4">
 
                                     {navigation.map((item) => (
-                                        <Link href={item.href} key={item.name}>
+                                        <Link href={item.href} key={item.id}>
                                             <p
                                                 className={classNames(
                                                     pathname === item.href ? 'bg-gray-700 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
