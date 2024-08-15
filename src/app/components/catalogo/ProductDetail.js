@@ -28,7 +28,7 @@ const ProductDetail = ({ product }) => {
                 <div>
                     {product.novedad ?
                         <p className="animate-bounce bg-green-100 w-[90px] dark:bg-green-900 dark:text-green-300 text-green-800 text-2xl font-medium me-2 px-2.5 py-0.5">
-                            <span class=" ">Nuevo</span>
+                            <span>Nuevo</span>
                         </p>
                         :
                         ""}
@@ -63,7 +63,7 @@ const ProductDetail = ({ product }) => {
                         <strong>Color: </strong>
                         {product.data.color}
                     </li>
-                    <div className="flex  gap-1">
+                    <div className="flex gap-1">
                         <li>
                             <strong>Valoracion: </strong>
                             {product.valoraciones}
