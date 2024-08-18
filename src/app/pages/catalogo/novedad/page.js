@@ -1,28 +1,17 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-import mockApi from '../../../utils/mockApi.json'
 import ProductList from '@/app/components/catalogo/ProductList';
 
-const Novedad = () => {
+export default async function Novedad() {
 
-    const [products, setProducts] = useState(null);
-
-    // Funcion para obtener las novedades
-    const novedad = mockApi.filter(product => product.novedad === true);
-
-    useEffect(() => {
-        setProducts(novedad)
-    }, [])
+    const novedad = await fetch("http://localhost:3000/api/catalogo/novedad", { cache: "no-store" })
+    .then(r => r.json())
 
     return (
         <main className='flex gap-5 flex-wrap p-5 mx-5 items-center justify-center'>
-            {!products ? (
-                <div>Loading...</div>
+            {!novedad ? (
+                <p>loading...</p>
             ) : (
-                <ProductList products={products} />
+                <ProductList products={novedad} />
             )}
         </main>
     )
 }
-
-export default Novedad

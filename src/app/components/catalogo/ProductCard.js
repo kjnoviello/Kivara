@@ -1,15 +1,18 @@
 import { IoArrowForward } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
-import { Fade } from "react-awesome-reveal";
+// import { Fade } from "react-awesome-reveal";
 import Image from 'next/image'
 import React from 'react'
 import Link from "next/link";
+
+
+//! La libreria Fade es con la directiva USE CLIENT
 
 const ProductCard = ({ products }) => {
 
     return (
         <section className="w-[350px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <Fade triggerOnce="true">
+            {/* <Fade triggerOnce="true"> */}
                 <section className=" h-[517px] content-end">
                     {products.novedad ?
                         <p className="animate-bounce bg-green-100 w-[90px] dark:bg-green-900 dark:text-green-300 text-green-800 text-2xl font-medium me-2 px-2.5 py-0.5">
@@ -48,7 +51,7 @@ const ProductCard = ({ products }) => {
                         </div>
                     </div>
                 </section>
-            </Fade>
+            {/* </Fade> */}
         </section>
     )
 }
