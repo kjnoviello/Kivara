@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import mockApi from '../../utils/mockApi.json'
+import getFetch from '../getFetch'
 
 const sleep = (timer) => {
     return new Promise ( (resolve) => setTimeout(resolve, timer))
@@ -7,6 +7,7 @@ const sleep = (timer) => {
 
 export async function GET() {
     await sleep(1000)
+    const productos = await getFetch()
 
-    return NextResponse.json(mockApi)
+    return NextResponse.json(productos)
 }

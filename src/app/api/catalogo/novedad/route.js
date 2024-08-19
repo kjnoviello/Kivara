@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
-import mockApi from '../../../utils/mockApi.json'
+import getFetch from '../../getFetch'
 
 export async function GET() {
 
-    const novedad = mockApi.filter(product => product.novedad === true);
+    const productos = await getFetch()
+
+    const novedad = productos.filter(product => product.novedad === true);
     return NextResponse.json(novedad)
 }

@@ -2,7 +2,7 @@ import ProductList from '@/app/components/catalogo/ProductList'
 
 export default async function Marca({params}) {
 
-    // Tengo que obtener del params sino marca da undefined
+    // Tengo que obtener del params sino "marca" da undefined
     const {marca} = params;
 
     const products = await fetch(`http://localhost:3000/api/catalogo/${marca}`, { cache: "no-store" })

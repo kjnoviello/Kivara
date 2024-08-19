@@ -2,7 +2,7 @@ import ProductList from '@/app/components/catalogo/ProductList';
 
 export default async function Novedad() {
 
-    const novedad = await fetch("http://localhost:3000/api/catalogo/novedad", { cache: "no-store" })
+    const novedad = await fetch("http://localhost:3000/api/catalogo/novedad")
     .then(r => r.json())
 
     return (

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 const Form = () => {
 
-    const [values, setValues] =useState({
+    const [values, setValues] = useState({
         nombre: "",
         email: "",
         empresa: "",
@@ -24,7 +24,6 @@ const Form = () => {
                 method: "POST",
                 body: JSON.stringify(values)
             })
-        console.log(values);
     }
 
 

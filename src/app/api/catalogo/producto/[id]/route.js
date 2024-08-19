@@ -1,14 +1,11 @@
 import { NextResponse } from "next/server";
-import mockApi from '../../../../utils/mockApi.json'
+import getFetch from '../../../getFetch'
 
 export async function GET(request, {params}) {
 
     const {id} = params;
-    console.log("esto es id", id);
-    const productFind = mockApi.find((item) => item.id === id);
-    console.log("esto es productFind", productFind);
-
-    
+    const productos = await getFetch()
+    const productFind = productos.find((item) => item.id === id);
 
     return NextResponse.json(productFind)
 }
