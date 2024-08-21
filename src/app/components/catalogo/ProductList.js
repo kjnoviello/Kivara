@@ -1,6 +1,5 @@
 import React from 'react'
 import ProductCard from './ProductCard'
-// import mockApi from '../../utils/mockApi.json'
 
 const ProductList = ({ products }) => {
 

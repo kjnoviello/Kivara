@@ -1,23 +1,24 @@
-'use client'
 import ProductList from '@/app/components/catalogo/ProductList'
-import React from 'react'
-import mockApi from '../../../utils/mockApi.json'
-import { useParams } from 'next/navigation';
+import Header from '@/app/components/header/Header';
 
-export default function Marca() {
+export default async function Marca({ params }) {
 
-    const {marca} = useParams()
+    // Tengo que obtener del params sino "marca" da undefined
+    const { marca } = params;
 
-    const data = mockApi;
-    const products = data.filter((item) => (item.marca.toLocaleLowerCase() === marca.toLocaleLowerCase()))
+    const products = await fetch(`http://localhost:3000/api/catalogo/${marca}`)
+        .then(r => r.json())
 
     return (
-        <main className='flex gap-5 flex-wrap p-5 mx-5 items-center justify-center'>
-            {!products ? (
-                <div>Loading...</div>
-            ) : (
-                <ProductList products={products} />
-            )}
-        </main>
+        <>
+            <Header />
+            <main className='flex gap-5 flex-wrap p-5 mx-5 items-center justify-center'>
+                {!products ? (
+                    <p>loading</p>
+                ) : (
+                    <ProductList products={products} />
+                )}
+            </main>
+        </>
     )
 }
