@@ -8,6 +8,9 @@ export default async function Marca({ params }) {
 
 
     //!----------------------------------------------//
+    // LO QUE ESTA ENTRE LO ROJO ES PARA EL DEPLOY PORQUE NO TOMA EL LOCALHOST
+
+
     const getFetch = async () =>{
         const res = await fetch ('https://66af1becb05db47acc590364.mockapi.io/celulars')
         if (!res.ok) {
