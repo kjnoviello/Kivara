@@ -31,8 +31,8 @@ const Loader = (props) => (
             <rect x="43" y="99" rx="3" ry="3" width="71" height="4" />
             <rect x="44" y="111" rx="3" ry="3" width="42" height="4" />
             <rect x="14" y="96" rx="0" ry="0" width="15" height="23" />
-            <rect x="251" y="113" rx="3" ry="3" width="42" height="4" />
-            <rect x="251" y="99" rx="3" ry="3" width="42" height="4" />
+            <rect x="250" y="113" rx="3" ry="3" width="42" height="4" />
+            <rect x="250" y="99" rx="3" ry="3" width="42" height="4" />
         </ContentLoader>
     </div>
 )
