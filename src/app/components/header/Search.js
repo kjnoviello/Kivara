@@ -1,11 +1,9 @@
 'use client'
 import React, { useState } from 'react';
 import { IoSearchSharp } from "react-icons/io5";
-import mockApi from '../../utils/mockApi.json';
 import Link from 'next/link';
-import SearchResult from './Search';
 
-const Search = () => {
+const Search = ({products}) => {
 
     // Estados para la búsqueda en tiempo real
     const [searchTerm, setSearchTerm] = useState('');
@@ -19,7 +17,7 @@ const Search = () => {
         setSearchPerformed(true);  // Esto marca que se ha realizado una búsqueda
 
         if (term.length > 0) {
-            const results = mockApi.filter(product =>
+            const results = products.filter(product =>
                 product.marca.toLowerCase().includes(term) ||
                 product.nombre.toLowerCase().includes(term)
             );
@@ -54,8 +52,6 @@ const Search = () => {
                 </div>
 
                 {/* Resultados de búsqueda */}
-
-                <SearchResult />
 
                 {searchPerformed && filteredResults.length > 0 && (
                     <div className="bg-white shadow-lg rounded-lg w-full mt-2 z-10">

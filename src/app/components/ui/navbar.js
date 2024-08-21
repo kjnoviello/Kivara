@@ -8,7 +8,6 @@ import { usePathname } from 'next/navigation';
 import styles from '../../styles.module.css'
 import Image from 'next/image';
 import Link from 'next/link';
-import Header from '../header/Header';
 
 
 const navigation = [
@@ -19,6 +18,7 @@ const navigation = [
     { name: 'Admin', href: '/pages/admin', id:5 },
     { name: '404', href: '/not-found', id:6 },
     { name: 'prueba', href: '/pages/prueba', id:7 },
+    { name: 'loader', href: '/pages/loader', id:8 },
 ]
 
 function classNames(...classes) {
@@ -180,9 +180,6 @@ const Navbar = () => {
                     </div>
                 </DisclosurePanel>
             </Disclosure>
-
-            {/* Header de marcas */}
-            <Header />
 
         </>
     )

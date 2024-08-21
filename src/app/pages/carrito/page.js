@@ -1,4 +1,5 @@
 import Carrito from '@/app/components/carrito/Carrito'
+import Header from '@/app/components/header/Header';
 import React from 'react'
 
 export const metadata = {
@@ -11,6 +12,7 @@ export const metadata = {
 const carrito = () => {
   return (
     <main>
+      <Header />
       <Carrito />
     </main>
   )
