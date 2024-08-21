@@ -2,11 +2,7 @@ import Link from "next/link";
 
 export async function Data () {
     const res = await fetch('https://66af1becb05db47acc590364.mockapi.io/celulars', 
-        {cache: "no-store",
-        next:{
-            revalidate: 0
-        }
-    });
+        {cache: "no-store"});
     if (!res.ok) {
         throw new Error ("error en la obtencion de datos, vuelva más tarde")
     }
