@@ -3,7 +3,6 @@ import Header from '@/app/components/header/Header';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import {db} from '@/app/firebase/config'
 
-
 const getData = async ( item ) => {
 
     try {
