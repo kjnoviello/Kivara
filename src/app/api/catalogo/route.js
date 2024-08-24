@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import getFetch from '../getFetch'
-import getData from "../getData";
+import getData from "../getProductos";
 
 const sleep = (timer) => {
     return new Promise ( (resolve) => setTimeout(resolve, timer))

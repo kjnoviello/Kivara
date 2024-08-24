@@ -18,7 +18,7 @@ const images = [
     { id: "06", route: "/tech/tech-imagen06.jpg"}
 ]
 
-const Feature = () => {
+const FrontFeature = () => {
     return (
         <section className="bg-white py-20" id="tech">
             <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-10 sm:px-2 sm:py-2 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
@@ -55,4 +55,4 @@ const Feature = () => {
     )
 }
 
-export default Feature
+export default FrontFeature

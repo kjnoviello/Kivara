@@ -3,7 +3,7 @@ import Header from '@/app/components/header/Header';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import {db} from '@/app/firebase/config'
 
-const getData = async ( item ) => {
+const getMarca = async ( item ) => {
 
     try {
         const productRef = collection(db, 'productos');
@@ -21,7 +21,7 @@ const getData = async ( item ) => {
 export default async function Marca({ params }) {
 
     const { marca } = params;
-    const products = await getData(marca)
+    const products = await getMarca(marca)
 
     return (
         <>

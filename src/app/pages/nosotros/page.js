@@ -130,7 +130,7 @@ export default () => {
                     </div>
                 </div>
                 <div className="mt-14 px-4 md:px-8">
-                    <p className="text-center text-sm text-gray-700 font-semibold">Empresas que confían en nosotros</p>
+                    <p className="text-center text-md text-gray-700 font-semibold">Empresas que confían en nosotros</p>
                     <div className="flex justify-center items-center flex-wrap gap-x-12 gap-y-6 mt-6">
                         {
                             logoImage.map((item, index) => (

@@ -16,7 +16,7 @@ const Loader = () => {
                 wrapperStyle={{}}
                 wrapperClass="self-center w-full"
             />
-            <h2 className='align-center text-center pt-2 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>Cargando</h2>
+            <h2 className='align-center text-center pt-2 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>Cargando...</h2>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import FrontCardLink from '@/app/components/main/FrontCardLink'
 import FrontContact from '@/app/components/main/FrontContact'
 import FrontSection from '@/app/components/main/FrontSection'
 import FrontStats from '@/app/components/main/FrontStats'
-import Feature from '@/app/components/ui/feature'
+import FrontFeature from '@/app/components/main/FrontFeature'
 import Link from 'next/link'
 import React from 'react'
 import { GrCatalog } from "react-icons/gr";
@@ -34,7 +34,7 @@ export default function Main() {
         <GrCatalog className="font-bold w-5 h-5 ms-2 rtl:rotate-180"/>
         </Link>
       </div>
-      <Feature />
+      <FrontFeature />
       <FrontStats />
       <FrontContact />
     </main>

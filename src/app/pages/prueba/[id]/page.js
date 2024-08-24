@@ -1,4 +1,4 @@
-import getData from "@/app/api/getData";
+import getData from "@/app/api/getProductos";
 
 // export async function getFetch(id) {
 //     const res = await fetch(`https://66af1becb05db47acc590364.mockapi.io/celulars/${id}`);

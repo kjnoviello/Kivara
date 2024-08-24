@@ -35,3 +35,19 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.typeAnimation {
+  overflow: hidden;
+  border-right: 0.1em solid orange;
+  border-left: 0.1em solid orange;
+  white-space: nowrap;
+  animation: typing 4s steps(40, end);
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}

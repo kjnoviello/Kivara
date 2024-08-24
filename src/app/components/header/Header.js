@@ -1,11 +1,11 @@
 import React from 'react';
 import SearchMarca from './SearchMarca';
 import Search from './Search';
-import getData from '@/app/api/getData';
+import getProductos from '@/app/api/getProductos';
 
 const Header = async () => {
 
-    const products = await getData()
+    const products = await getProductos()
 
     return (
         <header className="bg-white">

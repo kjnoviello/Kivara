@@ -30,7 +30,7 @@
  //*---------------------------------------------------------------------------------
 
 import Link from "next/link";
-import getData from '../../api/getData'
+import getData from '../../api/getProductos'
 
 export default async function Page () {
 

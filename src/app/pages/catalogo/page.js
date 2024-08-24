@@ -1,10 +1,10 @@
 import ProductList from '@/app/components/catalogo/ProductList';
 import Header from '@/app/components/header/Header';
-import getData from '@/app/api/getData';
+import getProductos from '@/app/api/getProductos';
 
 export default async function Catalogo() {
 
-    const products = await getData()
+    const products = await getProductos()
 
     return (
         <>
