@@ -3,6 +3,28 @@ import Header from '@/app/components/header/Header';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '@/app/firebase/config'
 
+
+export async function generateStaticParams() {
+  
+  try {
+    const productRef = collection(db, 'productos');
+    const querySnapshot = await getDocs(productRef);
+    const paths = querySnapshot.docs.map(doc => {
+      return { id: doc.data().id.toString() };
+    });
+    return paths;
+
+  } catch (error) {
+    console.error("Error fetching product IDs: ", error);
+    return [];
+
+  }
+}
+
+export const revalidate = 3600
+
+
+// Funcion para obtener el detalle de cada producto segun su id desde firestore
 const getDetalle = async (item) => {
 
   try {

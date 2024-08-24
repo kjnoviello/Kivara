@@ -3,8 +3,10 @@ import React, { Suspense, useState } from 'react';
 import { IoArrowDown } from "react-icons/io5";
 import { AiOutlineEnter } from "react-icons/ai";
 import Link from 'next/link';
+import { Fade } from 'react-awesome-reveal';
 
-const SearchMarca = ({ products }) => {
+const SearchMarca = ({ products, marca, productsLenght }) => {
+
 
     // Función para obtener marcas únicas
     const listadoMarcas = (item) => {
@@ -20,9 +22,12 @@ const SearchMarca = ({ products }) => {
     };
 
     return (
+        <Fade>
+
         <div className="gap-x-3 sm:gap-x-12 mt-4 justify-start flex pl-0 sm:pl-12">
+
             <div className="relative">
-                <button type="button" className="cursor-pointer flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" onClick={toggleDropdown} aria-expanded="false">
+                <button type="button" className="cursor-pointer flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600" onClick={toggleDropdown} aria-expanded="false">
                     Marcas
                     <IoArrowDown />
                 </button>
@@ -38,7 +43,7 @@ const SearchMarca = ({ products }) => {
                                         <AiOutlineEnter className="h-6 w-6 text-gray-600 group-hover:text-indigo-600 scale-x-[-1]" />
                                     </div>
                                     <div className="flex-auto">
-                                        <Link href={`/pages/catalogo/${marca}`} className="block font-semibold text-gray-900">
+                                        <Link href={`/pages/catalogo/${marca}`} className="block font-semibold text-gray-900 hover:text-indigo-600">
                                             <button onClick={toggleDropdown}>
                                                 {marca}
                                             </button>
@@ -54,7 +59,7 @@ const SearchMarca = ({ products }) => {
                                 <AiOutlineEnter className="h-6 w-6 text-gray-600 group-hover:text-indigo-600 scale-x-[-1]" />
                             </div>
                             <div className="flex-auto">
-                                <Link href={"/pages/catalogo"} className="block font-semibold text-gray-900">
+                                <Link href={"/pages/catalogo"} className="block font-semibold text-gray-900 hover:text-indigo-600">
                                     <button onClick={toggleDropdown}>
                                         Todas las marcas
                                     </button>
@@ -66,9 +71,18 @@ const SearchMarca = ({ products }) => {
             </div>
 
             <Link href="/pages/catalogo/novedad" >
-                <button className="text-sm font-semibold leading-6 text-gray-900">Novedades</button>
+                <button className="text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600">Novedades</button>
             </Link>
+
+            {/* Con esto muestro la marca y la cantidad de productos que se esta renderizando  */}
+            {marca ?
+                <p className="gap-x-1 text-sm font-semibold leading-6 text-gray-500" >{productsLenght} Productos encontrados para: <i className='text-gray-800'>{marca}</i></p>
+                :
+                ""
+            }
+
         </div>
+            </Fade>
     )
 }
 
