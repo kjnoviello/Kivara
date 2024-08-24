@@ -1,9 +1,9 @@
 'use client'
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { IoSearchSharp } from "react-icons/io5";
 import Link from 'next/link';
 
-const Search = ({products}) => {
+const Search = ({ products }) => {
 
     // Estados para la búsqueda en tiempo real
     const [searchTerm, setSearchTerm] = useState('');
@@ -53,21 +53,23 @@ const Search = ({products}) => {
 
                 {/* Resultados de búsqueda */}
 
-                {searchPerformed && filteredResults.length > 0 && (
-                    <div className="bg-white shadow-lg rounded-lg w-full mt-2 z-10">
-                        <ul>
-                            {filteredResults.map((product, index) => (
-                                <li key={index} className="border-b last:border-b-0">
-                                    <Link href={`/pages/catalogo/producto/${product.id}`} onClick={() => setSearchTerm('')}>
-                                        <button onClick={emptySearch} className="block p-2 hover:bg-gray-100">
-                                            {product.marca} - {product.nombre}
-                                        </button>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
+                <Suspense fallback={<h2>Buscando resultados...</h2>}>
+                    {searchPerformed && filteredResults.length > 0 && (
+                        <div className="bg-white shadow-lg rounded-lg w-full mt-2 z-10">
+                            <ul>
+                                {filteredResults.map((product, index) => (
+                                    <li key={index} className="border-b last:border-b-0">
+                                        <Link href={`/pages/catalogo/producto/${product.id}`} onClick={() => setSearchTerm('')}>
+                                            <button onClick={emptySearch} className="block p-2 hover:bg-gray-100">
+                                                {product.marca} - {product.nombre}
+                                            </button>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                </Suspense>
 
                 {/* Mensaje de "no hay resultados" */}
                 {searchPerformed && filteredResults.length === 0 && (

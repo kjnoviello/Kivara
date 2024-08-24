@@ -1,44 +1,34 @@
 import ProductList from '@/app/components/catalogo/ProductList'
 import Header from '@/app/components/header/Header';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import {db} from '@/app/firebase/config'
+
+
+const getData = async ( item ) => {
+
+    try {
+        const productRef = collection(db, 'productos');
+        const q = query(productRef, where("marca", "==", item));
+        const querySnapshot = await getDocs(q);
+        return querySnapshot.docs.map(doc => doc.data());
+
+    } catch (error) {
+        console.error("Error fetching data: ", error);
+        return [];
+        
+    }
+}
 
 export default async function Marca({ params }) {
 
-    // Tengo que obtener del params sino "marca" da undefined
     const { marca } = params;
-
-
-    //!----------------------------------------------//
-    const getFetch = async () =>{
-        const res = await fetch ('https://66af1becb05db47acc590364.mockapi.io/celulars')
-        if (!res.ok) {
-            throw new Error("No se pudieron obtener los datos. Revisar url de la api")
-        }
-        const data = await res.json()
-        return data
-    }
-    const productos = await getFetch()
-    const products =  productos.filter((item) => (item.marca.toLocaleLowerCase() === marca.toLocaleLowerCase()))
-
-
-    //!----------------------------------------------//
-
-    // Esto es lo que tengo en dev que si funciona
-
-    // const products = await fetch(`http://localhost:3000/api/catalogo/${marca}`)
-    //     .then(r => r.json())
-
-
-    //-----------------------------------------------//
+    const products = await getData(marca)
 
     return (
         <>
             <Header />
             <main className='flex gap-5 flex-wrap p-5 mx-5 items-center justify-center'>
-                {!products ? (
-                    <p>loading</p>
-                ) : (
-                    <ProductList products={products} />
-                )}
+                <ProductList products={products} />
             </main>
         </>
     )

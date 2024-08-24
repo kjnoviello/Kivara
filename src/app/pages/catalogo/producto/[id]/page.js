@@ -1,44 +1,38 @@
 import ProductDetail from '@/app/components/catalogo/ProductDetail'
 import Header from '@/app/components/header/Header';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '@/app/firebase/config'
+
+const getData = async (item) => {
+
+  try {
+    const productRef = collection(db, 'productos');
+    const q = query(productRef, where("id", "==", parseInt(item)));
+    const querySnapshot = await getDocs(q);
+    if (!querySnapshot.empty) {
+      return querySnapshot.docs[0].data();
+
+    } else {
+      return [];
+    }
+
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+    return [];
+
+  }
+}
 
 export default async function Detail({ params }) {
+
   const { id } = params;
-
-
-
-  //!----------------------------------------------//
-  const getFetch = async () => {
-    const res = await fetch('https://66af1becb05db47acc590364.mockapi.io/celulars')
-    if (!res.ok) {
-      throw new Error("No se pudieron obtener los datos. Revisar url de la api")
-    }
-    const data = await res.json()
-    return data
-  }
-  const productos = await getFetch()
-  const products = productos.find((item) => item.id === id);
-
-
-  //!----------------------------------------------//
-
-  // Esto es lo que tengo en dev que si funciona
-
-
-  // const products = await fetch(`http://localhost:3000/api/catalogo/producto/${id}`)
-  //   .then(r => r.json())
-
-
-  //--------------------------------------------//
+  const product = await getData(id)
 
   return (
     <>
       <Header />
       <main>
-        {!products ? (
-          <p>loading...</p>
-        ) : (
-          <ProductDetail product={products} />
-        )}
+        <ProductDetail product={product} />
       </main>
     </>
   )

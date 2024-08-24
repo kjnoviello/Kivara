@@ -10,7 +10,6 @@ const Medium = props => (
             {...props}
             backgroundColor="#5a6c85"
             className="py-5 m-auto h-auto container"
-
         >
             <circle cx="25" cy="112" r="15" />
             <rect x="10" y="18" rx="0" ry="0" width="464" height="9" />

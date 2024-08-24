@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import { Fade } from "react-awesome-reveal";
 import Counter from "../counter/counter";
 import { FaStar } from "react-icons/fa";
 import ButtonBack from "../shared/buttonBack";
@@ -19,8 +18,8 @@ const ProductDetail = ({ product }) => {
                 width={600}
                 height={600}
                 priority="true"
-            />
-            {/* <Fade triggerOnce="true" direction="right"> */}
+                />
+            
             <div className="flex flex-col md:pr-8 justify-between p-4 leading-normal">
                 <div>
                     {product.novedad ?
@@ -85,7 +84,6 @@ const ProductDetail = ({ product }) => {
                     </div>
                 </div>
             </div>
-            {/* </Fade> */}
         </section>
     );
 };
