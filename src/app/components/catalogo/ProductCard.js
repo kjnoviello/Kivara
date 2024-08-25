@@ -15,7 +15,7 @@ const ProductCard = ({ products }) => {
             {/* <Fade triggerOnce="true"> */}
                 <section className=" h-[517px] content-end">
                     {products.novedad ?
-                        <p className="animate-bounce bg-green-100 w-[90px] dark:bg-green-900 dark:text-green-300 text-green-800 text-2xl font-medium me-2 px-2.5 py-0.5">
+                        <p className="bg-green-100 w-[90px] dark:bg-green-900 dark:text-green-300 text-green-800 text-2xl font-medium me-2 px-2.5 py-0.5">
                             <span>Nuevo</span>
                         </p>
                         :

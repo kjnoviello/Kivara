@@ -1,11 +1,23 @@
+'use client'
 import Image from "next/image";
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import Counter from "../counter/counter";
 import { FaStar } from "react-icons/fa";
 import ButtonBack from "../shared/buttonBack";
+import { useCartContext } from "@/app/context/CartContext";
 
 const ProductDetail = ({ product }) => {
+
+    const {addToCart, quantity} = useCartContext()
+
+
+    const handleAddToCart = () =>{
+        addToCart({
+            ...product,
+            quantity
+        })
+    }
 
     return (
         <section className="flex flex-col p-8 items-center bg-white border border-gray-200 rounded-lg shadow md:px-16 md:flex-row md:w-auto dark:border-gray-700 dark:bg-gray-800 h-auto">
@@ -23,7 +35,7 @@ const ProductDetail = ({ product }) => {
             <div className="flex flex-col md:pr-8 justify-between p-4 leading-normal">
                 <div>
                     {product.novedad ?
-                        <p className="animate-bounce bg-green-100 w-[90px] dark:bg-green-900 dark:text-green-300 text-green-800 text-2xl font-medium me-2 px-2.5 py-0.5">
+                        <p className="bg-green-100 w-[90px] dark:bg-green-900 dark:text-green-300 text-green-800 text-2xl font-medium me-2 px-2.5 py-0.5">
                             <span>Nuevo</span>
                         </p>
                         :
@@ -75,7 +87,7 @@ const ProductDetail = ({ product }) => {
                     <Counter />
                     <div className="w-1/2 gap-5 flex flex-col sm:flex-row justify-between self-center sm:self-end md:flex-col lg:flex-row">
                         <ButtonBack />
-                        <button className="w-full sm:w-[130px] md:[130px] lg:w-full m-auto inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <button className="w-full sm:w-[130px] md:[130px] lg:w-full m-auto inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handleAddToCart}>
                             <p className="m-auto flex items-center">
                                 Agregar
                                 <FaShoppingCart className="rtl:rotate-180 w-4 h-4 ms-2" />
