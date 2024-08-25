@@ -8,16 +8,17 @@ import { usePathname } from 'next/navigation';
 import styles from '../../styles.module.css'
 import Image from 'next/image';
 import Link from 'next/link';
+import { useCartContext } from '@/app/context/CartContext';
 
 
 const navigation = [
-    { name: 'Inicio', href: '/', id:1 },
-    { name: 'Catálogo', href: '/pages/catalogo', id:2 },
-    { name: 'Carrito', href: '/pages/carrito', id:3 },
-    { name: 'Nosotros', href: '/pages/nosotros', id:4 },
-    { name: 'Admin', href: '/pages/admin', id:5 },
-    { name: '404', href: '/not-found', id:6 },
-    { name: 'prueba', href: '/pages/prueba', id:7 },
+    { name: 'Inicio', href: '/', id: 1 },
+    { name: 'Catálogo', href: '/pages/catalogo', id: 2 },
+    { name: 'Carrito', href: '/pages/carrito', id: 3 },
+    { name: 'Nosotros', href: '/pages/nosotros', id: 4 },
+    { name: 'Admin', href: '/pages/admin', id: 5 },
+    { name: '404', href: '/not-found', id: 6 },
+    { name: 'prueba', href: '/pages/prueba', id: 7 },
 ]
 
 function classNames(...classes) {
@@ -25,6 +26,9 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
+
+    const { quantityCart } = useCartContext()
+    const valueQuantityCart = quantityCart()
 
     const pathname = usePathname();
 
@@ -100,17 +104,27 @@ const Navbar = () => {
                             </div>
                         </div>
                         <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
-                            <button
-                                type="button"
-                                className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                            >
-                                <Link href={"/pages/carrito"}>
-                                    <span className="absolute -inset-1.5" />
-                                    <span className="sr-only">Ver notificaciones</span>
-                                    <IoCartOutline  aria-hidden="true" className="h-6 w-6" />
-                                </Link>
-                                
-                            </button>
+                            <div>
+                                <button
+                                    type="button"
+                                    className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                >
+                                    <Link href={"/pages/carrito"}>
+                                        <span className="absolute -inset-1.5" />
+                                        <span className="sr-only">Ver notificaciones</span>
+                                        <IoCartOutline aria-hidden="true" className="h-6 w-6" />
+                                    </Link>
+
+                                </button>
+                                <span className='bg-gray-700 text-white'>
+                                    {
+                                        valueQuantityCart > 0 ?
+                                            valueQuantityCart
+                                            :
+                                            ""
+                                    }
+                                </span>
+                            </div>
                             <button
                                 type="button"
                                 className="ml-3 relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -118,7 +132,7 @@ const Navbar = () => {
                                 <span className="absolute -inset-1.5" />
                                 <span className="sr-only">Ver notificaciones</span>
                                 <FaRegBell aria-hidden="true" className="h-6 w-6" />
-                                
+
                             </button>
 
                             {/* Profile dropdown */}

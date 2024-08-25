@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaTrash } from "react-icons/fa";
 import ButtonBack from '../shared/buttonBack'
 import ButtonEmpty from '../shared/buttonEmpty';
 import { useCartContext } from '@/app/context/CartContext';
@@ -9,11 +9,7 @@ import Empty from './empty/Empty';
 
 const Carrito = () => {
 
-    const { cart, emptyCart, valueCart, quantityCart } = useCartContext()
-
-    const deliverValue = valueCart()
-    console.log(deliverValue);
-
+    const { cart, emptyCart, valueCart, quantityCart, removeProduct } = useCartContext()
 
     return (
         <section>
@@ -21,7 +17,7 @@ const Carrito = () => {
             {cart.length > 0 ?
 
                 <>
-                    <ul role="list " className="divide-y divide-gray-100 md:px-20 m-8">
+                    <ul role="list " className="divide-y divide-gray-100 md:px-20 m-4 md:m-8">
                         {cart.map((product) => (
                             <li key={product.id} className="flex justify-between gap-x-6 py-5">
                                 <div className="flex min-w-0 gap-x-4">
@@ -31,10 +27,17 @@ const Carrito = () => {
                                         <p className="mt-1 truncate text-xs leading-5 text-gray-500">{product.caracteristicas}</p>
                                     </div>
                                 </div>
-                                <div className="shrink-0 pr-2 sm:flex sm:flex-col sm:items-end">
-                                    <p className="text-sm leading-6 text-gray-900"><strong>${product.precio}</strong></p>
-                                    <p className="text-sm leading-6 text-gray-900"><strong>{product.quantity}u.</strong></p>
-                                    <p className="mt-1 text-xs leading-5 text-gray-500">{product.marca}</p>
+                                <div className='flex'>
+                                    <div className="shrink-0 pr-2 sm:flex sm:flex-col sm:items-end">
+                                        <p className="text-sm leading-6 text-gray-900"><strong>${product.precio}</strong></p>
+                                        <p className="text-sm leading-6 text-gray-900"><strong>{product.quantity}u.</strong></p>
+                                        <p className="mt-1 text-xs leading-5 text-gray-500">{product.marca}</p>
+                                    </div>
+                                    <div className="shrink-0 pr-2 flex sm:items-end">
+                                        <button onClick={()=>{removeProduct(product.id)}} className='m-auto px-2'>
+                                            <FaTrash />
+                                        </button>
+                                    </div>
                                 </div>
                             </li>
                         ))}
@@ -60,14 +63,7 @@ const Carrito = () => {
                                     <p className="px-8 py-1 text-sm sm:text-lg font-semibold leading-6 text-gray-900 flex justify-start">
                                         ${valueCart()}
                                     </p>
-
-                                    {
-                                        deliverValue < 1 ?
-                                            <p className="px-8 py-1 text-sm sm:text-lg font-semibold leading-6 text-gray-900 flex justify-start">$0</p>
-                                            :
-                                            <p className="px-8 py-1 text-sm sm:text-lg font-semibold leading-6 text-gray-900 flex justify-start"><strike>$1500,00</strike></p>
-                                    }
-
+                                    <p className="px-8 py-1 text-sm sm:text-lg font-semibold leading-6 text-gray-900 flex justify-start"><strike>$1500,00</strike></p>
                                 </div>
                             </div>
                             <div className='flex justify-end'>

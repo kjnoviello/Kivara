@@ -24,28 +24,34 @@ export const CartProvider = ({ children }) => {
     //* "CART" tiene los productos y dentro esta la prop quantity con la cantidad
 
     // 1. Agregar al carrito
-    //TODO agregar cart al session storage
     const [cart, setCart] = useState([])
     console.log(cart);
 
     const addToCart = (item) => {
         setCart([...cart, item])
+
+        //TODO agregar libreria de NOTIFICACION que se agregó
     }
 
     // 2. Funcion para eliminar productos del carrito
     const emptyCart = () => {
-        //TODO agregar libreria de NOTIFICACION
+
+        //TODO agregar libreria de NOTIFICACION que se va a elimiar todo
+
         setCart([])
         console.log("El carrito se vació");
     }
 
     // 3. Funcion para sacar un producto del carrito
+    const removeProduct = (id) => {
+        const delProduct = setCart( cart.filter(prod => prod.id !== id))
+        return delProduct
+    }
 
 
     // 4. Sumar los precios de los productos
     const valueCart = () => {
         const totalProductsValues = cart.reduce((valueCart, product) => valueCart + product.precio * product.quantity, 0)
-        console.log("ESTO ES totalProductsValues",totalProductsValues);
         return totalProductsValues
     }
     
@@ -53,7 +59,6 @@ export const CartProvider = ({ children }) => {
     //5. Sumar las cantidades de los productos
     const quantityCart = () => {
         const totalProductsQuantity = cart.reduce((quantityCart, product) => quantityCart + product.quantity, 0)
-        console.log("ESTO ES quantityCart", totalProductsQuantity);
         return totalProductsQuantity
     }
 
@@ -74,7 +79,8 @@ export const CartProvider = ({ children }) => {
                 cart,
                 emptyCart,
                 valueCart,
-                quantityCart
+                quantityCart,
+                removeProduct
             }}
         >
             {children}

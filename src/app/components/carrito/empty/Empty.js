@@ -1,6 +1,3 @@
-
-// import { Button } from "@/components/ui/button"
-
 import ButtonBack from "../../shared/buttonBack"
 
 export default function Empty() {
