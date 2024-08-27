@@ -1,6 +1,7 @@
 import ProductList from '@/app/components/catalogo/ProductList';
 import Header from '@/app/components/header/Header';
 import getProductos from '@/app/api/getProductos';
+import { Suspense } from 'react';
 
 export default async function Catalogo() {
 
@@ -15,3 +16,7 @@ export default async function Catalogo() {
         </>
     )
 }
+
+
+
+

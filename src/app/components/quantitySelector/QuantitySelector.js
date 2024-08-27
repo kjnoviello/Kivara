@@ -3,7 +3,7 @@ import React from 'react'
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import {useCartContext } from '@/app/context/CartContext';
 
-const Counter = () => {
+const QuantitySelector = () => {
 
     const {quantity, restCounter, addCounter} = useCartContext()
 
@@ -23,4 +23,4 @@ const Counter = () => {
     )
 }
 
-export default Counter
+export default QuantitySelector

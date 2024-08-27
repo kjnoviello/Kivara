@@ -5,6 +5,8 @@ import ButtonBack from '../shared/buttonBack'
 import ButtonEmpty from '../shared/buttonEmpty';
 import { useCartContext } from '@/app/context/CartContext';
 import Empty from './empty/Empty';
+import Link from 'next/link';
+import Image from 'next/image';
 
 
 const Carrito = () => {
@@ -20,12 +22,20 @@ const Carrito = () => {
                     <ul role="list " className="divide-y divide-gray-100 md:px-20 m-4 md:m-8">
                         {cart.map((product) => (
                             <li key={product.id} className="flex justify-between gap-x-6 py-5">
-                                <div className="flex min-w-0 gap-x-4">
-                                    <img alt="" src={product.imagen} className="h-12 w-12 flex-none rounded-full bg-gray-50" />
-                                    <div className="min-w-0 flex-auto">
-                                        <p className="text-sm font-semibold leading-6 text-gray-900">{product.nombre}</p>
-                                        <p className="mt-1 truncate text-xs leading-5 text-gray-500">{product.caracteristicas}</p>
-                                    </div>
+                                <div className="flex  min-w-0 gap-x-4">
+                                    <Image 
+                                        className="h-12 w-12 flex-none rounded-full bg-gray-50"
+                                        src={product.imagen}
+                                        width={50}
+                                        height={100}
+                                        alt={`Imagen del producto ${product.name}`} 
+                                    />
+                                    <Link href={`/pages/catalogo/producto/${product.id}`} className=' content-center' >
+                                        <div className="min-w-0 flex-auto">
+                                            <p className="text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600">{product.nombre}</p>
+                                            <p className="mt-1 truncate text-xs leading-5 text-gray-500 hover:text-indigo-600">{product.caracteristicas}</p>
+                                        </div>
+                                    </Link>
                                 </div>
                                 <div className='flex'>
                                     <div className="shrink-0 pr-2 sm:flex sm:flex-col sm:items-end">

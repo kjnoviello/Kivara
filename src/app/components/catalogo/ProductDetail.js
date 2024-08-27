@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import Counter from "../counter/counter";
+import QuantitySelector from "../quantitySelector/QuantitySelector";
 import { FaStar } from "react-icons/fa";
 import ButtonBack from "../shared/buttonBack";
 import { useCartContext } from "@/app/context/CartContext";
@@ -83,7 +83,7 @@ const ProductDetail = ({ product }) => {
                     {product.descripcion}
                 </p>
                 <div className="gap-5 flex flex-col sm:flex-row justify-between">
-                    <Counter />
+                    <QuantitySelector />
                     <div className="w-1/2 gap-5 flex flex-col sm:flex-row justify-between self-center sm:self-end md:flex-col lg:flex-row">
                         <ButtonBack />
                         <button className="w-full sm:w-[130px] md:[130px] lg:w-full m-auto inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handleAddToCart}>
