@@ -9,15 +9,14 @@ import styles from '../../styles.module.css'
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCartContext } from '@/app/context/CartContext';
-
+import ButtonEmpty from './buttonEmpty';
 
 const navigation = [
     { name: 'Inicio', href: '/', id: 1 },
     { name: 'Catálogo', href: '/pages/catalogo', id: 2 },
     { name: 'Carrito', href: '/pages/carrito', id: 3 },
     { name: 'Nosotros', href: '/pages/nosotros', id: 4 },
-    { name: 'Admin', href: '/pages/admin', id: 5 },
-    { name: '404', href: '/not-found', id: 6 },
+    { name: 'prueba', href: '/pages/prueba', id: 5 },
 ]
 
 function classNames(...classes) {
@@ -26,7 +25,7 @@ function classNames(...classes) {
 
 const Navbar = () => {
 
-    const { quantityCart } = useCartContext()
+    const { quantityCart, emptyCart, valueCart } = useCartContext()
     const valueQuantityCart = quantityCart()
 
     const pathname = usePathname();
@@ -103,27 +102,6 @@ const Navbar = () => {
                             </div>
                         </div>
                         <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
-                            <div>
-                                <button
-                                    type="button"
-                                    className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                                >
-                                    <Link href={"/pages/carrito"}>
-                                        <span className="absolute -inset-1.5" />
-                                        <span className="sr-only">Ver notificaciones</span>
-                                        <IoCartOutline aria-hidden="true" className="h-6 w-6" />
-                                    </Link>
-
-                                </button>
-                                <span className='bg-gray-700 text-white'>
-                                    {
-                                        valueQuantityCart > 0 ?
-                                            valueQuantityCart
-                                            :
-                                            ""
-                                    }
-                                </span>
-                            </div>
                             <button
                                 type="button"
                                 className="ml-3 relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -133,6 +111,48 @@ const Navbar = () => {
                                 <FaRegBell aria-hidden="true" className="h-6 w-6" />
 
                             </button>
+
+                            {/* Carrito dropdown */}
+                            <Menu as="div" className="relative ml-3">
+                                <div>
+                                    <div className='flex'>
+                                        <MenuButton
+                                            type="button"
+                                            className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                        >
+                                            <span className="absolute -inset-1.5" />
+                                            <span className="sr-only">Ver notificaciones</span>
+                                            <IoCartOutline aria-hidden="true" className="h-6 w-6" />
+
+                                        </MenuButton>
+                                        <p className='text-white'>
+                                            <sup>
+                                                {
+                                                    valueQuantityCart > 0 ?
+                                                        valueQuantityCart
+                                                        :
+                                                        ""
+                                                }
+                                            </sup>
+                                        </p>
+                                    </div>
+                                </div>
+                                <MenuItems
+                                    transition
+                                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                                >
+                                    <MenuItem>
+                                        <Link href={"/pages/carrito"} className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 hover:text-indigo-600">
+                                            <span>Ver mi carrito</span>
+                                            <p><strong><i>${valueCart()} - {quantityCart()}u.</i></strong></p>
+                                        </Link>
+                                    </MenuItem>
+                                    <hr />
+                                    <MenuItem>
+                                        <ButtonEmpty emptyCart={emptyCart} inNavbar={true} />
+                                    </MenuItem>
+                                </MenuItems>
+                            </Menu>
 
                             {/* Profile dropdown */}
                             <Menu as="div" className="relative ml-3">

@@ -4,7 +4,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
-import { db, storage } from "@/app/config/firebase";
+import { db, storage } from "@/app/firebase/config";
 
 const createProduct = async (values) => {
   const id = uuidv4();

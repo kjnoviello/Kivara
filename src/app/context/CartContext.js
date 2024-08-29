@@ -1,5 +1,6 @@
 'use client'
 import { createContext, useContext, useState } from "react"
+import Swal from "sweetalert2"
 
 const CartContext = createContext()
 export const useCartContext = () => useContext(CartContext)
@@ -30,30 +31,73 @@ export const CartProvider = ({ children }) => {
         const found = cart.find(product => product.id === item.id)
         if (found == undefined) {
             const result = item.stock - quantity
-            if (result >0) {
+            if (result > 0) {
                 setCart([...cart, item])
+                Swal.fire({
+                    position: "top-end",
+                    toast: "true",
+                    icon: "success",
+                    iconColor: "#1f2937",
+                    title: "Producto agregado!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                })
             } else {
-                alert("no hay unidades disponibles")
+                Swal.fire({
+                    position: "center",
+                    toast: "true",
+                    icon: "error",
+                    iconColor: "#1f2937",
+                    title: "No hay suficientes unidades disponibles!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                })
             }
-            //TODO agregar libreria de NOTIFICACION que se agregó
         } else {
-            alert("ya se encuentra el producto")
-            //TODO agregar libreria de NOTIFICACIONque ya esta el producto
+            Swal.fire({
+                position: "center",
+                toast: "true",
+                icon: "warning",
+                iconColor: "#1f2937",
+                title: "Ya agregaste el producto!",
+                showConfirmButton: false,
+                timer: 1500,
+            })
         }
     }
 
     // 2. Funcion para eliminar productos del carrito
     const emptyCart = () => {
-
-        
-        setCart([])
-        //TODO agregar libreria de NOTIFICACION que se va a elimiar todo
-        console.log("El carrito se vació");
+        Swal.fire({
+            icon: "warning",
+            title: "Eliminar todos los productos del carrito?",
+            confirmButtonText: "Delete",
+            confirmButtonColor: "#d90429",
+            showCancelButton: true,
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Carrito vacío",
+                    text: "Se quitaron los productos del carrito",
+                    iconColor: "#1f2937",
+                    timer: 1500,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                });
+                try {
+                    setCart([])
+                    console.log("El carrito se vació");
+                } catch (error) {
+                    console.error("Error deleting product:", error);
+                }
+            }
+        });
     }
 
     // 3. Funcion para sacar un producto del carrito
     const removeProduct = (id) => {
-        const delProduct = setCart( cart.filter(prod => prod.id !== id))
+        const delProduct = setCart(cart.filter(prod => prod.id !== id))
         return delProduct
     }
 
@@ -63,7 +107,7 @@ export const CartProvider = ({ children }) => {
         const totalProductsValues = cart.reduce((valueCart, product) => valueCart + product.precio * product.quantity, 0)
         return totalProductsValues
     }
-    
+
 
     //5. Sumar las cantidades de los productos
     const quantityCart = () => {

@@ -3,28 +3,28 @@ import { useState } from "react";
 import { IoPersonOutline, IoPerson } from "react-icons/io5";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
-import { useAuthContext } from "@/app/context/AuthContext";
+// import { useAuthContext } from "@/app/context/AuthContext";
 
 const LoginForm = () => {
-  const { registerUser, loginUser, googleLogin } = useAuthContext();
+  // const { registerUser, loginUser, googleLogin } = useAuthContext();
 
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
 
-  const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
+  // const handleChange = (e) => {
+  //   setValues({ ...values, [e.target.name]: e.target.value });
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // };
 
   return (
     <div className="fixed inset-0 z-10 flex justify-center items-center backdrop-blur-xl px-3">
       <form
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
         className="bg-blue-900 py-4 px-6 rounded-xl max-w-md w-full space-y-4"
       >
         <div className="flex justify-center items-center ">
@@ -40,7 +40,7 @@ const LoginForm = () => {
             placeholder="Email"
             className="p-2 rounded-e-lg w-full block"
             name="email"
-            onChange={handleChange}
+            // onChange={handleChange}
           />
         </div>
 
@@ -53,7 +53,7 @@ const LoginForm = () => {
             placeholder="Password"
             className="p-2 rounded-e-lg w-full block"
             name="password"
-            onChange={handleChange}
+            // onChange={handleChange}
           />
         </div>
 
@@ -61,13 +61,13 @@ const LoginForm = () => {
           <div className="flex justify-between">
             <button
               className="bg-white py-3 px-6 sm:px-10 text-blue-900 rounded-full"
-              onClick={() => loginUser(values)}
+              // onClick={() => loginUser(values)}
             >
               Login
             </button>
             <button
               className="flex items-center bg-white py-3 px-6 text-blue-900 rounded-full"
-              onClick={() => googleLogin()}
+              // onClick={() => googleLogin()}
             >
               <FcGoogle className="text-3xl" />
               Login with Google
@@ -75,7 +75,7 @@ const LoginForm = () => {
           </div>
           <button
             className="bg-white py-3 px-6  text-blue-900 rounded-full"
-            onClick={() => registerUser(values)}
+            // onClick={() => registerUser(values)}
           >
             Register
           </button>

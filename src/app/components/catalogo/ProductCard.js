@@ -41,12 +41,12 @@ const ProductCard = ({ products }) => {
                                     <IoArrowForward className="rtl:rotate-180 w-4 h-4 ms-2" />
                                 </p>
                             </Link>
-                            <button href="#" className="w-[130px] m-auto inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            {/* <button href="#" className="w-[130px] m-auto inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 <p className="m-auto flex items-center">
                                     Agregar
                                     <FaShoppingCart className="rtl:rotate-180 w-3.5 h-3.5 ms-2" />
                                 </p>
-                            </button>
+                            </button> */}
 
                         </div>
                     </div>

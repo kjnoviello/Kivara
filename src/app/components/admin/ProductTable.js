@@ -3,11 +3,11 @@ import Link from "next/link";
 import { FaRegEdit } from "react-icons/fa";
 import DeleteProductBtn from "./DeleteProductBtn";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/app/config/firebase";
+import { db } from "@/app/firebase/config";
 
 
 const getAllProducts = async () => {
-  const productRef = collection(db, 'products');
+  const productRef = collection(db, 'productos');
   const querySnapshot = await getDocs(productRef);
   return querySnapshot.docs.map(docSnapshot => docSnapshot.data());
 }
@@ -30,48 +30,57 @@ const ProductsTable = async () => {
         >
           Orders
         </Link>
+        <Link
+          href="prueba/login"
+          className="bg-cyan-500 py-2 px-2 lg:px-6 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center"
+        >
+          Login
+        </Link>
       </div>
       <table className="w-full mt-5 rounded-md bg-white text-xs lg:text-sm text-left text-gray ">
         <thead className="text-base text-gray uppercase ">
           <tr>
             <th scope="col" className="px-3 py-2">
-              Name
+              Nombre
             </th>
             <th scope="col" className="px-3 py-2 text-center">
-              Price
+              Precio
             </th>
             <th scope="col" className="px-3 py-2 text-center">
-              In stock
+              Stock
             </th>
             <th scope="col" className="px-3 py-2 text-center">
-              Type
+              Marca
             </th>
             <th scope="col" className="px-3 py-2 text-center">
-              Image
+              Imagen
             </th>
             <th scope="col" className="px-3 py-2 text-center">
               Id
             </th>
             <th scope="col" className="px-3 py-2">
-              Description
+              Descripción
+            </th>
+            <th scope="col" className="px-3 py-2">
+              Caracteristicas
             </th>
             <th scope="col" className="px-3 py-2 text-center">
-              Actions
+              Acciones
             </th>
           </tr>
         </thead>
         <tbody>
           {items.map((item) => (
             <tr key={item.id}>
-              <td className="p-2 truncate"> {item.title}</td>
-              <td className="p-2 text-center">$ {item.price}</td>
-              <td className="p-2 text-center">{item.inStock}</td>
-              <td className="p-2 text-center">{item.category}</td>
+              <td className="p-2 truncate"> {item.nombre}</td>
+              <td className="p-2 text-center">$ {item.precio}</td>
+              <td className="p-2 text-center">{item.stock}</td>
+              <td className="p-2 text-center">{item.marca}</td>
               <td className="p-2 text-center">
                 {item.image ? (
                   <Image
-                    src={item.image}
-                    alt={item.title}
+                    src={item.imagen}
+                    alt={item.nombre}
                     width={80}
                     height={80}
                   />
@@ -82,7 +91,8 @@ const ProductsTable = async () => {
                 )}
               </td>
               <td className="p-2 text-center">{item.id}</td>
-              <td className="p-2 truncate max-w-prose">{item.description}</td>
+              <td className="p-2 truncate max-w-prose">{item.descripcion}</td>
+              <td className="p-2 truncate max-w-prose">{item.caracteristicas}</td>
               <td className="flex space-x-3 justify-center">
                 <Link href={`/admin/edit/${item.id}`}>
                   <FaRegEdit className="text-gray text-xl " />

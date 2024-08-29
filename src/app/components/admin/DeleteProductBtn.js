@@ -1,5 +1,5 @@
 "use client";
-import { db } from "@/app/config/firebase";
+import { db } from "@/app/firebase/config";
 import { deleteDoc, doc } from "firebase/firestore";
 import { FiTrash2 } from "react-icons/fi";
 import Swal from "sweetalert2";
@@ -26,7 +26,7 @@ const DeleteProductBtn = ({ id }) => {
           showConfirmButton: false,
         });
         try {
-          await deleteDoc(doc(db, "products", id));
+          await deleteDoc(doc(db, "productos", id));
         } catch (error) {
           console.error("Error deleting product:", error);
         }
