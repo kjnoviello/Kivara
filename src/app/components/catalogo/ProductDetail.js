@@ -83,6 +83,9 @@ const ProductDetail = ({ product }) => {
                     {product.descripcion}
                 </p>
                 <div className="gap-5 flex flex-col sm:flex-row justify-between">
+                    <div className="content-end text-xs">
+                        <i>Disponibilidad: {product.stock}u.</i>
+                    </div>
                     <QuantitySelector />
                     <div className="w-1/2 gap-5 flex flex-col sm:flex-row justify-between self-center sm:self-end md:flex-col lg:flex-row">
                         <ButtonBack />

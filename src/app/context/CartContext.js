@@ -25,20 +25,29 @@ export const CartProvider = ({ children }) => {
 
     // 1. Agregar al carrito
     const [cart, setCart] = useState([])
-    console.log(cart);
 
     const addToCart = (item) => {
-        setCart([...cart, item])
-
-        //TODO agregar libreria de NOTIFICACION que se agregó
+        const found = cart.find(product => product.id === item.id)
+        if (found == undefined) {
+            const result = item.stock - quantity
+            if (result >0) {
+                setCart([...cart, item])
+            } else {
+                alert("no hay unidades disponibles")
+            }
+            //TODO agregar libreria de NOTIFICACION que se agregó
+        } else {
+            alert("ya se encuentra el producto")
+            //TODO agregar libreria de NOTIFICACIONque ya esta el producto
+        }
     }
 
     // 2. Funcion para eliminar productos del carrito
     const emptyCart = () => {
 
-        //TODO agregar libreria de NOTIFICACION que se va a elimiar todo
-
+        
         setCart([])
+        //TODO agregar libreria de NOTIFICACION que se va a elimiar todo
         console.log("El carrito se vació");
     }
 
