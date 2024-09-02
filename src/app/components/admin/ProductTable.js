@@ -10,12 +10,14 @@ import getProductos from "@/app/api/getProductos";
 import Loader from "@/app/pages/catalogo/loading";
 
 const ProductsTable = () => {
+
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [loading, setLoading] = useState(true)
 
+  // Para traer los datos desde un componente del lado del cliente
   useEffect(() => {
     setLoading(true)
     const fetchProducts = async () => {
@@ -26,6 +28,7 @@ const ProductsTable = () => {
     fetchProducts();
   }, []);
 
+  // funcion para la busqueda de productos dentro de la tabla
   const handleSearch = (e) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
@@ -45,10 +48,9 @@ const ProductsTable = () => {
 
   return (
     <>
+      {/* Barra de búsqueda */}
       <header className="bg-white">
         <nav className="mx-auto flex flex-col max-w-7xl items-start justify-between p-6 lg:px-8  sm:items-center">
-
-          {/* Barra de búsqueda */}
           <form className="w-full mx-auto pl-0 sm:pl-12" onSubmit={(e) => e.preventDefault()}>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -66,28 +68,31 @@ const ProductsTable = () => {
         </nav>
       </header>
 
-      <div className="overflow-x-auto my-3">
+      <div className="overflow-x-auto my-3 mx-4">
+
+        {/* Botones de navegacion */}
         <div className="space-x-2 flex">
           <Link
             href="admin/create"
-            className="bg-[#1a56db] py-2 px-2 lg:px-6 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center"
+            className="bg-[#1a56db] hover:bg-[#1e429f] py-2 px-2 lg:px-6 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center"
           >
-            Create new
+            Cargar producto
           </Link>
           <Link
             href="admin/orders"
-            className="bg-[#1a56db] py-2 px-2 lg:px-6 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center"
+            className="bg-[#1a56db] hover:bg-[#1e429f] py-2 px-2 lg:px-6 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center"
           >
-            Orders
+            Ordenes
           </Link>
           <Link
-            href="prueba/login"
-            className="bg-[#1a56db] py-2 px-2 lg:px-6 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center"
+            href="admin/login"
+            className="bg-[#1a56db] hover:bg-[#1e429f] py-2 px-2 lg:px-6 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center"
           >
             Login
           </Link>
         </div>
 
+        {/* tabal de productos */}
         <table className="w-full mt-5 rounded-md bg-white text-xs lg:text-sm text-left text-gray">
           <thead className="text-base text-gray uppercase">
             <tr>

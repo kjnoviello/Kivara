@@ -16,7 +16,7 @@ const navigation = [
     { name: 'Catálogo', href: '/pages/catalogo', id: 2 },
     { name: 'Carrito', href: '/pages/carrito', id: 3 },
     { name: 'Nosotros', href: '/pages/nosotros', id: 4 },
-    { name: 'prueba', href: '/pages/prueba', id: 5 },
+    { name: 'Admin', href: '/pages/admin', id: 5 },
 ]
 
 function classNames(...classes) {
@@ -148,9 +148,14 @@ const Navbar = () => {
                                         </Link>
                                     </MenuItem>
                                     <hr />
-                                    <MenuItem>
-                                        <ButtonEmpty emptyCart={emptyCart} inNavbar={true} />
-                                    </MenuItem>
+                                    {
+                                        valueQuantityCart > 0 ?
+                                        <MenuItem>
+                                            <ButtonEmpty emptyCart={emptyCart} inNavbar={true} />
+                                        </MenuItem>
+                                        :
+                                        ""
+                                    }
                                 </MenuItems>
                             </Menu>
 

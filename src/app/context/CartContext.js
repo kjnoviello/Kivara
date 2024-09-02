@@ -31,7 +31,7 @@ export const CartProvider = ({ children }) => {
         const found = cart.find(product => product.id === item.id)
         if (found == undefined) {
             const result = item.stock - quantity
-            if (result > 0) {
+            if (result >= 0) {
                 try {
                     setCart([...cart, item])
                     Swal.fire({
