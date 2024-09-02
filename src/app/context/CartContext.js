@@ -8,16 +8,16 @@ export const CartProvider = ({ children }) => {
 
 
     //Funcion para agregar la cantidad
-    const [quantity, setCounter] = useState(1);
+    const [quantity, setQuantity] = useState(1);
 
-    const restCounter = () => {
+    const restQuantity = () => {
         if (quantity > 1) {
-            setCounter(quantity - 1);
+            setQuantity(quantity - 1);
         }
     };
 
-    const addCounter = () => {
-        return setCounter(quantity + 1)
+    const addQuantity = () => {
+        setQuantity(quantity + 1)
     }
 
 
@@ -32,16 +32,20 @@ export const CartProvider = ({ children }) => {
         if (found == undefined) {
             const result = item.stock - quantity
             if (result > 0) {
-                setCart([...cart, item])
-                Swal.fire({
-                    position: "top-end",
-                    toast: "true",
-                    icon: "success",
-                    iconColor: "#1f2937",
-                    title: "Producto agregado!",
-                    showConfirmButton: false,
-                    timer: 1500,
-                })
+                try {
+                    setCart([...cart, item])
+                    Swal.fire({
+                        position: "top-end",
+                        toast: "true",
+                        icon: "success",
+                        iconColor: "#1f2937",
+                        title: "Producto agregado!",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    })
+                } catch (error) {
+                    console.error("Error agregando el producto:", error);
+                }
             } else {
                 Swal.fire({
                     position: "center",
@@ -89,7 +93,7 @@ export const CartProvider = ({ children }) => {
                     setCart([])
                     console.log("El carrito se vació");
                 } catch (error) {
-                    console.error("Error deleting product:", error);
+                    console.error("Error vaciando el carrito:", error);
                 }
             }
         });
@@ -97,8 +101,32 @@ export const CartProvider = ({ children }) => {
 
     // 3. Funcion para sacar un producto del carrito
     const removeProduct = (id) => {
-        const delProduct = setCart(cart.filter(prod => prod.id !== id))
-        return delProduct
+        Swal.fire({
+            icon: "warning",
+            title: "Quitar del carrito?",
+            confirmButtonText: "Delete",
+            confirmButtonColor: "#d90429",
+            showCancelButton: true,
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    icon: "success",
+                    toast: "true",
+                    position: "top-end",
+                    text: "Se quitó el producto del carrito",
+                    iconColor: "#1f2937",
+                    timer: 1500,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                });
+                try {
+                    const delProduct = setCart(cart.filter(prod => prod.id !== id))
+                    return delProduct
+                } catch (error) {
+                    console.error("Error quitando el producto del carrito:", error);
+                }
+            }
+        });
     }
 
 
@@ -116,19 +144,13 @@ export const CartProvider = ({ children }) => {
     }
 
 
-
-
-
-
-
-
     return (
         <CartContext.Provider
             value={{
                 addToCart,
                 quantity,
-                restCounter,
-                addCounter,
+                restQuantity,
+                addQuantity,
                 cart,
                 emptyCart,
                 valueCart,

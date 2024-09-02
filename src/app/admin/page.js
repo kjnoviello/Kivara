@@ -15,7 +15,6 @@ const Admin = () => {
       {/* {
         logged ? <ProductsTable /> : <LoginForm />
       } */}
-      Admin
     </main>
   )
 }
