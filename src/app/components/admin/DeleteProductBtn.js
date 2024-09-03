@@ -6,29 +6,40 @@ import Swal from "sweetalert2";
 
 const DeleteProductBtn = ({ id }) => {
   const deleteProduct = () => {
+    console.log("Delete button clicked for product ID:", id); // Verifica si la función se llama correctamente
+    
     Swal.fire({
       icon: "warning",
       title: "Do you want to delete this product?",
       text: "Once deleted, you won't be able to recover this product.",
       confirmButtonText: "Delete",
       confirmButtonColor: "#d90429",
-
       showCancelButton: true,
     }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          icon: "success",
-          title: "Deleted!",
-          text: "The product has been deleted successufully",
-          iconColor: "#457b9d",
-          timer: 2500,
-          timerProgressBar: true,
-          showConfirmButton: false,
-        });
+        console.log("Deletion confirmed by user"); // Verifica si la confirmación de la alerta funciona
+
         try {
-          await deleteDoc(doc(db, "productos", id));
+          await deleteDoc(doc(db, "productos", String(id)));
+          console.log("Product deleted from Firestore"); // Verifica si la eliminación se realiza correctamente
+
+          Swal.fire({
+            icon: "success",
+            title: "Deleted!",
+            text: "The product has been deleted successfully.",
+            iconColor: "#457b9d",
+            timer: 2500,
+            timerProgressBar: true,
+            showConfirmButton: false,
+          });
         } catch (error) {
           console.error("Error deleting product:", error);
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "There was a problem deleting the product. Please try again.",
+            confirmButtonText: "OK",
+          });
         }
       }
     });

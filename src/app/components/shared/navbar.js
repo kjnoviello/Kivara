@@ -14,9 +14,8 @@ import ButtonEmpty from './buttonEmpty';
 const navigation = [
     { name: 'Inicio', href: '/', id: 1 },
     { name: 'Catálogo', href: '/pages/catalogo', id: 2 },
-    { name: 'Carrito', href: '/pages/carrito', id: 3 },
-    { name: 'Nosotros', href: '/pages/nosotros', id: 4 },
-    { name: 'Admin', href: '/pages/admin', id: 5 },
+    { name: 'Nosotros', href: '/pages/nosotros', id: 3 },
+    { name: 'Admin', href: '/pages/admin', id: 4 },
 ]
 
 function classNames(...classes) {
@@ -109,7 +108,6 @@ const Navbar = () => {
                                 <span className="absolute -inset-1.5" />
                                 <span className="sr-only">Ver notificaciones</span>
                                 <FaRegBell aria-hidden="true" className="h-6 w-6" />
-
                             </button>
 
                             {/* Carrito dropdown */}

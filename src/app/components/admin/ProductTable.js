@@ -48,28 +48,7 @@ const ProductsTable = () => {
 
   return (
     <>
-      {/* Barra de búsqueda */}
-      <header className="bg-white">
-        <nav className="mx-auto flex flex-col max-w-7xl items-start justify-between p-6 lg:px-8  sm:items-center">
-          <form className="w-full mx-auto pl-0 sm:pl-12" onSubmit={(e) => e.preventDefault()}>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <IoSearchSharp className="w-5 h-5 text-gray-500" />
-              </div>
-              <input
-                type="search"
-                className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Buscar modelo o marca de celular..."
-                value={searchTerm}
-                onChange={handleSearch}
-              />
-            </div>
-          </form>
-        </nav>
-      </header>
-
-      <div className="overflow-x-auto my-3 mx-4">
-
+      <div className="overflow-x-auto mt-6 mx-4">
         {/* Botones de navegacion */}
         <div className="space-x-2 flex">
           <Link
@@ -91,9 +70,31 @@ const ProductsTable = () => {
             Login
           </Link>
         </div>
+      </div>
 
-        {/* tabal de productos */}
-        <table className="w-full mt-5 rounded-md bg-white text-xs lg:text-sm text-left text-gray">
+      {/* Barra de búsqueda */}
+      <header className="bg-white">
+        <nav className="mx-auto flex flex-col max-w-7xl items-start justify-between p-6 lg:px-8  sm:items-center">
+          <form className="w-full mx-auto pl-0 sm:pl-12" onSubmit={(e) => e.preventDefault()}>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <IoSearchSharp className="w-5 h-5 text-gray-500" />
+              </div>
+              <input
+                type="search"
+                className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Buscar modelo o marca de celular..."
+                value={searchTerm}
+                onChange={handleSearch}
+              />
+            </div>
+          </form>
+        </nav>
+      </header>
+
+      {/* tabal de productos */}
+      <div className="overflow-x-auto mx-4">
+        <table className="w-full mt-5 rounded-md bg-white text-xs lg:text-sm text-left text-gray mx-4">
           <thead className="text-base text-gray uppercase">
             <tr>
               <th scope="col" className="px-2 py-2 text-center">Id</th>

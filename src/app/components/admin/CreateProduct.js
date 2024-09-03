@@ -5,6 +5,7 @@ import { doc, setDoc } from "firebase/firestore";
 // import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
 import { db, storage } from "@/app/firebase/config";
+import ButtonBack from "../shared/buttonBack";
 
 const createProduct = async (values) => {
 
@@ -143,9 +144,9 @@ const CreateForm = () => {
 
 
   return (
-    <div className="my-16 p-8 mx-3 sm:mx-20 lg:mx-40 xl:mx-52 2xl:mx-96 select-none bg-white rounded">
+    <div className="my-8 mx-4 sm:mx-20 lg:mx-40 select-none bg-white rounded">
       <h2 className="text-cyan font-semibold text-2xl pb-4">Cargar producto</h2>
-      <form onSubmit={handleSubmit} className="px-20">
+      <form onSubmit={handleSubmit}>
 
         <label className="text-black">ID: </label>
         <input
@@ -167,15 +168,7 @@ const CreateForm = () => {
           onChange={handleChange}
         />
 
-        <label className="text-black">Precio </label>
-        <input
-          type="number"
-          value={values.precio}
-          required
-          className="p-2 rounded w-full border border-cyan block mb-4"
-          name="precio"
-          onChange={handleChange}
-        />
+
 
         <label className="text-black">Marca: </label>
         <select
@@ -278,62 +271,89 @@ const CreateForm = () => {
           onChange={handleChange}
         />
 
-        <label className="text-black">Valoraciones: </label>
-        <input
-          type="number"
-          value={values.valoraciones}
-          required
-          className="p-2 rounded w-full border border-cyan block mb-4"
-          name="valoraciones"
-          onChange={handleChange}
-        />
+        <div className="flex w-full sm:gap-5 flex-col sm:flex-row">
+          <div className="w-full">
+            <label className="text-black">Precio </label>
+            <input
+              type="number"
+              value={values.precio}
+              required
+              className="p-2 rounded w-full border border-cyan block mb-4"
+              name="precio"
+              onChange={handleChange}
+            />
+          </div>
 
-        <label className="text-black">Stock: </label>
-        <input
-          type="number"
-          value={values.stock}
-          required
-          className="p-2 rounded w-full border border-cyan block mb-4"
-          name="stock"
-          onChange={handleChange}
-        />
+          <div className="w-full">
+            <label className="text-black">Valoraciones: </label>
+            <input
+              type="number"
+              value={values.valoraciones}
+              required
+              className="p-2 rounded w-full border border-cyan block mb-4"
+              name="valoraciones"
+              onChange={handleChange}
+            />
+          </div>
 
-        <label className="text-black">Novedad: </label>
-        <select
-          value={values.novedad}
-          className="p-2 rounded w-full border border-cyan block mb-4"
-          name="novedad"
-          required
-          onChange={handleChange}
-        >
-          <option value="" disabled>
-            Es novedad?
-          </option>
-          <option value="true">True</option>
-          <option value="false">False</option>
-        </select>
+          <div className="w-full">
+            <label className="text-black">Stock: </label>
+            <input
+              type="number"
+              value={values.stock}
+              required
+              className="p-2 rounded w-full border border-cyan block mb-4"
+              name="stock"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
 
-        <label className="text-black">Estado: </label>
-        <select
-          value={values.estado}
-          className="p-2 rounded w-full border border-cyan block mb-4"
-          name="estado"
-          required
-          onChange={handleChange}
-        >
-          <option value="" disabled>
-            Esta vigente?
-          </option>
-          <option value="true">True</option>
-          <option value="false">False</option>
-        </select>
+        <div className="flex w-full gap-5">
+          <div className="w-full">
+            <label className="text-black">Novedad: </label>
+            <select
+              value={values.novedad}
+              className="p-2 rounded w-full border border-cyan block mb-4"
+              name="novedad"
+              required
+              onChange={handleChange}
+            >
+              <option value="" disabled>
+                Es novedad?
+              </option>
+              <option value="true">True</option>
+              <option value="false">False</option>
+            </select>
+          </div>
 
-        <button
-          type="submit"
-          className="bg-cyan-500 rounded-md py-3 px-6 sm:px-10 text-white shadow-md"
-        >
-          Cargar
-        </button>
+          <div className="w-full">
+            <label className="text-black">Estado: </label>
+            <select
+              value={values.estado}
+              className="p-2 rounded w-full border border-cyan block mb-4"
+              name="estado"
+              required
+              onChange={handleChange}
+            >
+              <option value="" disabled>
+                Está vigente?
+              </option>
+              <option value="true">True</option>
+              <option value="false">False</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-5 my-5 px-5">
+          <ButtonBack btnLogin={true} />
+          <button
+            type="submit"
+            className="bg-[#1a56db] hover:bg-[#1e429f] w-full py-2 px-2 lg:px-2 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center"
+          >
+            Publicar
+          </button>
+        </div>
       </form>
     </div>
   );
