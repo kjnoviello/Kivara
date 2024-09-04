@@ -4,9 +4,9 @@ import { deleteDoc, doc } from "firebase/firestore";
 import { FiTrash2 } from "react-icons/fi";
 import Swal from "sweetalert2";
 
-const DeleteProductBtn = ({ id }) => {
-  const deleteProduct = () => {
-    console.log("Delete button clicked for product ID:", id); // Verifica si la función se llama correctamente
+const DeleteProductBtn = ({ nombre }) => {
+  const deleteProduct = async () => {
+    console.log("Delete button clicked for product ID:", nombre); // Verifica si la función se llama correctamente
     
     Swal.fire({
       icon: "warning",
@@ -20,7 +20,7 @@ const DeleteProductBtn = ({ id }) => {
         console.log("Deletion confirmed by user"); // Verifica si la confirmación de la alerta funciona
 
         try {
-          await deleteDoc(doc(db, "productos", String(id)));
+          await deleteDoc(doc(db, "productos", nombre));
           console.log("Product deleted from Firestore"); // Verifica si la eliminación se realiza correctamente
 
           Swal.fire({

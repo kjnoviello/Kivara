@@ -166,7 +166,7 @@ const ProductsTable = () => {
                         <Link href={`/admin/edit/${product.id}`} className="content-center">
                           <FaRegEdit className="text-gray text-xl" />
                         </Link>
-                        <DeleteProductBtn id={product.id} />
+                        <DeleteProductBtn nombre={product.nombre} />
                       </td>
                     </tr>
                   ))}
