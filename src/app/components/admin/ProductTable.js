@@ -163,7 +163,7 @@ const ProductsTable = () => {
                         <Link href={`/pages/catalogo/producto/${product.id}`} className="content-center">
                           <LuEye className="text-gray text-xl" />
                         </Link>
-                        <Link href={`/admin/edit/${product.id}`} className="content-center">
+                        <Link href={`/pages/admin/edit/${product.id}`} className="content-center">
                           <FaRegEdit className="text-gray text-xl" />
                         </Link>
                         <DeleteProductBtn nombre={product.nombre} />

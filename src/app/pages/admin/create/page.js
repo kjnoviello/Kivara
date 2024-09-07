@@ -1,4 +1,3 @@
-// import CreateForm from '@/app/components/admin/CreateForm'
 import CreateForm from '@/app/components/admin/CreateProduct'
 import React from 'react'
 

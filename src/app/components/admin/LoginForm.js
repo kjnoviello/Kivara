@@ -124,6 +124,7 @@ export default function Example() {
               </label>
               <div className="mt-2">
                 <input
+                  placeholder="example@email.com"
                   id="email"
                   name="email"
                   type="email"
@@ -147,6 +148,7 @@ export default function Example() {
               </div>
               <div className="mt-2">
                 <input
+                  placeholder="*******"
                   id="password"
                   name="password"
                   type="password"
