@@ -17,14 +17,15 @@ const ProductsTable = () => {
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [loading, setLoading] = useState(true)
 
+  // Funcion que trae los productos
+  const fetchProducts = async () => {
+    const allProducts = await getProductos();
+    setProducts(allProducts);
+    setLoading(false)
+  };
+
   // Para traer los datos desde un componente del lado del cliente
   useEffect(() => {
-    setLoading(true)
-    const fetchProducts = async () => {
-      const allProducts = await getProductos();
-      setProducts(allProducts);
-      setLoading(false)
-    };
     fetchProducts();
   }, []);
 
@@ -45,6 +46,12 @@ const ProductsTable = () => {
       setSearchPerformed(false);
     }
   };
+
+ // Función para refrescar la lista de productos
+  const refreshProducts = async () => {
+  setLoading(true);
+  await fetchProducts();
+};
 
   return (
     <>
@@ -166,7 +173,7 @@ const ProductsTable = () => {
                         <Link href={`/pages/admin/edit/${product.id}`} className="content-center">
                           <FaRegEdit className="text-gray text-xl" />
                         </Link>
-                        <DeleteProductBtn nombre={product.nombre} />
+                        <DeleteProductBtn nombre={product.nombre} onDelete={() => refreshProducts()}  />
                       </td>
                     </tr>
                   ))}

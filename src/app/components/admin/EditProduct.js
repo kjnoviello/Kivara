@@ -277,8 +277,8 @@ export default function EditForm({ id }) {
                                 required
                                 onChange={handleChange}
                             >
-                                <option value="true">True</option>
-                                <option value="false">False</option>
+                                <option value="true">Si</option>
+                                <option value="false">No</option>
                             </select>
                         </div>
 
@@ -291,22 +291,24 @@ export default function EditForm({ id }) {
                                 required
                                 onChange={handleChange}
                             >
-                                <option value="true">True</option>
-                                <option value="false">False</option>
+                                <option value="true">Disponible</option>
+                                <option value="false">No disponible</option>
                             </select>
                         </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-5 my-5 px-5">
-                        <ButtonBack btnLogin={true} />
+                    <div className="flex gap-5 my-5 px-5">
                         <button
                             type="submit"
-                            className="bg-[#1a56db] hover:bg-[#1e429f] w-full py-2 px-2 lg:px-2 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center"
+                            className="bg-[#1a56db] hover:bg-[#1e429f] m-auto max-w-lg w-full py-2 px-2 lg:px-2 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center"
                         >
                             Actualizar
                         </button>
                     </div>
                 </form>
+                <div className="flex gap-5 my-5 px-5">
+                    <ButtonBack btnLogin={true} />
+                </div>
             </div>
         </>
     );
