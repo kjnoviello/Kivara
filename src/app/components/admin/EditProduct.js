@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { collection, getDocs, query, where, doc, updateDoc } from "firebase/firestore";
-import { db } from "@/app/firebase/config";
+import { db, storage } from "@/app/firebase/config";
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import Swal from "sweetalert2";
 import ButtonBack from "@/app/components/shared/buttonBack";
 import { useRouter } from "next/navigation";
@@ -74,6 +75,40 @@ export default function EditForm({ id }) {
         }
     };
 
+    const handleFileChange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const storageRef = ref(storage, `productos/${file.name}`);
+        try {
+            // Subir el archivo a Firebase Storage
+            const snapshot = await uploadBytes(storageRef, file);
+            // Obtener la URL de descarga del archivo subido
+            const downloadURL = await getDownloadURL(snapshot.ref);
+            // Actualizar el estado con la URL de la imagen
+            setEditProduct((prevState) => ({
+                ...prevState,
+                imagen: downloadURL,
+            }));
+            Swal.fire({
+                icon: "success",
+                title: "¡Imagen subida correctamente!",
+                text: "La imagen se ha actualizado.",
+                iconColor: "#457b9d",
+                timer: 1500,
+                timerProgressBar: true,
+                showConfirmButton: false,
+            });
+        } catch (error) {
+            console.error("Error uploading file:", error);
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Hubo un problema al subir la imagen. Por favor, intente nuevamente.",
+                confirmButtonText: "OK",
+            });
+        }
+    };
 
     const handleSave = async (e) => {
         e.preventDefault();
@@ -176,8 +211,16 @@ export default function EditForm({ id }) {
                     value={editProduct.imagen || "/products/no_imagen.jpg"}
                     className="p-2 rounded w-full border border-cyan block mb-4 bg-[#f9fafb]"
                     name="imagen"
+                    readOnly
                     onChange={handleChange}
                 />
+                <input
+                    type="file"
+                    className="p-2 rounded w-full border border-cyan block mb-4 bg-[#f9fafb]"
+                    name="imagen"
+                    onChange={handleFileChange}
+                />
+
 
                 <label className="text-black">Descripción: </label>
                 <textarea

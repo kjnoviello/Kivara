@@ -21,21 +21,15 @@ const getLastId = async () => {
 // Función para crear el producto
 const createProduct = async (values, file) => {
   try {
-    console.log("Archivo a subir:", file); // Verifica el archivo
     const lastId = await getLastId();
     const newId = lastId + 1;
 
+    // Me aseguro del tipo de imagen
     const contentType = file ? file.type : 'image/jpeg'; // Verifica el tipo de archivo
-    console.log("Tipo de archivo:", contentType); 
-
-    const storageRef = ref(storage, `products/${newId}`); // Cambiado a una ruta específica
+    const storageRef = ref(storage, `products/${newId}`);
     const newMetadata = { contentType };
-
     const fileSnapshot = await uploadBytes(storageRef, file, newMetadata);
-    console.log("Archivo subido:", fileSnapshot); 
-
     const fileURL = await getDownloadURL(fileSnapshot.ref);
-    console.log("URL de archivo:", fileURL); 
 
     const docRef = doc(db, "productos", newId.toString());
     await setDoc(docRef, {
@@ -115,7 +109,7 @@ const CreateForm = () => {
         timerProgressBar: true,
         showConfirmButton: false,
       });
-  
+
       // Restablece el formulario
       setValues({
         nombre: "",
@@ -156,7 +150,7 @@ const CreateForm = () => {
     <div className="my-8 mx-4 sm:mx-20 lg:mx-40 select-none bg-white rounded">
       <h2 className="text-cyan font-semibold text-2xl pb-4">Cargar producto</h2>
       <form onSubmit={handleSubmit}>
-        {/* El campo ID ha sido removido */}
+
         <label className="text-black">Nombre:</label>
         <input
           type="text"
@@ -187,15 +181,6 @@ const CreateForm = () => {
           <option value="Nokia">Nokia</option>
           <option value="Lg">Lg</option>
         </select>
-
-        {/* <label className="text-black">Imagen:</label>
-        <input
-          type="text"
-          value={values.imagen || "/products/no_imagen.jpg"}
-          className="p-2 rounded w-full border border-cyan block mb-4 bg-[#f9fafb]"
-          name="imagen"
-          onChange={handleChange}
-        /> */}
 
         <label className="text-black">Imagen:</label>
         <input
