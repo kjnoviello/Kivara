@@ -19,6 +19,8 @@ const getNovedades = async () => {
     }
 }
 
+export const revalidate = 300 
+
 export default async function Novedad() {
 
     const products = await getNovedades()

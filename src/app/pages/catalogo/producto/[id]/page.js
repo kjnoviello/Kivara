@@ -21,8 +21,7 @@ export async function generateStaticParams() {
   }
 }
 
-export const revalidate = 3600
-
+export const revalidate = 60
 
 // Funcion para obtener el detalle de cada producto segun su id desde firestore
 const getDetalle = async (item) => {
