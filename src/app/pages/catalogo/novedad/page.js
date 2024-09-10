@@ -9,6 +9,7 @@ const getNovedades = async () => {
         const productRef = collection(db, 'productos');
         const q = query(productRef, where("novedad", "==", true));
         const querySnapshot = await getDocs(q);
+        console.log("Query Snapshot: ", querySnapshot);
         return querySnapshot.docs.map(doc => doc.data());
 
     } catch (error) {
@@ -21,6 +22,7 @@ const getNovedades = async () => {
 export default async function Novedad() {
 
     const products = await getNovedades()
+    console.log("Fetched Products: ", products);
     
     return (
         <>

@@ -80,7 +80,7 @@ const CreateForm = () => {
       const processedValues = {
         ...values,
         precio: parseFloat(values.precio),
-        valoraciones: parseInt(values.valoraciones, 10),
+        valoraciones: parseFloat(parseFloat(values.valoraciones).toFixed(1)),
         stock: parseInt(values.stock, 10),
         novedad: values.novedad === "true", // Convertir string a booleano
         estado: values.estado === "true",   // Convertir string a booleano
@@ -116,7 +116,7 @@ const CreateForm = () => {
         estado: "true"
       });
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } catch (error) {
       console.error("No se pudo cargar el producto", error);

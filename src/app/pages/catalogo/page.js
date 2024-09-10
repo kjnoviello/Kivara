@@ -1,7 +1,6 @@
+import getProductos from '@/app/api/getProductos';
 import ProductList from '@/app/components/catalogo/ProductList';
 import Header from '@/app/components/header/Header';
-import getProductos from '@/app/api/getProductos';
-import { Suspense } from 'react';
 
 export default async function Catalogo() {
 
@@ -11,7 +10,7 @@ export default async function Catalogo() {
         <>
             <Header />
             <main className='flex gap-5 flex-wrap p-5 mx-5 items-center justify-center'>
-                <ProductList products={products} />
+                <ProductList products={products}/>
             </main>
         </>
     )

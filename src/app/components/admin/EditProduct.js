@@ -86,7 +86,7 @@ export default function EditForm({ id }) {
                 // id: parseInt(editProduct.id, 10),
                 precio: parseFloat(editProduct.precio),
                 stock: parseInt(editProduct.stock, 10),
-                valoraciones: parseInt(editProduct.valoraciones, 10),
+                valoraciones: parseFloat(parseFloat(editProduct.valoraciones).toFixed(1)),
                 novedad: editProduct.novedad,
                 estado: editProduct.estado,
             };
