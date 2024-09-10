@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { collection, doc, setDoc, query, orderBy, limit, getDocs } from "firebase/firestore";
 import Swal from "sweetalert2";
-import { db } from "@/app/firebase/config";
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { db, storage } from "@/app/firebase/config";
 import ButtonBack from "../shared/buttonBack";
 
 // Función para obtener el último ID
@@ -18,20 +19,28 @@ const getLastId = async () => {
 };
 
 // Función para crear el producto
-const createProduct = async (values) => {
+const createProduct = async (values, file) => {
   try {
     const lastId = await getLastId();
-    const newId = lastId + 1; // Incrementa el último ID
+    const newId = lastId + 1;
 
-    const docRef = doc(db, "productos", newId.toString()); // Usa el ID como nombre del documento
+    // Me aseguro del tipo de imagen
+    const contentType = file ? file.type : 'image/jpeg'; // Verifica el tipo de archivo
+    const storageRef = ref(storage, `products/${newId}`);
+    const newMetadata = { contentType };
+    const fileSnapshot = await uploadBytes(storageRef, file, newMetadata);
+    const fileURL = await getDownloadURL(fileSnapshot.ref);
+
+    const docRef = doc(db, "productos", newId.toString());
     await setDoc(docRef, {
       ...values,
-      id: newId, // Agrega el nuevo ID
+      id: newId,
+      imagen: fileURL,
       novedad: values.novedad,
       estado: values.estado,
     });
 
-    console.log("Producto agregado!!!");
+    console.log("Producto agregado con éxito");
   } catch (error) {
     console.error("Error al agregar el producto", error);
   }
@@ -74,19 +83,24 @@ const CreateForm = () => {
     }
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setValues((prevValues) => ({ ...prevValues, imagen: file }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const file = values.imagen; // Obtén el archivo
     try {
       const processedValues = {
         ...values,
         precio: parseFloat(values.precio),
         valoraciones: parseFloat(parseFloat(values.valoraciones).toFixed(1)),
         stock: parseInt(values.stock, 10),
-        novedad: values.novedad === "true", // Convertir string a booleano
-        estado: values.estado === "true",   // Convertir string a booleano
+        novedad: values.novedad === "true",
+        estado: values.estado === "true",
       };
-
-      await createProduct(processedValues);
+      await createProduct(processedValues, file); // Pasa el archivo
       Swal.fire({
         icon: "success",
         title: "Producto cargado correctamente!",
@@ -96,6 +110,7 @@ const CreateForm = () => {
         showConfirmButton: false,
       });
 
+      // Restablece el formulario
       setValues({
         nombre: "",
         precio: 0,
@@ -135,7 +150,7 @@ const CreateForm = () => {
     <div className="my-8 mx-4 sm:mx-20 lg:mx-40 select-none bg-white rounded">
       <h2 className="text-cyan font-semibold text-2xl pb-4">Cargar producto</h2>
       <form onSubmit={handleSubmit}>
-        {/* El campo ID ha sido removido */}
+
         <label className="text-black">Nombre:</label>
         <input
           type="text"
@@ -169,11 +184,10 @@ const CreateForm = () => {
 
         <label className="text-black">Imagen:</label>
         <input
-          type="text"
-          value={values.imagen || "/products/no_imagen.jpg"}
+          type="file"
           className="p-2 rounded w-full border border-cyan block mb-4 bg-[#f9fafb]"
           name="imagen"
-          onChange={handleChange}
+          onChange={(e) => handleFileChange(e)}
         />
 
         <label className="text-black">Descripción:</label>
