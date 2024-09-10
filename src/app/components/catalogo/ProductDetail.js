@@ -22,14 +22,26 @@ const ProductDetail = ({ product }) => {
         <section className="flex flex-col p-8 items-center bg-white border border-gray-200 rounded-lg shadow md:px-16 md:flex-row md:w-auto dark:border-gray-700 dark:bg-gray-800 h-auto">
 
             {/*//TODO Implementar un carousel */}
-            <Image
-                className="object-cover w-46 rounded-t-lg h-auto md:h-[600px] md:w-[50%] md:rounded-none md:rounded-s-lg"
-                src={product.imagen}
-                alt={product.nombre}
-                width={600}
-                height={600}
-                priority="true"
-            />
+            {product.imagen ? (
+                <Image
+                    className="object-cover w-46 rounded-t-lg h-auto md:h-[600px] md:w-[50%] md:rounded-none md:rounded-s-lg"
+                    src={product.imagen || "/products/no_imagen.jpg"}
+                    alt={product.nombre}
+                    width={600}
+                    height={600}
+                    priority="true"
+                />
+            ) : (
+                <Image
+                    className="object-cover w-46 rounded-t-lg h-auto md:h-[600px] md:w-[50%] md:rounded-none md:rounded-s-lg"
+                    src={"/products/no_imagen.jpg"}
+                    alt="no se encontro una imagen"
+                    width={600}
+                    height={600}
+                    priority="true"
+                />
+            )}
+
 
             <div className="flex flex-col md:pr-8 justify-between p-4 leading-normal">
                 <div>
@@ -45,11 +57,11 @@ const ProductDetail = ({ product }) => {
                 </h5>
                 {
                     product.estado ?
-                    <h5 className="my-8 text-5xl font-bold text-gray-900 dark:text-white text-center">
-                        ${product.precio}
-                    </h5>
-                    :
-                    ""
+                        <h5 className="my-8 text-5xl font-bold text-gray-900 dark:text-white text-center">
+                            ${product.precio}
+                        </h5>
+                        :
+                        ""
                 }
                 <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {product.nombre}

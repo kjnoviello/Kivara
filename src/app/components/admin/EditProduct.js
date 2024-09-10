@@ -173,8 +173,7 @@ export default function EditForm({ id }) {
                 <label className="text-black">Imagen: </label>
                 <input
                     type="text"
-                    value={editProduct.imagen || ""}
-                    required
+                    value={editProduct.imagen || "/products/no_imagen.jpg"}
                     className="p-2 rounded w-full border border-cyan block mb-4 bg-[#f9fafb]"
                     name="imagen"
                     onChange={handleChange}

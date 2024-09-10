@@ -170,8 +170,7 @@ const CreateForm = () => {
         <label className="text-black">Imagen:</label>
         <input
           type="text"
-          value={values.imagen}
-          required
+          value={values.imagen || "/products/no_imagen.jpg"}
           className="p-2 rounded w-full border border-cyan block mb-4 bg-[#f9fafb]"
           name="imagen"
           onChange={handleChange}

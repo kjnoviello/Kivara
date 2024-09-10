@@ -47,11 +47,11 @@ const ProductsTable = () => {
     }
   };
 
- // Función para refrescar la lista de productos
+  // Función para refrescar la lista de productos
   const refreshProducts = async () => {
-  setLoading(true);
-  await fetchProducts();
-};
+    setLoading(true);
+    await fetchProducts();
+  };
 
   return (
     <>
@@ -118,21 +118,24 @@ const ProductsTable = () => {
               <th scope="col" className="px-2 py-2">Batería</th>
               <th scope="col" className="px-2 py-2">Color</th>
               <th scope="col" className="px-2 py-2">Valoraciones</th>
-              <th scope="col" className="px-2 py-2">Stock</th>
               <th scope="col" className="px-2 py-2">Novedad</th>
               <th scope="col" className="px-2 py-2">Estado</th>
               <th scope="col" className="px-2 py-2 text-center">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {
-              loading ?
-                <tr>
-                  <td colSpan="5" className="text-center p-5"><Loader /></td>
-                </tr>
-                :
-                <>
-                  {(searchPerformed ? filteredResults : products).map((product, index) => (
+            {loading ? (
+              <tr>
+                <td colSpan="5" className="text-center p-5"><Loader /></td>
+              </tr>
+            ) : (
+              <>
+                {(searchPerformed ? (filteredResults.length > 0 ? filteredResults : []) : products).length === 0 ? (
+                  <tr>
+                    <td colSpan="5" className="text-center p-5"><strong>No hay resultados</strong></td>
+                  </tr>
+                ) : (
+                  (searchPerformed ? filteredResults : products).map((product, index) => (
                     <tr key={product.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-100'}>
                       <td className="p-2 text-center">{product.id}</td>
                       <td className="p-2">{product.nombre}</td>
@@ -142,13 +145,13 @@ const ProductsTable = () => {
                       <td className="p-2 text-center">
                         {product.imagen ? (
                           <Image
-                            src={product.imagen}
+                            src={product.imagen || "/products/no_imagen.jpg"}
                             alt={product.nombre}
                             width={40}
                             height={40}
                           />
                         ) : (
-                          <p className="text-gray">no image</p>
+                          <p className="text-gray">sin imagen</p>
                         )}
                       </td>
                       <td className="p-2 truncate max-w-64">{product.descripcion}</td>
@@ -159,7 +162,6 @@ const ProductsTable = () => {
                       <td className="p-2 truncate max-w-prose">{product.data.bateria}</td>
                       <td className="p-2 truncate max-w-prose">{product.data.color}</td>
                       <td className="p-2 text-center">{product.valoraciones}</td>
-                      <td className="p-2 text-center">{product.stock}</td>
                       <td className="p-2 truncate max-w-prose">{
                         product.novedad ? "Nuevo" : ""
                       }</td>
@@ -173,12 +175,13 @@ const ProductsTable = () => {
                         <Link href={`/pages/admin/edit/${product.id}`} className="content-center">
                           <FaRegEdit className="text-gray text-xl" />
                         </Link>
-                        <DeleteProductBtn id={product.id} onDelete={() => refreshProducts()}  />
+                        <DeleteProductBtn id={product.id} onDelete={() => refreshProducts()} />
                       </td>
                     </tr>
-                  ))}
-                </>
-            }
+                  ))
+                )}
+              </>
+            )}
           </tbody>
         </table>
       </div>

@@ -23,14 +23,26 @@ const ProductCard = ({ products }) => {
                                 </p>
                                 :
                                 ""}
-                            <Image
-                                alt="imagen"
-                                src={products.imagen}
-                                className="h-[250px] w-auto align-center m-auto"
-                                width={200}
-                                height={200}
-                            >
-                            </Image>
+                                
+                            {products.imagen ? (
+                                <Image
+                                    alt="imagen"
+                                    src={products.imagen}
+                                    className="h-[250px] w-auto align-center m-auto"
+                                    width={200}
+                                    height={200}
+                                    priority="true"
+                                />
+                            ) : (
+                                <Image
+                                    alt="no se encontro una imagen"
+                                    src={"/products/no_imagen.jpg"}
+                                    className="h-[250px] w-auto align-center m-auto"
+                                    width={200}
+                                    height={200}
+                                    priority="true"
+                                />
+                            )}
 
                             <div className="p-5">
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{products.nombre}</h5>
