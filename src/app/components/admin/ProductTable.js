@@ -173,7 +173,7 @@ const ProductsTable = () => {
                         <Link href={`/pages/admin/edit/${product.id}`} className="content-center">
                           <FaRegEdit className="text-gray text-xl" />
                         </Link>
-                        <DeleteProductBtn nombre={product.nombre} onDelete={() => refreshProducts()}  />
+                        <DeleteProductBtn id={product.id} onDelete={() => refreshProducts()}  />
                       </td>
                     </tr>
                   ))}

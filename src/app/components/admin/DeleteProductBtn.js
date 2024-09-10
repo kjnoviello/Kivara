@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { FiTrash2 } from "react-icons/fi";
 import Swal from "sweetalert2";
 
-const DeleteProductBtn = ({ nombre, onDelete }) => {
+const DeleteProductBtn = ({ id, onDelete }) => {
 
   const router = useRouter()
 
@@ -22,7 +22,7 @@ const DeleteProductBtn = ({ nombre, onDelete }) => {
       if (result.isConfirmed) {
 
         try {
-          await deleteDoc(doc(db, "productos", nombre));
+          await deleteDoc(doc(db, "productos", id.toString()));
           
           Swal.fire({
             icon: "success",
@@ -51,7 +51,7 @@ const DeleteProductBtn = ({ nombre, onDelete }) => {
 
   return (
     <button onClick={deleteProduct}>
-      <FiTrash2 className="text-red text-xl" />
+      <FiTrash2 className="text-red text-xl text-red-600" />
     </button>
   );
 };
