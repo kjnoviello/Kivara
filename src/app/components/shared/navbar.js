@@ -148,11 +148,11 @@ const Navbar = () => {
                                     <hr />
                                     {
                                         valueQuantityCart > 0 ?
-                                        <MenuItem>
-                                            <ButtonEmpty emptyCart={emptyCart} inNavbar={true} />
-                                        </MenuItem>
-                                        :
-                                        ""
+                                            <MenuItem>
+                                                <ButtonEmpty emptyCart={emptyCart} inNavbar={true} />
+                                            </MenuItem>
+                                            :
+                                            ""
                                     }
                                 </MenuItems>
                             </Menu>

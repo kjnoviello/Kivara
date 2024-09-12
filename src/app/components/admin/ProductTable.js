@@ -8,6 +8,7 @@ import Link from "next/link";
 import DeleteProductBtn from "./DeleteProductBtn";
 import getProductos from "@/app/api/getProductos";
 import Loader from "@/app/pages/catalogo/loading";
+import AdminHeader from "./AdminHeader";
 
 const ProductsTable = () => {
 
@@ -55,29 +56,7 @@ const ProductsTable = () => {
 
   return (
     <>
-      <div className="overflow-x-auto mt-6 mx-4">
-        {/* Botones de navegacion */}
-        <div className="space-x-2 flex">
-          <Link
-            href="admin/create"
-            className="bg-[#1a56db] hover:bg-[#1e429f] py-2 px-2 lg:px-6 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center"
-          >
-            Cargar producto
-          </Link>
-          <Link
-            href="admin/orders"
-            className="bg-[#1a56db] hover:bg-[#1e429f] py-2 px-2 lg:px-6 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center"
-          >
-            Ordenes
-          </Link>
-          <Link
-            href="admin/login"
-            className="bg-[#1a56db] hover:bg-[#1e429f] py-2 px-2 lg:px-6 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center"
-          >
-            Login
-          </Link>
-        </div>
-      </div>
+      <AdminHeader />
 
       {/* Barra de búsqueda */}
       <header className="bg-white">

@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import ProductsTable from '../components/admin/ProductTable';
-import LoginForm from '../components/admin/LoginForm';
+import LoginForm from '../components/auth/LoginForm';
 
 
 

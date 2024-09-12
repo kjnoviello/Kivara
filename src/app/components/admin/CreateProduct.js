@@ -5,40 +5,43 @@ import Swal from "sweetalert2";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { db, storage } from "@/app/firebase/config";
 import ButtonBack from "../shared/buttonBack";
-
 // Función para obtener el último ID
 const getLastId = async () => {
   const collectionRef = collection(db, "productos");
   const q = query(collectionRef, orderBy("id", "desc"), limit(1));
   const querySnapshot = await getDocs(q);
-  if (!querySnapshot.empty) {
-    const lastDoc = querySnapshot.docs[0].data();
-    return lastDoc.id || 0;
-  }
-  return 0; // Si no hay documentos, el primer ID será 1
+
+  // Si hay documentos, devuelve el ID, sino devuelve 0
+  return !querySnapshot.empty ? querySnapshot.docs[0].data().id || 0 : 0;
 };
 
-// Función para crear el producto
+// Función para subir la imagen a Firebase Storage
+const uploadImage = async (file, id) => {
+  const contentType = file?.type || 'image/jpeg'; // Tipo de archivo por defecto
+  const storageRef = ref(storage, `products/${id}`);
+  const metadata = { contentType };
+
+  const fileSnapshot = await uploadBytes(storageRef, file, metadata);
+  return await getDownloadURL(fileSnapshot.ref); // Retorna la URL de descarga
+};
+
+// Función para crear el producto en Firestore
 const createProduct = async (values, file) => {
   try {
     const lastId = await getLastId();
     const newId = lastId + 1;
+    const fileURL = await uploadImage(file, newId); // Subir la imagen y obtener la URL
 
-    // Me aseguro del tipo de imagen
-    const contentType = file ? file.type : 'image/jpeg'; // Verifica el tipo de archivo
-    const storageRef = ref(storage, `products/${newId}`);
-    const newMetadata = { contentType };
-    const fileSnapshot = await uploadBytes(storageRef, file, newMetadata);
-    const fileURL = await getDownloadURL(fileSnapshot.ref);
-
-    const docRef = doc(db, "productos", newId.toString());
-    await setDoc(docRef, {
+    const productData = {
       ...values,
       id: newId,
       imagen: fileURL,
-      novedad: values.novedad,
-      estado: values.estado,
-    });
+      novedad: values.novedad === "true",
+      estado: values.estado === "true"
+    };
+
+    const docRef = doc(db, "productos", newId.toString());
+    await setDoc(docRef, productData);
 
     console.log("Producto agregado con éxito");
   } catch (error) {
@@ -46,6 +49,7 @@ const createProduct = async (values, file) => {
   }
 };
 
+// Formulario para crear un nuevo producto
 const CreateForm = () => {
   const [values, setValues] = useState({
     nombre: "",
@@ -63,54 +67,54 @@ const CreateForm = () => {
     },
     valoraciones: 0,
     stock: 0,
-    novedad: "true", // Valor predeterminado como string
-    estado: "true"   // Valor predeterminado como string
+    novedad: "true",
+    estado: "true"
   });
 
+  // Función para manejar los cambios en el formulario
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name.startsWith("data.")) {
+
+    // Para los campos dentro del objeto "data"
+    if (name.includes("data.")) {
       const dataField = name.split(".")[1];
       setValues((prevValues) => ({
         ...prevValues,
-        data: {
-          ...prevValues.data,
-          [dataField]: value,
-        },
+        data: { ...prevValues.data, [dataField]: value }
       }));
     } else {
       setValues({ ...values, [name]: value });
     }
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setValues((prevValues) => ({ ...prevValues, imagen: file }));
-  };
+  // Manejo de archivo de imagen
+  const handleFileChange = (e) => setValues({ ...values, imagen: e.target.files[0] });
 
+  // Manejo del envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const file = values.imagen; // Obtén el archivo
+    const { imagen, ...formValues } = values;
+
     try {
       const processedValues = {
-        ...values,
+        ...formValues,
         precio: parseFloat(values.precio),
         valoraciones: parseFloat(parseFloat(values.valoraciones).toFixed(1)),
         stock: parseInt(values.stock, 10),
-        novedad: values.novedad === "true",
-        estado: values.estado === "true",
       };
-      await createProduct(processedValues, file); // Pasa el archivo
+
+      await createProduct(processedValues, imagen);
+
       Swal.fire({
         icon: "success",
         title: "Producto cargado correctamente!",
         text: "El producto se cargó en la base de datos",
         timer: 3000,
-        timerProgressBar: true,
         showConfirmButton: false,
+        timerProgressBar: true,
       });
 
-      // Restablece el formulario
+      // Resetear el formulario después del éxito
       setValues({
         nombre: "",
         precio: 0,
@@ -118,20 +122,12 @@ const CreateForm = () => {
         imagen: "",
         descripcion: "",
         caracteristicas: "",
-        data: {
-          so: "",
-          memoria: "",
-          procesador: "",
-          bateria: "",
-          color: ""
-        },
+        data: { so: "", memoria: "", procesador: "", bateria: "", color: "" },
         valoraciones: 0,
         stock: 0,
         novedad: "true",
         estado: "true"
       });
-
-      // window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } catch (error) {
       console.error("No se pudo cargar el producto", error);
@@ -140,8 +136,8 @@ const CreateForm = () => {
         title: "Ocurrió un error al cargar el producto.",
         text: "Revise el log para más información",
         timer: 3000,
-        timerProgressBar: true,
         showConfirmButton: false,
+        timerProgressBar: true,
       });
     }
   };
