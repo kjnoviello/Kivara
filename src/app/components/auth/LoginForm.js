@@ -114,7 +114,7 @@ const LoginForm = () => {
             </p>
             <button
               onClick={() => { registerUser(values) }}
-              className="mt-0 flex w-full justify-center rounded-md bg-[#1a56db] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#1e429f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              className="mt-0 flex w-full justify-center rounded-md bg-white px-3 py-1.5 text-sm hover:text-white font-semibold leading-6 text-[#1a56db] shadow-sm hover:bg-[#1e429f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border-[#1a56db] border-2 hover:border-[#1e429f] ">
               Registrarse
             </button>
           </form>
