@@ -20,13 +20,10 @@ const AdminHeader = () => {
         },
     ]
 
-
-
     return (
         <div className="mt-6 mx-4 flex ">
             {/* Botones de navegacion */}
             <div className="space-x-2 flex">
-
                 {
                     adminLinks.map((link) =>
                         <Link

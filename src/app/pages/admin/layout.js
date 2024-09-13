@@ -4,12 +4,12 @@ import React from "react"
 
 
 const AdminLayout = ({ children, login }) => {
-    const { checkUser } = useAuthContext()
+    const { user } = useAuthContext()
 
     return (
         <>
             {
-                checkUser.logged ?
+                user?.logged ?
                     React.Children.toArray(children)
                     :
                     login
