@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
     })
 
     // Función para revisar si hay un usuario en la sesión
+    //* En next no se puede usar sessionStorage directamente ya que no existe en SSR, sino en el cliente. Ergo, esta función. (créditos de Stack Overflow)
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const storedUser = sessionStorage.getItem('user');
