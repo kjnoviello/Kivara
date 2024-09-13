@@ -1,7 +1,7 @@
 'use client'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { IoClose, IoMenu, IoMail, IoLogoFacebook, IoCartOutline } from "react-icons/io5";
-import { FaRegBell } from "react-icons/fa";
+import { FaRegBell, FaRegUser } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";
 import { usePathname } from 'next/navigation';
@@ -10,12 +10,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useCartContext } from '@/app/context/CartContext';
 import ButtonEmpty from './buttonEmpty';
+import { useAuthContext } from '@/app/context/AuthContext';
 
 const navigation = [
     { name: 'Inicio', href: '/', id: 1 },
     { name: 'Catálogo', href: '/pages/catalogo', id: 2 },
     { name: 'Nosotros', href: '/pages/nosotros', id: 3 },
-    { name: 'Admin', href: '/pages/admin', id: 4 },
 ]
 
 function classNames(...classes) {
@@ -28,6 +28,8 @@ const Navbar = () => {
     const valueQuantityCart = quantityCart()
 
     const pathname = usePathname();
+
+    const { user, logoutUser } = useAuthContext()
 
     return (
         <>
@@ -97,6 +99,22 @@ const Navbar = () => {
                                         </Link>
                                     ))}
 
+                                    {/* Si hay un usuario muestra el boton de Admin */}
+                                    {
+                                        user.logged ?
+                                            <Link href="/pages/admin" key="4">
+                                                <p
+                                                    className={classNames(
+                                                        pathname === "/pages/admin" ? 'bg-gray-700 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                        'rounded-md px-3 py-2 text-sm font-medium',
+                                                    )}>
+                                                    Admin
+                                                </p>
+                                            </Link>
+                                            :
+                                            ""
+                                    }
+
                                 </div>
                             </div>
                         </div>
@@ -121,9 +139,9 @@ const Navbar = () => {
                                             <span className="absolute -inset-1.5" />
                                             <span className="sr-only">Ver notificaciones</span>
                                             <IoCartOutline aria-hidden="true" className="h-6 w-6" />
-
                                         </MenuButton>
-                                        <p className='text-white'>
+
+                                        <p className='text-white animate-bounce'>
                                             <sup>
                                                 {
                                                     valueQuantityCart > 0 ?
@@ -133,6 +151,7 @@ const Navbar = () => {
                                                 }
                                             </sup>
                                         </p>
+
                                     </div>
                                 </div>
                                 <MenuItems
@@ -163,36 +182,67 @@ const Navbar = () => {
                                     <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Abrir menu usuario</span>
-                                        <Image
-                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                            alt='imagen usuario'
-                                            width={100}
-                                            height={100}
-                                            className="h-8 w-8 rounded-full"
-                                        >
-                                        </Image>
+
+                                        {/* Si hay usuario muestra su foto */}
+                                        {
+                                            user.logged ?
+                                                <Image
+                                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                    alt='imagen usuario'
+                                                    width={100}
+                                                    height={100}
+                                                    className="h-12 w-12 rounded-full"
+                                                >
+                                                </Image>
+                                                :
+                                                <div className="block text-sm text-gray-700 data-[focus]:bg-gray-100 hover:text-indigo-600">
+                                                    <FaRegUser className="text-[#9ca3af] p-1 hover:text-white h-12 w-12 rounded-full" />
+                                                </div>
+                                        }
+
                                     </MenuButton>
                                 </div>
-                                <MenuItems
-                                    transition
-                                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
-                                >
-                                    <MenuItem>
-                                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
-                                            Mi perfil
-                                        </a>
-                                    </MenuItem>
-                                    <MenuItem>
-                                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
-                                            Configuración
-                                        </a>
-                                    </MenuItem>
-                                    <MenuItem>
-                                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
-                                            Cerrar sesión
-                                        </a>
-                                    </MenuItem>
-                                </MenuItems>
+
+                                {/* Si hay usuario se muestra el menu desplegable */}
+                                {
+                                    user.logged ?
+                                        <MenuItems
+                                            transition
+                                            className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                                        >
+                                            <MenuItem>
+                                                <button href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                                                    Mi perfil
+                                                </button>
+                                            </MenuItem>
+                                            <MenuItem>
+                                                <button href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                                                    Configuración
+                                                </button>
+                                            </MenuItem>
+                                            <MenuItem>
+                                                <button
+                                                    onClick={() => { logoutUser() }}
+                                                    className="block px-4 py-2 text-sm text-[#e02424] data-[focus]:bg-gray-100">
+                                                    <strong>
+                                                        Cerrar sesión
+                                                    </strong>
+                                                </button>
+                                            </MenuItem>
+                                        </MenuItems>
+                                        :
+                                        <MenuItems
+                                            transition
+                                            className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                                        >
+                                            <MenuItem>
+                                                <Link href="/pages/admin" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                                                    Iniciar Sesión
+                                                </Link>
+                                            </MenuItem>
+                                        </MenuItems>
+                                }
+
                             </Menu>
                         </div>
                     </div>
@@ -212,6 +262,19 @@ const Navbar = () => {
                                 </DisclosureButton>
                             </Link>
                         ))}
+
+                        {/* Si hay un usuario muestra el boton de Admin */}
+                        <Link href="/pages/admin" key="4">
+                                <DisclosureButton
+                                    className={classNames(
+                                        pathname === "/pages/admin" ? 'bg-gray-700 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                        'block rounded-md px-3 py-2 text-base font-medium',
+                                    )}
+                                >
+                                    Admin
+                                </DisclosureButton>
+                            </Link>
+
                     </div>
                 </DisclosurePanel>
             </Disclosure>

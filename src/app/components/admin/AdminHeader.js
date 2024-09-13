@@ -36,11 +36,6 @@ const AdminHeader = () => {
                     )
                 }
             </div>
-            <button
-                onClick={() => logoutUser()}
-                className="bg-[red] hover:bg-[#e02424] mx-2 space-x-2-2 py-2 px-2 lg:px-6 sm:px-10 rounded-md text-white shadow-md flex items-center justify-center">
-                Cerrar sesion
-            </button>
         </div>
     )
 }

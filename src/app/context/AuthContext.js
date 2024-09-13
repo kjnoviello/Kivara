@@ -114,7 +114,7 @@ export const AuthProvider = ({ children }) => {
                 icon: "info",
                 title: `Bienvenido ${user.email}`,
                 toast: true,
-                position: "top-end",
+                position: "top",
                 timer: 3000,
                 showConfirmButton: false,
                 timerProgressBar: true,
