@@ -1,7 +1,7 @@
 'use client'
 import { createContext, useContext, useState, useEffect } from 'react'
 import { auth } from '../firebase/config'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth'
 import Swal from 'sweetalert2'
 
 const AuthContext = createContext()
@@ -10,51 +10,23 @@ export const useAuthContext = () => useContext(AuthContext)
 
 export const AuthProvider = ({ children }) => {
 
+    // Estado inicial del usuario
     const [user, setUser] = useState({
         logged: false,
         email: null,
         uid: null
     })
 
-    // Función para revisar si hay un usuario en la sesión
-    //* En next no se puede usar sessionStorage directamente ya que no existe en SSR, sino en el cliente. Ergo, esta función. (créditos de Stack Overflow)
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const storedUser = sessionStorage.getItem('user');
-            if (storedUser) {
-                const parsedUser = JSON.parse(storedUser);
-                if (parsedUser?.logged) {
-                    setUser(parsedUser);
-                }
-            }
-        }
-    }, []);
-
-
     // Funcion para registrar un usuario
     const registerUser = async (values) => {
 
         try {
-
             const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
             const user = userCredential.user;
-
-            setUser({
-                logged: true,
-                email: user.email,
-                uid: user.uid
-            });
-
-            sessionStorage.setItem('user', JSON.stringify({
-                logged: true,
-                email: user.email,
-                uid: user.uid
-            }));
-
             Swal.fire({
                 icon: "success",
                 title: "Usuario registrado!",
-                text: "El usuario fue agregado a la BD",
+                text: `El usuario ${user.email} fue agregado a la BD`,
                 toast: true,
                 position: "top-end",
                 timer: 3000,
@@ -63,9 +35,7 @@ export const AuthProvider = ({ children }) => {
             });
 
         } catch (error) {
-
             console.error('Error registering user: ', error);
-
             if (error.code === 'auth/email-already-in-use') {
                 Swal.fire({
                     icon: "warning",
@@ -91,24 +61,11 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-
     // Funcion para iniciar sesion
     const loginUser = async (values) => {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
             const user = userCredential.user;
-
-            sessionStorage.setItem('user', JSON.stringify({
-                logged: true,
-                email: user.email,
-                uid: user.uid
-            }));
-
-            setUser({
-                logged: true,
-                email: user.email,
-                uid: user.uid
-            });
 
             Swal.fire({
                 icon: "info",
@@ -125,7 +82,7 @@ export const AuthProvider = ({ children }) => {
                 Swal.fire({
                     icon: "error",
                     title: "Error de inicio de sesión",
-                    text: "No existe usuario o la contraseña no es correcta",
+                    text: `No existe usuario ${user.email} o la contraseña no es correcta`,
                     confirmButtonText: "OK"
                 });
             } else {
@@ -139,10 +96,9 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-
     // Funcion para cerrar la sesion
-    const logoutUser = () => {
-        Swal.fire({
+    const logoutUser = async () => {
+        await Swal.fire({
             icon: "question",
             title: `"Desea cerrar la sesión ?`,
             showCancelButton: true,
@@ -154,6 +110,7 @@ export const AuthProvider = ({ children }) => {
             timerProgressBar: true,
         }).then((result) => {
             if (result.isConfirmed) {
+                signOut(auth)
                 sessionStorage.removeItem('user')
                 setUser({
                     logged: false,
@@ -172,6 +129,25 @@ export const AuthProvider = ({ children }) => {
             }
         });
     }
+
+    // Observador para controlar el estado de user
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser({
+                    logged: true,
+                    email: user.email,
+                    uid: user.uid
+                })
+            } else {
+                setUser({
+                    logged: false,
+                    email: null,
+                    uid: null
+                })
+            }
+        })
+    }, [])
 
     return (
         <AuthContext.Provider
