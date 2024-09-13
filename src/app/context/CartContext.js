@@ -7,6 +7,7 @@ export const useCartContext = () => useContext(CartContext)
 export const CartProvider = ({ children }) => {
 
 
+     //* FUNCIONES PARA LA CANTIDAD ***********************************************
     //Funcion para agregar la cantidad
     const [quantity, setQuantity] = useState(1);
 
@@ -43,6 +44,7 @@ export const CartProvider = ({ children }) => {
                         showConfirmButton: false,
                         timer: 1500,
                     })
+                    setQuantity(1)
                 } catch (error) {
                     console.error("Error agregando el producto:", error);
                 }
@@ -142,6 +144,19 @@ export const CartProvider = ({ children }) => {
         const totalProductsQuantity = cart.reduce((quantityCart, product) => quantityCart + product.quantity, 0)
         return totalProductsQuantity
     }
+
+
+
+    //* FUNCIONES PARA LA COMPRA ***********************************************
+    // Funcion para confirmar la compra
+    // 1- Que se muestre un loading
+    // 2- Que reste el stock del producto y actualice el stock del mismo.
+    // 3- Que se grabe un comprobante con el detalle de la compra (nombre, cantidad, fecha??, n° ticket)
+    // 4- Que se dirija a la pagina de orders donde muestre el n° ticket, ponga el carrito en 0 y ponga el loading en false
+    // 5-
+
+
+
 
 
     return (

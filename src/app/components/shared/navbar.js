@@ -119,14 +119,14 @@ const Navbar = () => {
                             </div>
                         </div>
                         <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
-                            <button
+                            {/* <button
                                 type="button"
-                                className="ml-3 relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                className="ml-3 relative rounded-full bg-gray-800 text-gray-400 hover:text-white outline-none ring-2 ring-white ring-offset-2 ring-offset-gray-800"
                             >
                                 <span className="absolute -inset-1.5" />
                                 <span className="sr-only">Ver notificaciones</span>
                                 <FaRegBell aria-hidden="true" className="h-6 w-6" />
-                            </button>
+                            </button> */}
 
                             {/* Carrito dropdown */}
                             <Menu as="div" className="relative ml-3">
@@ -134,14 +134,28 @@ const Navbar = () => {
                                     <div className='flex'>
                                         <MenuButton
                                             type="button"
-                                            className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                            className="p-1 relative rounded-full bg-gray-800 text-gray-400 hover:text-white outline-none ring-2 ring-white ring-offset-2 ring-offset-gray-800 hover:scale-110"
                                         >
                                             <span className="absolute -inset-1.5" />
                                             <span className="sr-only">Ver notificaciones</span>
-                                            <IoCartOutline aria-hidden="true" className="h-6 w-6" />
+                                            
+                                            {
+                                                valueQuantityCart > 0 ?
+                                                <Image
+                                                    src="/shop_cart.jpg"
+                                                    alt='carrito lleno'
+                                                    width={100}
+                                                    height={100}
+                                                    className="h-12 w-12 rounded-full"
+                                                >
+                                                </Image>
+                                                :
+                                                <IoCartOutline aria-hidden="true" className="h-6 w-6" />
+                                            }
+
                                         </MenuButton>
 
-                                        <p className='text-white animate-bounce'>
+                                        <p className='text-white text-xl animate-bounce'>
                                             <sup>
                                                 {
                                                     valueQuantityCart > 0 ?
@@ -179,7 +193,7 @@ const Navbar = () => {
                             {/* Profile dropdown */}
                             <Menu as="div" className="relative ml-3">
                                 <div>
-                                    <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                    <MenuButton className="p-1 relative text-[#9ca3af] flex rounded-full bg-gray-800 hover:text-white text-sm outline-none ring-2 ring-white ring-offset-2 ring-offset-gray-800 hover:scale-110">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Abrir menu usuario</span>
 
@@ -195,9 +209,9 @@ const Navbar = () => {
                                                 >
                                                 </Image>
                                                 :
-                                                <div className="block text-sm text-gray-700 data-[focus]:bg-gray-100 hover:text-indigo-600">
-                                                    <FaRegUser className="text-[#9ca3af] p-1 hover:text-white h-12 w-12 rounded-full" />
-                                                </div>
+                                                    <FaRegUser aria-hidden="true" className=" rounded-full h-6 w-6" />
+                                                // <div className="block text-sm text-gray-700 data-[focus]:bg-gray-100 hover:text-indigo-600">
+                                                // </div>
                                         }
 
                                     </MenuButton>
