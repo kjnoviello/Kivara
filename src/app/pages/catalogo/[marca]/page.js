@@ -39,7 +39,7 @@ export default async function Marca({ params }) {
 
     return (
         <>
-            <Header marca={marca} productsLenght={productsLength} />
+            <Header marca={marca} productsLength={productsLength} />
             <main className='flex gap-5 flex-wrap p-5 mx-5 items-center justify-center'>
                 <ProductList products={products} />
             </main>
