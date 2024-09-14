@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react'
+import Swal from 'sweetalert2'
 
 const Form = () => {
 
@@ -13,17 +14,27 @@ const Form = () => {
     const handleChange = (e) => {
         setValues({
             ...values,
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
-    const handleSubmit = async (e) =>{
+    const handleSubmit = (e) => {
         e.preventDefault()
-        await fetch("http://localhost:3000/api/contacto",
-            {
-                method: "POST",
-                body: JSON.stringify(values)
-            })
+        console.log(values);
+        Swal.fire({
+            icon: "success",
+            title: "Mensaje enviado. Gracias",
+            text: "Nos comunicaremos a la brevedad.",
+            iconColor: "#1f2937",
+            timer: 1500,
+            showConfirmButton: false,
+        });
+        setValues({
+            nombre: "",
+            email: "",
+            empresa: "",
+            mensaje: ""
+        })
     }
 
 
@@ -42,6 +53,7 @@ const Form = () => {
                     placeholder='John Doe'
                     className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                     name='nombre'
+                    value={values.nombre}
                     onChange={handleChange}
                 />
             </div>
@@ -55,6 +67,7 @@ const Form = () => {
                     placeholder='johndoe@example.com'
                     className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                     name='email'
+                    value={values.email}
                     onChange={handleChange}
                 />
             </div>
@@ -67,6 +80,7 @@ const Form = () => {
                     placeholder='Personal TI Corps'
                     className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                     name='empresa'
+                    value={values.empresa}
                     onChange={handleChange}
                 />
             </div>
@@ -74,11 +88,12 @@ const Form = () => {
                 <label className="font-medium">
                     Mensaje *
                 </label>
-                <textarea 
+                <textarea
                     required
-                    placeholder='Hola, me gustaría.....' 
+                    placeholder='Hola, me gustaría.....'
                     className="w-full mt-2 h-36 px-3 py-2 resize-none appearance-none bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                     name='mensaje'
+                    value={values.mensaje}
                     onChange={handleChange}
                 />
             </div>
