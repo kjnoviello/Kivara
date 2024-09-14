@@ -5,7 +5,7 @@ import { AiOutlineEnter } from "react-icons/ai";
 import Link from 'next/link';
 import { Fade } from 'react-awesome-reveal';
 
-const SearchMarca = ({ products, marca, productsLength }) => {
+const SearchMarca = ({ products, marca }) => {
 
 
     // Función para obtener marcas únicas
@@ -76,7 +76,7 @@ const SearchMarca = ({ products, marca, productsLength }) => {
 
             {/* Con esto muestro la marca y la cantidad de productos que se esta renderizando  */}
             {marca ?
-                <p className="gap-x-1 text-sm font-semibold leading-6 text-gray-500" >{productsLength} Productos encontrados para: <i className='text-gray-800'>{marca}</i></p>
+                <p className="gap-x-1 text-sm font-semibold leading-6 text-gray-500" >Productos encontrados para: <i className='text-gray-800'>{marca}</i></p>
                 :
                 ""
             }

@@ -3,7 +3,7 @@ import SearchMarca from './SearchMarca';
 import Search from './Search';
 import getProductos from '@/app/api/getProductos';
 
-const Header = async ({marca, productsLength}) => {
+const Header = async ({marca}) => {
 
     const products = await getProductos()
 
@@ -15,7 +15,7 @@ const Header = async ({marca, productsLength}) => {
                 <Search products={products} />
 
                 {/* Busqueda por marcas o novedades */}
-                <SearchMarca products={products} marca={marca} productsLength={productsLength}/>
+                <SearchMarca products={products} marca={marca}/>
 
             </nav>
         </header>

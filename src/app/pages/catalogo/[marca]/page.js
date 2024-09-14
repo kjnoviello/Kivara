@@ -13,6 +13,8 @@ export function generateStaticParams() {
         { marca: "TCL" },
     ]
 }
+
+
 export const revalidate = 300
 
 // Funcion para obtener los productos filtrado segun la marca desde firestore
@@ -35,11 +37,10 @@ export default async function Marca({ params }) {
 
     const { marca } = params;
     const products = await getMarca(marca)
-    const productsLength = products.length
 
     return (
         <>
-            <Header marca={marca} productsLength={productsLength} />
+            <Header marca={marca} />
             <main className='flex gap-5 flex-wrap p-5 mx-5 items-center justify-center'>
                 <ProductList products={products} />
             </main>
