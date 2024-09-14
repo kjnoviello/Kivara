@@ -97,7 +97,6 @@ export const CartProvider = ({ children }) => {
                 });
                 try {
                     setCart([])
-                    console.log("El carrito se vació");
                 } catch (error) {
                     console.error("Error vaciando el carrito:", error);
                 }

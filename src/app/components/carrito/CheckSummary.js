@@ -9,8 +9,8 @@ const CheckSummary = () => {
     const { cart, valueCart } = useCartContext()
 
     return (
-        <main className='flex flex-col justify-center m-4'>
-                <h1 className='pb-8 pt-4 m-auto text-2xl'>Compelta tus datos para la compra:</h1>
+        <main className='flex flex-col justify-center m-4 mb-8'>
+                <h1 className='pb-8 pt-4 m-auto text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl'>Completa tus datos para la compra:</h1>
                 <section className='flex flex-col md:flex-row justify-center gap-4'>
                     <aside className='mx-auto'>
                         <ul role="list " className="divide-y divide-gray-100 md:px-20 m-4 md:m-8">

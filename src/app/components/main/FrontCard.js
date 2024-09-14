@@ -8,7 +8,7 @@ const FrontCard = () => {
             <p className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">Nos destacamos por nuestra atención al cliente personalizada, asegurándonos de que cada compra no solo cumpla con tus expectativas, sino que las supere. Con una entrega rápida y eficiente, garantizamos que tu nuevo celular llegue a ti en el menor tiempo posible. </p>
             <div className='flex flex-col gap-2 xl:flex-row'>
                 <Image
-                    src={"/image02.jpg"}
+                    src={"/image020.jpg"}
                     width={400}
                     height={250}
                     className='mx-auto rounded-lg'
