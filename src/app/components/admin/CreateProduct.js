@@ -30,7 +30,7 @@ const createProduct = async (values, file) => {
   try {
     const lastId = await getLastId();
     const newId = lastId + 1;
-    const fileURL = await uploadImage(file, newId); // Subir la imagen y obtener la URL
+    const fileURL = await uploadImage(file, newId);
 
     const productData = {
       ...values,

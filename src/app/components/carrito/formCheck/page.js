@@ -8,6 +8,8 @@ const FormCheck = () => {
         nombre: "",
         email: "",
         empresa: "",
+        fecha: "",
+        detalle: ""
     })
 
     const handleChange = (e) => {
