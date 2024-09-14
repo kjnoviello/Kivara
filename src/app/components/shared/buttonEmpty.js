@@ -1,8 +1,11 @@
 'use client'
+import { useCartContext } from '@/app/context/CartContext';
 import React from 'react'
 import { LiaTrashRestoreSolid } from 'react-icons/lia';
 
-const ButtonEmpty = ({emptyCart, inNavbar}) => {
+const ButtonEmpty = ({ inNavbar}) => {
+
+    const {emptyCart} = useCartContext()
 
     const btnInNavbar =  inNavbar ? "w-full text-gray-700 hover:bg-gray-100 hover:text-indigo-600" : "w-[130px] hover:text-white border border-4 border-gray-800 hover:bg-gray-900 text-center justify-center rounded-lg text-gray-800 bg-white border-gray-800"
 

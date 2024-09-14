@@ -1,4 +1,5 @@
 'use client'
+import { useRouter } from "next/navigation"
 import { createContext, useContext, useState } from "react"
 import Swal from "sweetalert2"
 
@@ -7,7 +8,8 @@ export const useCartContext = () => useContext(CartContext)
 export const CartProvider = ({ children }) => {
 
 
-     //* FUNCIONES PARA LA CANTIDAD ***********************************************
+    //* FUNCIONES PARA LA CANTIDAD ***********************************************
+
     //Funcion para agregar la cantidad
     const [quantity, setQuantity] = useState(1);
 
@@ -24,6 +26,7 @@ export const CartProvider = ({ children }) => {
 
     //* FUNCIONES PARA EL CARRITO ***********************************************
     //* "CART" tiene los productos y dentro esta la prop quantity con la cantidad
+
 
     // 1. Agregar al carrito
     const [cart, setCart] = useState([])
@@ -72,6 +75,7 @@ export const CartProvider = ({ children }) => {
         }
     }
 
+
     // 2. Funcion para eliminar productos del carrito
     const emptyCart = () => {
         Swal.fire({
@@ -100,6 +104,7 @@ export const CartProvider = ({ children }) => {
             }
         });
     }
+
 
     // 3. Funcion para sacar un producto del carrito
     const removeProduct = (id) => {
@@ -146,17 +151,70 @@ export const CartProvider = ({ children }) => {
     }
 
 
-
     //* FUNCIONES PARA LA COMPRA ***********************************************
+
     // Funcion para confirmar la compra
-    // 1- Que se muestre un loading
-    // 2- Que reste el stock del producto y actualice el stock del mismo.
-    // 3- Que se grabe un comprobante con el detalle de la compra (nombre, cantidad, fecha??, n° ticket)
-    // 4- Que se dirija a la pagina de orders donde muestre el n° ticket, ponga el carrito en 0 y ponga el loading en false
-    // 5-
+    const router = useRouter()
 
+    const confirmOrder = (values) => {
+        const { nombre, email } = values;
 
+        if (cart.length === 0) {
+            Swal.fire({
+                icon: "warning",
+                title: "No hay nada para comprar",
+                text: "",
+                iconColor: "#1f2937",
+                timer: 1500,
+                showConfirmButton: false,
+            });
+            return;
+        }
 
+        if (!nombre || !email) {
+            Swal.fire({
+                icon: "warning",
+                title: "Por favor completa todos los campos obligatorios",
+                text: "Nombre y email son requeridos",
+                iconColor: "#1f2937",
+                timer: 1500,
+                showConfirmButton: false,
+            });
+            return;
+        }
+
+        try {
+            Swal.fire({
+                icon: "warning",
+                title: "Realizando la compra...",
+                text: "Por favor espere mientras procesamos la compra",
+                iconColor: "#1f2937",
+                timer: 1500,
+                showConfirmButton: false,
+            });
+
+            //TODO logica para actualizar el stock de los productos 
+            //TODO y generar un comprobante
+            // 1- Que reste el stock del producto y actualice el stock del mismo en firebase.
+            // 2- Que se grabe un comprobante con el detalle de la compra (nombre, cantidad, fecha??, n° ticket) en firebase
+            // 3- Que se dirija a la pagina de orders donde muestre el n° de comprobante
+
+            // Vuelve el carrito a 0 y redirije
+            setCart([]);
+            router.push(`/pages/orders`);
+
+        } catch (error) {
+            console.error("Error procesando la orden:", error);
+            Swal.fire({
+                icon: "error",
+                title: "Hubo un error en el proceso de la compra",
+                text: "Por favor intente más tarde",
+                iconColor: "#1f2937",
+                timer: 1500,
+                showConfirmButton: false,
+            });
+        }
+    };
 
 
     return (
@@ -170,10 +228,13 @@ export const CartProvider = ({ children }) => {
                 emptyCart,
                 valueCart,
                 quantityCart,
-                removeProduct
+                removeProduct,
+                confirmOrder
             }}
         >
             {children}
         </CartContext.Provider>
     )
 }
+
+

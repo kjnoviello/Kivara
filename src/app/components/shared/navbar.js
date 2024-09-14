@@ -1,7 +1,7 @@
 'use client'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { IoClose, IoMenu, IoMail, IoLogoFacebook, IoCartOutline } from "react-icons/io5";
-import { FaRegBell, FaRegUser } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";
 import { usePathname } from 'next/navigation';
@@ -118,15 +118,7 @@ const Navbar = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
-                            {/* <button
-                                type="button"
-                                className="ml-3 relative rounded-full bg-gray-800 text-gray-400 hover:text-white outline-none ring-2 ring-white ring-offset-2 ring-offset-gray-800"
-                            >
-                                <span className="absolute -inset-1.5" />
-                                <span className="sr-only">Ver notificaciones</span>
-                                <FaRegBell aria-hidden="true" className="h-6 w-6" />
-                            </button> */}
+                        <div className="absolute inset-y-0 right-0 flex items-center gap-3 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
 
                             {/* Carrito dropdown */}
                             <Menu as="div" className="relative ml-3">
@@ -138,19 +130,19 @@ const Navbar = () => {
                                         >
                                             <span className="absolute -inset-1.5" />
                                             <span className="sr-only">Ver notificaciones</span>
-                                            
+
                                             {
                                                 valueQuantityCart > 0 ?
-                                                <Image
-                                                    src="/shop_cart.jpg"
-                                                    alt='carrito lleno'
-                                                    width={100}
-                                                    height={100}
-                                                    className="h-12 w-12 rounded-full"
-                                                >
-                                                </Image>
-                                                :
-                                                <IoCartOutline aria-hidden="true" className="h-6 w-6" />
+                                                    <Image
+                                                        src="/shop_cart.jpg"
+                                                        alt='carrito lleno'
+                                                        width={100}
+                                                        height={100}
+                                                        className="h-12 w-12 rounded-full"
+                                                    >
+                                                    </Image>
+                                                    :
+                                                    <IoCartOutline aria-hidden="true" className="h-6 w-6" />
                                             }
 
                                         </MenuButton>
@@ -179,14 +171,18 @@ const Navbar = () => {
                                         </Link>
                                     </MenuItem>
                                     <hr />
-                                    {
-                                        valueQuantityCart > 0 ?
-                                            <MenuItem>
-                                                <ButtonEmpty emptyCart={emptyCart} inNavbar={true} />
-                                            </MenuItem>
-                                            :
-                                            ""
-                                    }
+                                    <>
+                                        {
+                                            valueQuantityCart > 0 ?
+                                                <MenuItem>
+                                                    <div>
+                                                        <ButtonEmpty inNavbar="ok" />
+                                                    </div>
+                                                </MenuItem>
+                                                :
+                                                ""
+                                        }
+                                    </>
                                 </MenuItems>
                             </Menu>
 
@@ -209,9 +205,7 @@ const Navbar = () => {
                                                 >
                                                 </Image>
                                                 :
-                                                    <FaRegUser aria-hidden="true" className=" rounded-full h-6 w-6" />
-                                                // <div className="block text-sm text-gray-700 data-[focus]:bg-gray-100 hover:text-indigo-600">
-                                                // </div>
+                                                <FaRegUser aria-hidden="true" className=" rounded-full h-6 w-6" />
                                         }
 
                                     </MenuButton>
@@ -279,15 +273,15 @@ const Navbar = () => {
 
                         {/* Si hay un usuario muestra el boton de Admin */}
                         <Link href="/pages/admin" key="4">
-                                <DisclosureButton
-                                    className={classNames(
-                                        pathname === "/pages/admin" ? 'bg-gray-700 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                        'block rounded-md px-3 py-2 text-base font-medium',
-                                    )}
-                                >
-                                    Admin
-                                </DisclosureButton>
-                            </Link>
+                            <DisclosureButton
+                                className={classNames(
+                                    pathname === "/pages/admin" ? 'bg-gray-700 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                    'block rounded-md px-3 py-2 text-base font-medium',
+                                )}
+                            >
+                                Admin
+                            </DisclosureButton>
+                        </Link>
 
                     </div>
                 </DisclosurePanel>

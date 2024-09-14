@@ -3,13 +3,14 @@ import { useRouter } from 'next/navigation';
 import React from 'react'
 import { IoArrowBack } from 'react-icons/io5';
 
-const ButtonBack = ({btnLogin}) => {
+const ButtonBack = ({ btnLogin, newRoute }) => {
 
     const router = useRouter();
 
     const classLogin = btnLogin ? "" : "m-auto sm:w-[130px] w-full"
 
     return (
+        
         <button
             onClick={() => {
                 router.back();

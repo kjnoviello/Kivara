@@ -19,7 +19,7 @@ const ProductDetail = ({ product }) => {
     }
 
     return (
-        <section className="flex flex-col p-8 items-center bg-white border border-gray-200 rounded-lg shadow md:px-16 md:flex-row md:w-auto dark:border-gray-700 dark:bg-gray-800 h-auto">
+        <section className="flex flex-col p-8 items-center bg-white border border-gray-200 shadow rounded-lg md:px-16 md:flex-row md:w-auto dark:border-gray-700 dark:bg-gray-800 h-auto">
 
             {/*//TODO Implementar un carousel */}
             {product.imagen ? (

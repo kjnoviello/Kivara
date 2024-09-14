@@ -7,17 +7,18 @@ import { useCartContext } from '@/app/context/CartContext';
 import Empty from './empty/Empty';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 
 const Carrito = () => {
 
     const { cart, emptyCart, valueCart, quantityCart, removeProduct } = useCartContext()
+    const router = useRouter()
 
     return (
         <section>
 
             {cart.length > 0 ?
-
                 <>
                     <ul role="list " className="divide-y divide-gray-100 md:px-20 m-4 md:m-8">
                         {cart.map((product) => (
@@ -88,9 +89,9 @@ const Carrito = () => {
                                 </div>
                             </div>
                             <div className='mx-8 my-4 flex justify-end'>
-                                <button href="#" className="w-full  h-12 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <button onClick={()=>{router.push("/pages/carrito/check")}} className="w-full  h-12 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     <p className="m-auto flex items-center animate-bounce">
-                                        Confirmar
+                                        Continuar
                                         <FaCheck className="rtl:rotate-180 w-5 h-5 ms-2" />
                                     </p>
                                 </button>
@@ -107,3 +108,4 @@ const Carrito = () => {
 }
 
 export default Carrito
+
