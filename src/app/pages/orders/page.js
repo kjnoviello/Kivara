@@ -15,7 +15,8 @@ export default function Orders() {
             <div className="space-y-2 text-center">
                 <h3 className="text-2xl font-bold typeAnimation">Tu compra fue exitosa!</h3>
                 <p className="text-muted-foreground">Gracias por confiar en nosotros.</p>
-                <p className="text-muted-foreground">Tu numero de ticket es: <strong><i>{orderRef}</i></strong></p>
+                <p className="text-muted-foreground">Tu numero de ticket es: </p>
+                <p className="text-muted-foreground"><strong><i>{orderRef}</i></strong></p>
             </div>
             <div className=" flex justify-center w-1/2 self-center">
                 <ButtonConfirm />
