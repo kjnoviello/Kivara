@@ -26,14 +26,14 @@ Este proyecto es una plataforma de comercio electrónico construida con Next.js 
 * Tailwind CSS: Framework CSS para diseñar interfaces de usuario responsivas.
 * Vercel: Host para el deploy.
 
-##Estructura del Proyecto
+## Estructura del Proyecto
 * components/: Contiene los componentes reutilizables, como el header, carrito, y formularios.
 * context/: Contiene el CartContext, que maneja el estado global del carrito de compras.
 * firebase/: Configuración y servicios de Firebase.
 * pages/: Páginas principales del proyecto, como la de productos, carrito y órdenes.
 * styles/: Archivos de estilos (principalmente para personalizar Tailwind CSS).
 
-##Requisitos
+## Requisitos
 * Node.js (v18 o superior)
 * Firebase account con Firestore habilitado
 
