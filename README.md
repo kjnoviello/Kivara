@@ -1,6 +1,6 @@
 #  E-commerce Platform
 
-![Porada Kivara](/ipresentacion/portada.jpg "Portada de Kivara")
+![Porada Kivara](/presentacion/portada.jpg "Portada de Kivara")
 
 ## Deploy
 https://talent-place.netlify.app/
@@ -42,7 +42,7 @@ Este proyecto es una plataforma de comercio electrónico construida con Next.js 
 1. Clona el repositorio:
 
 ```
-git clone https://github.com/usuario/repo.git
+git clone https://github.com/kjnoviello/Kivara
 ```
 
 2. Instala las dependencias:
@@ -67,10 +67,10 @@ npm run dev
 
 ## Más imagenes
 
-![Porada Kivara](/ipresentacion/show01.jpg "Portada de Kivara")
-![Porada Kivara](/ipresentacion/show02.jpg "Portada de Kivara")
-![Porada Kivara](/ipresentacion/show03.jpg "Portada de Kivara")
-![Porada Kivara](/ipresentacion/show04.jpg "Portada de Kivara")
+![Porada Kivara](/presentacion/show01.jpg "Portada de Kivara")
+![Porada Kivara](/presentacion/show02.jpg "Portada de Kivara")
+![Porada Kivara](/presentacion/show03.jpg "Portada de Kivara")
+![Porada Kivara](/presentacion/show04.jpg "Portada de Kivara")
 
 ## Video promocional
 https://drive.google.com/file/d/1RYCESQGbj5mV8PiAQ7k0oZED8lndIv_S/view?usp=sharing
