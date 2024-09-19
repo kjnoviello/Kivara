@@ -1,6 +1,6 @@
 #  E-commerce Platform
 
-![Porada Kivara](/presentacion/portada.jpg "Portada de Kivara")
+![Porada Kivara](/kivara/public/presentacion/portada.jpg "Portada de Kivara")
 
 ## Deploy
 https://talent-place.netlify.app/
@@ -67,10 +67,10 @@ npm run dev
 
 ## Más imagenes
 kivara\public\presentacion\show01.jpg
-![Porada Kivara](kivara\public\presentacion\show01.jpg "Panel de control")
-![Porada Kivara](/presentacion/show02.jpg "Catalogo")
-![Porada Kivara](/presentacion/show03.jpg "Contacto")
-![Porada Kivara](/presentacion/show04.jpg "Carrito")
+![Porada Kivara](/kivara/public/presentacion/show01.jpg "Panel de control")
+![Porada Kivara](/kivara/public/presentacion/show02.jpg "Catalogo")
+![Porada Kivara](/kivara/public/presentacion/show03.jpg "Contacto")
+![Porada Kivara](/kivara/public/presentacion/show04.jpg "Carrito")
 
 ## Video promocional
 https://drive.google.com/file/d/1RYCESQGbj5mV8PiAQ7k0oZED8lndIv_S/view?usp=sharing
