@@ -66,7 +66,7 @@ npm run dev
 * npm start: Inicia el servidor en modo producción después de la compilación.
 
 ## Más imagenes
-kivara\public\presentacion\show01.jpg
+
 ![Porada Kivara](/public/presentacion/show01.jpg "Panel de control")
 ![Porada Kivara](/public/presentacion/show02.jpg "Catalogo")
 ![Porada Kivara](/public/presentacion/show03.jpg "Contacto")
