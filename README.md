@@ -1,4 +1,4 @@
-#  E-commerce Platform
+#  E-commerce "KIVARA - Tienda de celulares"
 
 ![Porada Kivara](public/presentacion/portada.jpg "Portada de Kivara")
 
