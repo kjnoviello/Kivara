@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#  E-commerce Platform
 
-## Getting Started
+![Porada Kivara](/ipresentacion/portada.jpg "Portada de Kivara")
 
-First, run the development server:
+## Deploy
+https://talent-place.netlify.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+[Video promocional](https://drive.google.com/file/d/1RYCESQGbj5mV8PiAQ7k0oZED8lndIv_S/view?usp=sharing).
+
+## Descripción
+Este proyecto es una plataforma de comercio electrónico construida con Next.js y Firebase. Permite a los usuarios navegar y agregar productos a un carrito de compras, gestionar el inventario de productos desde una interfaz de administrador, y completar el proceso de compra con el registro de comprobantes en una base de datos en la nube.
+
+## Características
+* Navegación de productos con filtros.
+* Gestión del carrito de compras.
+* Actualización de inventario en Firebase.
+* Registro de comprobantes de compra en Firebase.
+* Redirección a una página de órdenes después de la confirmación de compra.
+* Funcionalidad de administración de productos (agregar, editar, eliminar).
+
+## Tecnologías Utilizadas
+* Next.js: Framework para React que permite generar páginas de manera estática y dinámica.
+* Firebase Firestore: Base de datos en tiempo real utilizada para almacenar productos, gestionar inventarios y guardar comprobantes.
+* Firebase Authentication: Para gestionar usuarios y sesiones (si aplica).
+* SweetAlert2: Biblioteca para mostrar notificaciones visuales y alertas.
+* Tailwind CSS: Framework CSS para diseñar interfaces de usuario responsivas.
+* Vercel: Host para el deploy.
+
+##Estructura del Proyecto
+* components/: Contiene los componentes reutilizables, como el header, carrito, y formularios.
+* context/: Contiene el CartContext, que maneja el estado global del carrito de compras.
+* firebase/: Configuración y servicios de Firebase.
+* pages/: Páginas principales del proyecto, como la de productos, carrito y órdenes.
+* styles/: Archivos de estilos (principalmente para personalizar Tailwind CSS).
+
+##Requisitos
+* Node.js (v18 o superior)
+* Firebase account con Firestore habilitado
+
+## Instalación y Configuración
+
+1. Clona el repositorio:
+
+```
+git clone https://github.com/usuario/repo.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instala las dependencias:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Inicia el servidor de desarrollo:
 
-## Learn More
+```
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Abre tu navegador en http://localhost:3000.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts Disponibles
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+* npm run dev: Inicia el servidor en modo desarrollo.
+* npm run build: Construye la aplicación para producción.
+* npm start: Inicia el servidor en modo producción después de la compilación.
 
-## Deploy on Vercel
+## Más imagenes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Porada Kivara](/ipresentacion/show01.jpg "Portada de Kivara")
+![Porada Kivara](/ipresentacion/show02.jpg "Portada de Kivara")
+![Porada Kivara](/ipresentacion/show03.jpg "Portada de Kivara")
+![Porada Kivara](/ipresentacion/show04.jpg "Portada de Kivara")
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Video promocional
+https://drive.google.com/file/d/1RYCESQGbj5mV8PiAQ7k0oZED8lndIv_S/view?usp=sharing
+
+## Licencia
+Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
+
