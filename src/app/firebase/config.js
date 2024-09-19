@@ -9,12 +9,12 @@ import {getAuth} from 'firebase/auth'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDu1BSi1uJe6PjTwWZJ5kRT6XDLVHmPXSk",
-    authDomain: "kivara-12028.firebaseapp.com",
-    projectId: "kivara-12028",
-    storageBucket: "kivara-12028.appspot.com",
-    messagingSenderId: "192642618574",
-    appId: "1:192642618574:web:736a6a1ede4ca704e6ec9f"
+    apiKey: process.env.NEXT_PUBLIC_APIKEY,
+    authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+    projectId: process.env.NEXT_PUBLIC_PROJECTID,
+    storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+    appId: process.env.NEXT_PUBLIC_APPID
 };
 
 // Initialize Firebase
