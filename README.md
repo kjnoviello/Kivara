@@ -63,7 +63,6 @@ npm run dev
 
 * npm run dev: Inicia el servidor en modo desarrollo.
 * npm run build: Construye la aplicación para producción.
-* npm start: Inicia el servidor en modo producción después de la compilación.
 
 ## Más imagenes
 
